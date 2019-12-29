@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="PROCURAR"
+        android:paddingLeft="8dp"
+        android:drawablePadding="4dp"
+        android:paddingRight="8dp"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:drawableRight="@drawable/ic_mic_black_24dp"
+        android:textSize="8pt"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        tools:listitem="@layout/alimento_card_item"
+        />
+
+    <Button
+        android:id="@+id/create_food_post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_default_style"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center"
+        android:text="COMPARTILHAR ALIMENTO"
+        android:textColor="@color/colorWhite"
+        android:textSize="8pt"/>
+</LinearLayout>
