@@ -64,7 +64,7 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
             this.view = view;
             mainText = view.findViewById(R.id.optionNameText);
             secondaryText = view.findViewById(R.id.secondaryText);
-            image = view.findViewById(R.id.optionImage);
+            image = view.findViewById(R.id.food_post_image);
             imageButton = view.findViewById(R.id.optionActionButton);
         }
 

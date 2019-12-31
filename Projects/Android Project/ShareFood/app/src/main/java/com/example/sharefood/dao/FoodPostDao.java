@@ -22,6 +22,6 @@ public interface FoodPostDao {
     @Delete
     void delete(FoodPost foodPost);
 
-    @Query("SELECT * FROM food_post_table ORDER BY data_aberto DESC")
+    @Query("SELECT * FROM food_post_table ORDER BY id DESC")
     List<FoodPost> getAllFoodPosts();
 }

@@ -10,8 +10,13 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
+import com.example.sharefood.adapter.FoodPostAdapter;
+import com.example.sharefood.viewmodel.FoodPostViewModel;
 
 public class HomeFragment extends Fragment {
 
@@ -19,6 +24,17 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.food_posts_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.setHasFixedSize(true);
+
+        FoodPostViewModel foodPostViewModel = ViewModelProviders.of(this).get(FoodPostViewModel.class);
+
+        FoodPostAdapter adapter = new FoodPostAdapter();
+        adapter.setFoodPosts(foodPostViewModel.getAllFoodPosts());
+
+        recyclerView.setAdapter(adapter);
 
         final EditText searchEditText = view.findViewById(R.id.search_edit_text);
         searchEditText.setOnTouchListener(new View.OnTouchListener() {

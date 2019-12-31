@@ -8,6 +8,7 @@ import com.example.sharefood.dao.FoodPostDao;
 import com.example.sharefood.entity.FoodPost;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class FoodPostRepository {
 
@@ -17,7 +18,6 @@ public class FoodPostRepository {
     public FoodPostRepository(Application application){
         ShareFoodDatabase database = ShareFoodDatabase.getInstance(application);
         foodPostDao = database.foodPostDao();
-        allFoodPosts = foodPostDao.getAllFoodPosts();
     }
 
     public void insert(FoodPost foodPost){
@@ -33,7 +33,12 @@ public class FoodPostRepository {
     }
 
     public List<FoodPost> getAllFoodPosts(){
-        return allFoodPosts;
+        try {
+            return new GetAllFoodPostsTask(foodPostDao).execute().get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private static class InsertFoodPostAsyncTask extends AsyncTask<FoodPost, Void, Void>{
@@ -75,6 +80,19 @@ public class FoodPostRepository {
         protected Void doInBackground(FoodPost... foodPosts) {
             foodPostDao.delete(foodPosts[0]);
             return null;
+        }
+    }
+
+    private class GetAllFoodPostsTask extends AsyncTask<Void, Void, List<FoodPost>> {
+
+        private FoodPostDao foodPostDao;
+        private GetAllFoodPostsTask(FoodPostDao foodPostDao){
+            this.foodPostDao = foodPostDao;
+        }
+
+        @Override
+        protected List<FoodPost> doInBackground(Void... url){
+            return foodPostDao.getAllFoodPosts();
         }
     }
 }

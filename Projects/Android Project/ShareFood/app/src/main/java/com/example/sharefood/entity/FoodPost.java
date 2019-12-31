@@ -4,8 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity(tableName = "food_post_table")
 public class FoodPost {
 
@@ -16,16 +14,16 @@ public class FoodPost {
     private String descricao;
 
     @ColumnInfo(name = "data_vencimento")
-    private Date dataVencimento;
+    private String dataVencimento;
 
     @ColumnInfo(name = "tempo_para_retirar")
     private float tempoParaRetirar;
 
     @ColumnInfo(name = "data_aberto")
-    private Date dataAberto;
+    private String dataAberto;
 
     @ColumnInfo(name = "data_fechado")
-    private Date dataFechado;
+    private String dataFechado;
 
     private boolean ativo;
 
@@ -37,7 +35,7 @@ public class FoodPost {
 
     private int midia;
 
-    public FoodPost(String titulo, String descricao, Date dataVencimento, float tempoParaRetirar, int usuarioOrigemFk, int midia) {
+    public FoodPost(String titulo, String descricao, String dataVencimento, float tempoParaRetirar, int usuarioOrigemFk, int midia) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataVencimento = dataVencimento;
@@ -62,7 +60,7 @@ public class FoodPost {
         return descricao;
     }
 
-    public Date getDataVencimento() {
+    public String getDataVencimento() {
         return dataVencimento;
     }
 
@@ -70,11 +68,11 @@ public class FoodPost {
         return tempoParaRetirar;
     }
 
-    public Date getDataAberto() {
+    public String getDataAberto() {
         return dataAberto;
     }
 
-    public Date getDataFechado() {
+    public String getDataFechado() {
         return dataFechado;
     }
 
@@ -92,5 +90,21 @@ public class FoodPost {
 
     public int getMidia() {
         return midia;
+    }
+
+    public void setDataAberto(String dataAberto) {
+        this.dataAberto = dataAberto;
+    }
+
+    public void setDataFechado(String dataFechado) {
+        this.dataFechado = dataFechado;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public void setUsuarioDestinoFk(int usuarioDestinoFk) {
+        this.usuarioDestinoFk = usuarioDestinoFk;
     }
 }
