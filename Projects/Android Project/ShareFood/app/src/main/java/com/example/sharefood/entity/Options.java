@@ -1,4 +1,4 @@
-package com.example.sharefood.model;
+package com.example.sharefood.entity;
 
 public class Options {
 

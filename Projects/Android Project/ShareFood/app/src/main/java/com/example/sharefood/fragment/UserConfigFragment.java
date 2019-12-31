@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
 import com.example.sharefood.adapter.OptionsAdapter;
-import com.example.sharefood.model.Options;
+import com.example.sharefood.entity.Options;
 
 import java.util.ArrayList;
 
@@ -39,10 +39,10 @@ public class UserConfigFragment extends Fragment {
     }
 
     private void GenerateOptions(){
-        Options opcao0 = new Options("Nome do Usuario", "emaildousuario@gmail.com", "asdasd", "profile");
-        Options opcao1 =  new Options("Alimentos Compartilhados", null, "Refeicao", "SharedFood");
-        Options opcao2 = new Options("Alimentos Adquiridos", null, "Alimento", "GotFood");
-        Options opcao3 = new Options("Configurações", null, "Configuracao", "Config");
+        Options opcao0 = new Options("Nome do Usuario", "emaildousuario@gmail.com", "perfil", "profile");
+        Options opcao1 =  new Options("Alimentos Compartilhados", null, "compartilhado", "SharedFood");
+        Options opcao2 = new Options("Alimentos Adquiridos", null, "recebido", "GotFood");
+        Options opcao3 = new Options("Configurações", null, "configuracao", "Config");
         opcoesDoUsario.add(opcao0);
         opcoesDoUsario.add(opcao1);
         opcoesDoUsario.add(opcao2);

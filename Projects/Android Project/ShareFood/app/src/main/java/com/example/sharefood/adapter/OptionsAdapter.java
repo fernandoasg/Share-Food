@@ -6,13 +6,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
-import com.example.sharefood.model.Options;
+import com.example.sharefood.entity.Options;
 
 import java.util.ArrayList;
 
@@ -38,6 +37,7 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
         holder.mainText.setText(option.getMainText());
         if(option.getSecondaryText() != null)
             holder.secondaryText.setText(option.getSecondaryText());
+        holder.setImage(option.getImage());
         holder.setImageButton(option.getWhereToOpen());
     }
 
@@ -66,6 +66,13 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
             secondaryText = view.findViewById(R.id.secondaryText);
             image = view.findViewById(R.id.optionImage);
             imageButton = view.findViewById(R.id.optionActionButton);
+        }
+
+        void setImage(String nome){
+            if(nome.equals("perfil"))
+                image.setImageResource(R.drawable.ic_person_black_24dp);
+            else if(nome.equals("configuracao"))
+                image.setImageResource(R.drawable.ic_config_64dp);
         }
 
         void setImageButton(final String opt){

@@ -1,4 +1,4 @@
-package com.example.sharefood.atividade;
+package com.example.sharefood.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;

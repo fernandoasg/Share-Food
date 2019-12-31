@@ -1,4 +1,4 @@
-package com.example.sharefood.atividade;
+package com.example.sharefood.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.example.sharefood.R;
 import com.example.sharefood.fragment.HomeFragment;
