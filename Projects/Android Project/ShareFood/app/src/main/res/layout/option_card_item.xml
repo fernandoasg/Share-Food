@@ -16,31 +16,31 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/food_post_image"
+            android:id="@+id/option_image"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/ic_launcher_background" />
         <TextView
-            android:id="@+id/optionNameText"
+            android:id="@+id/option_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome do Produto"
             android:layout_marginLeft="8dp"
             android:textSize="8pt"
-            android:layout_toEndOf="@+id/food_post_image"
-            android:layout_toRightOf="@+id/food_post_image"/>
+            android:layout_toEndOf="@+id/option_image"
+            android:layout_toRightOf="@+id/option_image"/>
         <TextView
-            android:id="@+id/secondaryText"
+            android:id="@+id/option_description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginLeft="8dp"
             android:autoSizeTextType="uniform"
-            android:layout_below="@+id/optionNameText"
-            android:layout_toEndOf="@+id/food_post_image"
-            android:layout_toRightOf="@+id/food_post_image"/>
+            android:layout_below="@+id/option_name_text"
+            android:layout_toEndOf="@+id/option_image"
+            android:layout_toRightOf="@+id/option_image"/>
         <ImageButton
-            android:id="@+id/optionActionButton"
+            android:id="@+id/option_action_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_keyboard_arrow_right_black_48dp"

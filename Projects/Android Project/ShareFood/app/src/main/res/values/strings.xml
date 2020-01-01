@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Share Food</string>
+    <string name="app_icon_description">Descrição do ícone do aplicativo</string>
+    <string name="email_hint">email</string>
+    <string name="password_hint">senha</string>
+    <string name="login_button_text">LOGAR</string>
+    <string name="forgot_password_text">Esqueceu sua senha?</string>
+    <string name="account_question_text">Não tem uma conta?</string>
+    <string name="open_register_text">Cadastre-se agora!</string>
+    <string name="name_text">nome</string>
+    <string name="cellphone_hint_text">celular</string>
+    <string name="register_button_text">CADASTRAR</string>
+    <string name="food_post_image">Imagem do Produto</string>
+    <string name="search_food_post_hint_text">PROCURAR</string>
+    <string name="open_create_food_post_text">COMPARTILHAR ALIMENTO</string>
 </resources>
