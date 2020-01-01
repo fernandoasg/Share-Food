@@ -6,7 +6,7 @@
     <color name="colorRed">#FF3333</color>
     <color name="colorRedDark">#D42A2A</color>
     <color name="colorWhite">#ffffff</color>
-    <color name="colorAlmostWhite">#CCFFFFFF</color>
+    <color name="colorAlmostWhite">#CCC9C9C9</color>
 
     <color name="colorTransparent">#00000000</color>
 

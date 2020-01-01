@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,35 +8,29 @@
     tools:context=".activity.RegisterActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/app_icon_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
-        android:src="@drawable/ic_share_food_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="72dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_share_food_image" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/app_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginBottom="48dp"
+        android:layout_centerHorizontal="true"
         android:text="Share Food"
         android:textColor="@color/colorWhite"
         android:textSize="21pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_below="@id/app_icon_image"/>
 
     <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="0dp"
+        android:id="@+id/name_edit_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorWhite"
         android:drawableLeft="@drawable/ic_name_edit_text"
@@ -46,18 +40,14 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
         android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_below="@id/app_name_text"/>
 
     <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="0dp"
+        android:id="@+id/email_edit_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorWhite"
         android:drawableLeft="@drawable/ic_email_edit_text"
@@ -67,18 +57,14 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
         android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
+        android:layout_below="@id/name_edit_text"/>
 
     <EditText
-        android:id="@+id/phoneEditText"
-        android:layout_width="0dp"
+        android:id="@+id/phone_edit_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorWhite"
         android:drawableLeft="@drawable/ic_phone_edit_text"
@@ -88,19 +74,15 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
         android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+        android:layout_below="@id/email_edit_text"/>
 
 
     <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="0dp"
+        android:id="@+id/password_edit_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorWhite"
         android:drawableLeft="@drawable/ic_password_edit_text"
@@ -110,25 +92,21 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
         android:textSize="10pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
+        android:layout_below="@id/phone_edit_text"/>
 
     <Button
+        android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="32dp"
         android:background="@color/colorWhite"
         android:paddingLeft="24dp"
         android:paddingTop="8dp"
         android:paddingRight="24dp"
+        android:layout_centerHorizontal="true"
         android:paddingBottom="8dp"
         android:text="CADASTRAR"
         android:textColor="@color/colorRed"
         android:textSize="14pt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@id/password_edit_text"/>
+</RelativeLayout>
