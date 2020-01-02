@@ -1,10 +1,12 @@
 package com.example.sharefood.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
+import com.example.sharefood.activity.CreateFoodPostActivity;
 import com.example.sharefood.adapter.FoodPostAdapter;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 
@@ -29,7 +32,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        FoodPostViewModel foodPostViewModel = ViewModelProviders.of(this).get(FoodPostViewModel.class);
+        FoodPostViewModel foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
 
         FoodPostAdapter adapter = new FoodPostAdapter();
         adapter.setFoodPosts(foodPostViewModel.getAllFoodPosts());
@@ -58,6 +61,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        Button createFoodPostButton = view.findViewById(R.id.create_food_post_button);
+        createFoodPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), CreateFoodPostActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

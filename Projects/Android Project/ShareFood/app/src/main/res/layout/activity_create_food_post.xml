@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".activity.CreateFoodPostActivity">
+
+    <ImageView
+        android:id="@+id/add_food_post_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/ic_add_a_photo"/>
+    <TextView
+        android:id="@+id/add_food_post_image_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="@string/insert_image_text"
+        android:textColor="@color/colorBlack"/>
+
+    <EditText
+        android:id="@+id/add_food_post_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="text"
+        android:hint="@string/nome_do_alimento_hint_text"
+        android:paddingLeft="8dp"/>
+
+    <EditText
+        android:id="@+id/add_food_post_description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:inputType="textMultiLine"
+        android:hint="@string/food_post_description_hint"
+        android:paddingLeft="8dp"/>
+
+    <EditText
+        android:id="@+id/add_food_post_date_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:inputType="date"
+        android:hint="@string/food_post_data_hint"
+        android:paddingLeft="8dp"/>
+
+    <Button
+        android:id="@+id/add_food_post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/green_button_style"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="@string/food_post_button"
+        android:textColor="@color/colorWhite"
+        android:textSize="8pt"/>
+</LinearLayout>

@@ -16,9 +16,6 @@ public class FoodPost {
     @ColumnInfo(name = "data_vencimento")
     private String dataVencimento;
 
-    @ColumnInfo(name = "tempo_para_retirar")
-    private float tempoParaRetirar;
-
     @ColumnInfo(name = "data_aberto")
     private String dataAberto;
 
@@ -35,11 +32,10 @@ public class FoodPost {
 
     private int midia;
 
-    public FoodPost(String titulo, String descricao, String dataVencimento, float tempoParaRetirar, int usuarioOrigemFk, int midia) {
+    public FoodPost(String titulo, String descricao, String dataVencimento, int usuarioOrigemFk, int midia) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataVencimento = dataVencimento;
-        this.tempoParaRetirar = tempoParaRetirar;
         this.usuarioOrigemFk = usuarioOrigemFk;
         this.midia = midia;
     }
@@ -62,10 +58,6 @@ public class FoodPost {
 
     public String getDataVencimento() {
         return dataVencimento;
-    }
-
-    public float getTempoParaRetirar() {
-        return tempoParaRetirar;
     }
 
     public String getDataAberto() {

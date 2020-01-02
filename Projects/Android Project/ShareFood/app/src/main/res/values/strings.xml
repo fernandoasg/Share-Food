@@ -13,4 +13,9 @@
     <string name="food_post_image">Imagem do Produto</string>
     <string name="search_food_post_hint_text">PROCURAR</string>
     <string name="open_create_food_post_text">COMPARTILHAR ALIMENTO</string>
+    <string name="insert_image_text">Inserir Imagem</string>
+    <string name="nome_do_alimento_hint_text">Nome do Alimento *</string>
+    <string name="food_post_data_hint">Data de vencimento (dd-mm-aaaa)*</string>
+    <string name="food_post_description_hint">Descrição *</string>
+    <string name="food_post_button">PUBLICAR</string>
 </resources>

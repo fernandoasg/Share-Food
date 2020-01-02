@@ -12,9 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.sharefood.dao.FoodPostDao;
 import com.example.sharefood.entity.FoodPost;
 
-import java.text.SimpleDateFormat;
-
-@Database(entities = {FoodPost.class}, version = 1)
+@Database(entities = {FoodPost.class}, version = 2)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
@@ -52,13 +50,13 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
 
             foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
-                    null,60, 0, 0));
+                    null, 0, 0));
             foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
-                    null,60, 0, 0));
+                    null, 0, 0));
             foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
-                    null,60, 0, 0));
+                    null, 0, 0));
             foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
-                    null,60, 0, 0));
+                    null, 0, 0));
 
             return null;
         }

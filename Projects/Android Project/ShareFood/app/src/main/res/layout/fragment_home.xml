@@ -33,7 +33,7 @@
         android:id="@+id/create_food_post_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_default_style"
+        android:background="@drawable/red_button_style"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center"
