@@ -13,11 +13,16 @@ import com.example.sharefood.R;
 import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.viewmodel.CreateFoodPostViewModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class CreateFoodPostActivity extends AppCompatActivity {
 
     private EditText foodNameText;
     private EditText foodDescriptionText;
     private EditText foodDateText;
+    private EditText foodHoraParaRetirarText;
     private CreateFoodPostViewModel createFoodPostViewModel;
 
     @Override
@@ -30,6 +35,7 @@ public class CreateFoodPostActivity extends AppCompatActivity {
         foodNameText = findViewById(R.id.add_food_post_name_edit_text);
         foodDescriptionText = findViewById(R.id.add_food_post_description_edit_text);
         foodDateText = findViewById(R.id.add_food_post_date_edit_text);
+        foodHoraParaRetirarText = findViewById(R.id.app_food_post_hora_para_retirar);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
         setTitle("Compartilhar Alimento");
@@ -47,6 +53,7 @@ public class CreateFoodPostActivity extends AppCompatActivity {
         String foodName = foodNameText.getText().toString();
         String foodDescription = foodDescriptionText.getText().toString();
         String foodDate = foodDateText.getText().toString();
+        String foodHoraParaRetirar = foodHoraParaRetirarText.getText().toString();
 
         if(foodName.trim().isEmpty()){
             foodNameText.setError("Você precisa informar o nome do alimento.");
@@ -63,7 +70,14 @@ public class CreateFoodPostActivity extends AppCompatActivity {
             return;
         }
 
-        FoodPost foodPost = new FoodPost(foodName, foodDescription, foodDate, 0, 0);
+        if(foodHoraParaRetirar.trim().isEmpty()){
+            foodHoraParaRetirarText.setError("Você precisa infromar a hora para retirar.");
+            return;
+        }
+
+        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+
+        FoodPost foodPost = new FoodPost(foodName, foodDescription, foodDate, currentDate, foodHoraParaRetirar, 1, 2, 0, 0);
 
         createFoodPostViewModel.insert(foodPost);
 

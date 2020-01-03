@@ -18,4 +18,5 @@
     <string name="food_post_data_hint">Data de vencimento (dd-mm-aaaa)*</string>
     <string name="food_post_description_hint">Descrição *</string>
     <string name="food_post_button">PUBLICAR</string>
+    <string name="horario_para_retirar">Horário para retirar *</string>
 </resources>

@@ -10,7 +10,8 @@
     app:strokeColor="@color/cardview_dark_background"
     app:strokeWidth="0.5dp"
     app:cardElevation="2dp"
-    app:cardCornerRadius="4dp">
+    android:elevation="1dp"
+    app:cardCornerRadius="16dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +19,8 @@
         android:padding="8dp">
         <ImageView
             android:id="@+id/food_post_image"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:src="@drawable/ic_launcher_background"
             android:contentDescription="@string/food_post_image"/>
         <TextView
@@ -35,7 +36,7 @@
             android:id="@+id/food_post_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:autoSizeTextType="uniform"
             android:text="Descrição com pontosponto pont ospont ospontosponto spontospontos no final..."
@@ -53,6 +54,14 @@
             android:layout_alignParentRight="true"
             android:gravity="end"/>
 
+        <TextView
+            android:id="@+id/food_post_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="03/jan/20"
+            android:layout_below="@id/food_post_description"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -48,6 +48,37 @@
         android:hint="@string/food_post_data_hint"
         android:paddingLeft="8dp"/>
 
+    <EditText
+        android:id="@+id/app_food_post_hora_para_retirar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:inputType="date"
+        android:hint="@string/horario_para_retirar"
+        android:paddingLeft="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center_vertical"
+
+            android:inputType="date"
+            android:text="Localização: "/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_my_location_black_24dp"
+            android:paddingLeft="8dp"
+            />
+    </LinearLayout>
+
     <Button
         android:id="@+id/add_food_post_button"
         android:layout_width="wrap_content"

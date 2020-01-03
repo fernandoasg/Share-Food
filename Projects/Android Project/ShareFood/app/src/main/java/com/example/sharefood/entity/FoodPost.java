@@ -13,6 +13,13 @@ public class FoodPost {
     private String titulo;
     private String descricao;
 
+    @ColumnInfo(name = "horario_para_retirar")
+    private String horarioParaRetirar;
+
+    private double longitude;
+
+    private double latitude;
+
     @ColumnInfo(name = "data_vencimento")
     private String dataVencimento;
 
@@ -32,10 +39,14 @@ public class FoodPost {
 
     private int midia;
 
-    public FoodPost(String titulo, String descricao, String dataVencimento, int usuarioOrigemFk, int midia) {
+    public FoodPost(String titulo, String descricao, String dataVencimento, String dataAberto, String horarioParaRetirar, double longitude, double latitude, int usuarioOrigemFk, int midia) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataVencimento = dataVencimento;
+        this.dataAberto = dataAberto;
+        this.horarioParaRetirar = horarioParaRetirar;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.usuarioOrigemFk = usuarioOrigemFk;
         this.midia = midia;
     }
@@ -60,6 +71,18 @@ public class FoodPost {
         return dataVencimento;
     }
 
+    public String getHorarioParaRetirar() {
+        return horarioParaRetirar;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
     public String getDataAberto() {
         return dataAberto;
     }
@@ -82,10 +105,6 @@ public class FoodPost {
 
     public int getMidia() {
         return midia;
-    }
-
-    public void setDataAberto(String dataAberto) {
-        this.dataAberto = dataAberto;
     }
 
     public void setDataFechado(String dataFechado) {

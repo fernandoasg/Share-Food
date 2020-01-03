@@ -34,6 +34,7 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
         holder.textViewTitle.setText(currentFoodPost.getTitulo());
         holder.textViewDescription.setText(currentFoodPost.getDescricao());
         holder.textViewDistance.setText("100m");
+        holder.textViewDate.setText(currentFoodPost.getDataAberto());
     }
 
     @Override
@@ -50,14 +51,16 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewDistance;
+        private TextView textViewDate;
         private ImageView postImage;
 
-        public FoodPostHolder(@NonNull View itemView) {
-            super(itemView);
-            textViewTitle = itemView.findViewById(R.id.food_post_title);
-            textViewDescription = itemView.findViewById(R.id.food_post_description);
-            textViewDistance = itemView.findViewById(R.id.food_post_distance);
-            postImage = itemView.findViewById(R.id.food_post_image);
+        public FoodPostHolder(@NonNull View view) {
+            super(view);
+            textViewTitle = view.findViewById(R.id.food_post_title);
+            textViewDescription = view.findViewById(R.id.food_post_description);
+            textViewDistance = view.findViewById(R.id.food_post_distance);
+            textViewDate = view.findViewById(R.id.food_post_date);
+            postImage = view.findViewById(R.id.food_post_image);
         }
     }
 }

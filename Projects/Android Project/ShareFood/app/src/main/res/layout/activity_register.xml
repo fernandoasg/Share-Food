@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +11,7 @@
         android:id="@+id/app_icon_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_share_food_image"
         android:contentDescription="@string/app_icon_description"/>
@@ -93,6 +93,7 @@
         android:drawableStart="@drawable/ic_password_edit_text"
         android:drawablePadding="10dp"
         android:hint="@string/password_hint"
+        android:theme="@android:style/Theme.Holo.Dialog"
         android:inputType="textPassword"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
