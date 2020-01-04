@@ -23,16 +23,19 @@ import com.example.sharefood.viewmodel.FoodPostViewModel;
 
 public class HomeFragment extends Fragment {
 
+    FoodPostViewModel foodPostViewModel;
+    RecyclerView recyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.food_posts_recycler_view);
+        recyclerView = view.findViewById(R.id.food_posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        FoodPostViewModel foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
+        foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
 
         FoodPostAdapter adapter = new FoodPostAdapter();
         adapter.setFoodPosts(foodPostViewModel.getAllFoodPosts());

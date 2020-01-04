@@ -39,7 +39,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:autoSizeTextType="uniform"
-            android:text="Descrição com pontosponto pont ospont ospontosponto spontospontos no final..."
+            android:text="sdfsdf sdfsd fsdf sdf sdfos po ntos ponto spontospontos no final..."
             android:layout_below="@+id/food_post_title"
             android:layout_toEndOf="@+id/food_post_image"
             android:layout_toRightOf="@+id/food_post_image"/>
@@ -58,10 +58,10 @@
             android:id="@+id/food_post_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="03/jan/20"
             android:layout_below="@id/food_post_description"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            />
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
