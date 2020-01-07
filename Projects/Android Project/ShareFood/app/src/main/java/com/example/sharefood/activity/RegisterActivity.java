@@ -2,7 +2,9 @@ package com.example.sharefood.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,9 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.sharefood.R;
+import com.example.sharefood.back4app.UserParse;
+import com.example.sharefood.entity.User;
+import com.example.sharefood.viewmodel.UserViewModel;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private UserViewModel userViewModel;
     private EditText nomeEditText;
     private EditText emailEditText;
     private EditText celularEditText;
@@ -25,6 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         setTitle("");
         getSupportActionBar().setElevation(0);
+
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -72,8 +81,12 @@ public class RegisterActivity extends AppCompatActivity {
             return ;
         }
 
-        // TODO Registar o usuário aqui
+        User newUser = new User(nome, email, phone, password);
+        String userId = userViewModel.cadastraNovoUsuario(newUser);
 
+        System.out.println(userId);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

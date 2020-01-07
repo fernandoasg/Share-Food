@@ -49,13 +49,13 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
+            foodPostDao.insert(new FoodPost("Titulo 1", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Pode ser retirado a tarde", 1, 2, 0, 0));
-            foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
+            foodPostDao.insert(new FoodPost("Titulo 2", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Mande uma mensagem para marcarmos um horário", 1, 2,  0, 0));
-            foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
+            foodPostDao.insert(new FoodPost("Titulo 3", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Entre as 11:00 e 13:00", 1, 2,  0, 0));
-            foodPostDao.insert(new FoodPost("Arroz", "Arroz gostosinho",
+            foodPostDao.insert(new FoodPost("Titulo 4", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Deixarei na portaria do edíficio Armando Freire", 1, 2,  0, 0));
 
             return null;
