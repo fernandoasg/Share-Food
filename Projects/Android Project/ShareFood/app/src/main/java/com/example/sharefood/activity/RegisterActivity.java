@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 import com.example.sharefood.back4app.UserParse;
 import com.example.sharefood.entity.User;
@@ -82,11 +85,23 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         User newUser = new User(nome, email, phone, password);
-        String userId = userViewModel.cadastraNovoUsuario(newUser);
+        userViewModel.cadastraNovoUsuario(newUser);
 
-        System.out.println(userId);
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
+                String userId = sharedPreferences.getString(Constants.USER_ID, null);
+                System.out.println("id inserido =" + userId);
+                if(userId != null){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }, 1000);
+
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

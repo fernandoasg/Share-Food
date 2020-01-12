@@ -20,7 +20,7 @@ public class UserViewModel extends AndroidViewModel {
         userParse = new UserParse(application);
     }
 
-    public String cadastraNovoUsuario(User user){
-        return userParse.createUser(user);
+    public void cadastraNovoUsuario(User user){
+        userParse.createUser(user);
     }
 }

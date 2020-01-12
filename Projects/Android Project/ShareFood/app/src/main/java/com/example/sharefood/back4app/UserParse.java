@@ -1,14 +1,18 @@
 package com.example.sharefood.back4app;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.example.sharefood.Constants;
 import com.example.sharefood.activity.RegisterActivity;
 import com.example.sharefood.entity.User;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class UserParse {
 
@@ -18,9 +22,8 @@ public class UserParse {
         this.context = _context;
     }
 
-    public String createUser(User user){
+    public void createUser(User user){
         final ParseObject entity = new ParseObject("Usuario");
-        final String[] entityId = {null};
         entity.put("nome", user.getNome());
         entity.put("email", user.getEmail());
         entity.put("celular", user.getCelular());
@@ -34,10 +37,16 @@ public class UserParse {
                 @Override
                 public void done(ParseException e) {
                     // Aqui posso checar se deu erro, se tiver. Senão, "e" deve ser nulo
-                    System.out.println("Usuário salvo");
                     if(e == null){
-                        entityId[0] = entity.getObjectId();
-                        System.out.println(entityId[0]);
+                        String entityId = entity.getObjectId();
+                        System.out.println("inside = "+entityId);
+
+                        if(entityId != null) {
+                            SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString(Constants.USER_ID, entityId);
+                            editor.apply();
+                        }
                     }else{
                         ParseUser.logOut();
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG)
@@ -46,7 +55,7 @@ public class UserParse {
                 }
             });
         }finally {
-            return entityId[0];
+            return ;
         }
     }
 }
