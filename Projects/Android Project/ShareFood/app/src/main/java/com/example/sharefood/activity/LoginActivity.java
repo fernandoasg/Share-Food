@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sharefood.R;
+import com.example.sharefood.SessionManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +20,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        if(sessionManager.isLogged()){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finishAffinity();
+        }
 
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {

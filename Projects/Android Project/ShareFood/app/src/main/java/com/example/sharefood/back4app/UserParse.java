@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.sharefood.Constants;
+import com.example.sharefood.SessionManager;
 import com.example.sharefood.activity.RegisterActivity;
 import com.example.sharefood.entity.User;
 import com.parse.ParseException;
@@ -42,10 +43,8 @@ public class UserParse {
                         System.out.println("inside = "+entityId);
 
                         if(entityId != null) {
-                            SharedPreferences sharedPreferences = context.getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString(Constants.USER_ID, entityId);
-                            editor.apply();
+                            SessionManager sessionManager = new SessionManager(context);
+                            sessionManager.createSession(entityId, entity.get("email").toString(), entity.get("nome").toString());
                         }
                     }else{
                         ParseUser.logOut();

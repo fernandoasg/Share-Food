@@ -1,5 +1,6 @@
 package com.example.sharefood.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 import com.example.sharefood.adapter.OptionsAdapter;
 import com.example.sharefood.entity.Options;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class UserConfigFragment extends Fragment {
 
@@ -39,13 +43,17 @@ public class UserConfigFragment extends Fragment {
     }
 
     private void GenerateOptions(){
-        Options opcao0 = new Options("Nome do Usuario", "emaildousuario@gmail.com", "perfil", "profile");
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
+        String userName = sharedPreferences.getString(Constants.USER_NAME, null);
+        String userEmail = sharedPreferences.getString(Constants.USER_EMAIL, null);
+
+        Options opcao0 = new Options(userName, userEmail, "perfil", "profile");
         Options opcao1 =  new Options("Alimentos Compartilhados", null, "compartilhado", "SharedFood");
-        Options opcao2 = new Options("Alimentos Adquiridos", null, "recebido", "GotFood");
+        //Options opcao2 = new Options("Alimentos Adquiridos", null, "recebido", "GotFood");
         Options opcao3 = new Options("Configurações", null, "configuracao", "Config");
         opcoesDoUsario.add(opcao0);
         opcoesDoUsario.add(opcao1);
-        opcoesDoUsario.add(opcao2);
+        //opcoesDoUsario.add(opcao2);
         opcoesDoUsario.add(opcao3);
     }
 }
