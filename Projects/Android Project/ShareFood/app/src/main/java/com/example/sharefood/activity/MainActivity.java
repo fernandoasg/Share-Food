@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.example.sharefood.R;
 import com.example.sharefood.fragment.HomeFragment;
+import com.example.sharefood.fragment.MessagesFragment;
 import com.example.sharefood.fragment.UserConfigFragment;
 import com.example.sharefood.fragment.VendasFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_store:
                             selectedFragment = new VendasFragment();
+                            break;
+                        case R.id.nav_messages:
+                            selectedFragment = new MessagesFragment();
                             break;
                         case R.id.nav_user_options:
                             selectedFragment = new UserConfigFragment();

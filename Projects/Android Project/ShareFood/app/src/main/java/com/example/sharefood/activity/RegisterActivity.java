@@ -97,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if(userId != null){
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    finishAffinity();
                 }
             }
         }, 1000);

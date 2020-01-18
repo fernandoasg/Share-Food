@@ -12,6 +12,11 @@
         android:title="Loja" />
 
     <item
+        android:id="@+id/nav_messages"
+        android:icon="@drawable/ic_message_black_24dp"
+        android:title="Mensagens"/>
+
+    <item
         android:id="@+id/nav_user_options"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Perfil" />

@@ -13,8 +13,6 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class UserParse {
 
     private Context context;
