@@ -16,9 +16,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 import com.example.sharefood.activity.CreateFoodPostActivity;
+import com.example.sharefood.activity.FoodPostActivity;
 import com.example.sharefood.adapter.FoodPostAdapter;
+import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 
 public class HomeFragment extends Fragment {
@@ -39,6 +42,14 @@ public class HomeFragment extends Fragment {
 
         FoodPostAdapter adapter = new FoodPostAdapter();
         adapter.setFoodPosts(foodPostViewModel.getAllFoodPosts());
+        adapter.setOnItemClickListener(new FoodPostAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(FoodPost foodPost) {
+                Intent intent = new Intent(getActivity(), FoodPostActivity.class);
+                intent.putExtra(Constants.EXTRA_FOOD_POST_NAME, foodPost.getTitulo());
+                startActivity(intent);
+            }
+        });
 
         recyclerView.setAdapter(adapter);
 
@@ -72,6 +83,8 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        getActivity().setTitle("Compartilhe!");
 
         return view;
     }

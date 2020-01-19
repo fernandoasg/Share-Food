@@ -6,4 +6,14 @@ public class Constants {
     public static final String USER_ID = "UserId";
     public static final String USER_NAME = "UserName";
     public static final String USER_EMAIL = "UserEmail";
+
+
+    // Extras of Food Post
+    public static final String EXTRA_FOOD_POST_ID = "FoodPostId";
+    public static final String EXTRA_FOOD_POST_NAME = "FoodPostName";
+    public static final String EXTRA_FOOD_POST_DESCRIPTION = "FoodPostDescription";
+    public static final String EXTRA_FOOD_POST_TIME = "FoodPostTime";
+    public static final String EXTRA_FOOD_POST_LAT = "FoodPostLat";
+    public static final String EXTRA_FOOD_POST_LONG = "FoodPostLong";
+
 }

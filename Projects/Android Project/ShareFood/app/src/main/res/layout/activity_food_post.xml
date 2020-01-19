@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".activity.FoodPostActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_food_post"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="@color/colorFoodPost"
+        app:strokeColor="@color/cardview_dark_background"
+        app:strokeWidth="0.5dp"
+        app:cardElevation="2dp"
+        android:elevation="1dp"
+        app:cardCornerRadius="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <ImageView
+                android:id="@+id/food_post_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/food_post_image"/>
+            <TextView
+                android:id="@+id/food_post_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do Produto"
+                android:layout_marginLeft="8dp"
+                android:textSize="8pt"
+                android:layout_toEndOf="@+id/food_post_image"
+                android:layout_toRightOf="@+id/food_post_image"/>
+            <TextView
+                android:id="@+id/food_post_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:autoSizeTextType="uniform"
+                android:text="Oferecido por: Nome da Pessoa"
+                android:layout_below="@+id/food_post_title"
+                android:layout_toEndOf="@+id/food_post_image"
+                android:layout_toRightOf="@+id/food_post_image"/>
+            <TextView
+                android:id="@+id/food_post_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:autoSizeTextType="uniform"
+                android:text="Horário para retirar: à tarde"
+                android:layout_below="@+id/food_post_from"
+                android:layout_toEndOf="@+id/food_post_image"
+                android:layout_toRightOf="@+id/food_post_image"/>
+            <TextView
+                android:id="@+id/food_post_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100m"
+                android:layout_toEndOf="@+id/food_post_title"
+                android:layout_toRightOf="@+id/food_post_title"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:gravity="end"/>
+
+            <TextView
+                android:id="@+id/food_post_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03/jan/20"
+                android:layout_below="@id/food_post_time"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/food_post_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Descrição completa Descrição completa Descrição completa Descrição completa Descrição completa Descrição completa"
+        android:textSize="8pt"
+        android:textAlignment="center"
+        android:layout_below="@+id/card_food_post"/>
+
+    <TextView
+        android:id="@+id/text_localization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Localização aproximada"
+        android:textSize="9pt"
+        android:layout_below="@id/food_post_description"/>
+
+
+</RelativeLayout>

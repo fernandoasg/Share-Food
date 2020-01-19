@@ -18,6 +18,7 @@ import java.util.List;
 public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPostHolder> {
 
     private List<FoodPost> foodPosts = new ArrayList<>();
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -61,6 +62,24 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
             textViewDistance = view.findViewById(R.id.food_post_distance);
             textViewDate = view.findViewById(R.id.food_post_date);
             postImage = view.findViewById(R.id.food_post_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION){
+                        listener.onItemClick(foodPosts.get(position));
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(FoodPost foodPost);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }
