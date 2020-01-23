@@ -46,7 +46,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(FoodPost foodPost) {
                 Intent intent = new Intent(getActivity(), FoodPostActivity.class);
+                intent.putExtra(Constants.EXTRA_FOOD_POST_ID, foodPost.getId());
                 intent.putExtra(Constants.EXTRA_FOOD_POST_NAME, foodPost.getTitulo());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_DESCRIPTION, foodPost.getDescricao());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_TIME, foodPost.getHorarioParaRetirar());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_DATE, foodPost.getDataAberto());
                 startActivity(intent);
             }
         });

@@ -1,6 +1,7 @@
 package com.example.sharefood.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
+import com.example.sharefood.viewmodel.FoodPostViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        FoodPostViewModel foodPostViewModel = ViewModelProviders.of(this).get(FoodPostViewModel.class);
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         if(sessionManager.isLogged()){

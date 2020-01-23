@@ -13,6 +13,7 @@ public class Constants {
     public static final String EXTRA_FOOD_POST_NAME = "FoodPostName";
     public static final String EXTRA_FOOD_POST_DESCRIPTION = "FoodPostDescription";
     public static final String EXTRA_FOOD_POST_TIME = "FoodPostTime";
+    public static final String EXTRA_FOOD_POST_DATE = "FoodPostDate";
     public static final String EXTRA_FOOD_POST_LAT = "FoodPostLat";
     public static final String EXTRA_FOOD_POST_LONG = "FoodPostLong";
 

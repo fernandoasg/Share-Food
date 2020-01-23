@@ -18,6 +18,7 @@ public class FoodPostRepository {
     public FoodPostRepository(Application application){
         ShareFoodDatabase database = ShareFoodDatabase.getInstance(application);
         foodPostDao = database.foodPostDao();
+        System.out.println("Eita preula");
     }
 
     public void insert(FoodPost foodPost){

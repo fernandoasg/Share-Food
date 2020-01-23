@@ -58,6 +58,7 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
             foodPostDao.insert(new FoodPost("Titulo 4", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Deixarei na portaria do edíficio Armando Freire", 1, 2,  0, 0));
 
+            System.out.println("We're like young volcanoes");
             return null;
         }
     }

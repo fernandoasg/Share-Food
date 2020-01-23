@@ -29,6 +29,8 @@ public class UserConfigFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_user_config, container, false);
+        getActivity().setTitle("Configurações");
+
         opcoesDoUsario = new ArrayList<>();
         RecyclerView userOptionsRecyclerView = view.findViewById(R.id.user_options_recycler_view);
 

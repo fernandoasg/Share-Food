@@ -13,10 +13,20 @@ import com.example.sharefood.R;
 
 public class FoodPostActivity extends AppCompatActivity {
 
+    TextView foodPostTitleText;
+    TextView foodPostTimeText;
+    TextView foodPostDateText;
+    TextView foodPostDescriptionText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_post);
+
+        foodPostTitleText = findViewById(R.id.food_post_title);
+        foodPostTimeText = findViewById(R.id.food_post_time);
+        foodPostDateText = findViewById(R.id.food_post_date);
+        foodPostDescriptionText = findViewById(R.id.food_post_description);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -26,10 +36,18 @@ public class FoodPostActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if(intent.hasExtra(Constants.EXTRA_FOOD_POST_NAME)){
-            TextView text = findViewById(R.id.food_post_title);
             String foodPostTitle = intent.getStringExtra(Constants.EXTRA_FOOD_POST_NAME);
-            text.setText(foodPostTitle);
+            foodPostTitleText.setText(foodPostTitle);
             setTitle(foodPostTitle);
+
+            String foodPostTime = intent.getStringExtra(Constants.EXTRA_FOOD_POST_TIME);
+            foodPostTimeText.setText(foodPostTime);
+
+            String foodPostDate = intent.getStringExtra(Constants.EXTRA_FOOD_POST_DATE);
+            foodPostDateText.setText(foodPostDate);
+
+            String foodPostDescription = intent.getStringExtra(Constants.EXTRA_FOOD_POST_DESCRIPTION);
+            foodPostDescriptionText.setText(foodPostDescription);
         }
     }
 }
