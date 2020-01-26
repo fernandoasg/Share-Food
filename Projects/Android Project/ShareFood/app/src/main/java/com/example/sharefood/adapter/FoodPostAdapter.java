@@ -79,6 +79,11 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
         void onItemClick(FoodPost foodPost);
     }
 
+    public void filterList(List<FoodPost> filterdFoodPosts) {
+        this.foodPosts = filterdFoodPosts;
+        notifyDataSetChanged();
+    }
+
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }

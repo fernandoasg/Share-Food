@@ -2,6 +2,8 @@ package com.example.sharefood.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,15 +26,23 @@ import com.example.sharefood.adapter.FoodPostAdapter;
 import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
+    EditText searchEditText;
     FoodPostViewModel foodPostViewModel;
     RecyclerView recyclerView;
+    List<FoodPost> foodPostsList;
+    FoodPostAdapter recyclerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+
+        searchEditText = view.findViewById(R.id.search_edit_text);
 
         recyclerView = view.findViewById(R.id.food_posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -40,9 +50,13 @@ public class HomeFragment extends Fragment {
 
         foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
 
-        FoodPostAdapter adapter = new FoodPostAdapter();
-        adapter.setFoodPosts(foodPostViewModel.getAllFoodPosts());
-        adapter.setOnItemClickListener(new FoodPostAdapter.OnItemClickListener() {
+        recyclerAdapter = new FoodPostAdapter();
+
+        foodPostsList = new ArrayList<>();
+        foodPostsList = foodPostViewModel.getAllFoodPosts();
+
+        recyclerAdapter.setFoodPosts(foodPostsList);
+        recyclerAdapter.setOnItemClickListener(new FoodPostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(FoodPost foodPost) {
                 Intent intent = new Intent(getActivity(), FoodPostActivity.class);
@@ -55,9 +69,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(recyclerAdapter);
 
-        final EditText searchEditText = view.findViewById(R.id.search_edit_text);
         searchEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -79,6 +92,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //after the change calling the method and passing the search input
+                filter(editable.toString());
+            }
+        });
+
         Button createFoodPostButton = view.findViewById(R.id.create_food_post_button);
         createFoodPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,5 +122,21 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("Compartilhe!");
 
         return view;
+    }
+
+    private void filter(String text) {
+        List<FoodPost> filteredFoodPosts = new ArrayList<>();
+
+        //looping through existing elements
+        for (FoodPost foodPost : foodPostsList) {
+            //if the existing elements contains the search input
+            if (foodPost.getTitulo().toLowerCase().contains(text.toLowerCase())) {
+                //adding the element to filtered list
+                filteredFoodPosts.add(foodPost);
+            }
+        }
+
+        //calling a method of the adapter class and passing the filtered list
+        recyclerAdapter.filterList(filteredFoodPosts);
     }
 }
