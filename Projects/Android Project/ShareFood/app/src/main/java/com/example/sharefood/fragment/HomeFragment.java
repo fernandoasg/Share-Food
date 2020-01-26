@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     EditText searchEditText;
+    TextView noMatchFilterText;
     FoodPostViewModel foodPostViewModel;
     RecyclerView recyclerView;
     List<FoodPost> foodPostsList;
@@ -43,6 +45,7 @@ public class HomeFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
         searchEditText = view.findViewById(R.id.search_edit_text);
+        noMatchFilterText = view.findViewById(R.id.recycler_empty_text);
 
         recyclerView = view.findViewById(R.id.food_posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -134,6 +137,14 @@ public class HomeFragment extends Fragment {
                 //adding the element to filtered list
                 filteredFoodPosts.add(foodPost);
             }
+        }
+
+        if(filteredFoodPosts.size() == 0){
+            noMatchFilterText.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+            noMatchFilterText.setVisibility(View.GONE);
         }
 
         //calling a method of the adapter class and passing the filtered list

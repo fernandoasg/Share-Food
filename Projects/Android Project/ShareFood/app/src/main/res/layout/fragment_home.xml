@@ -29,6 +29,16 @@
         tools:listitem="@layout/alimento_card_item"
         />
 
+    <TextView
+        android:id="@+id/recycler_empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/no_food_post_with_filter"
+        android:visibility="gone"
+        />
     <Button
         android:id="@+id/create_food_post_button"
         android:layout_width="wrap_content"
