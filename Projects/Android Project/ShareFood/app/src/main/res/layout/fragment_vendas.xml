@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/search_food_post_hint_text"
+        android:paddingLeft="8dp"
+        android:drawablePadding="4dp"
+        android:paddingRight="8dp"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:drawableStart="@drawable/ic_search_black_24dp"
+        android:drawableRight="@drawable/ic_mic_black_24dp"
+        android:drawableEnd="@drawable/ic_mic_black_24dp"
+        android:textSize="8pt"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messages_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        tools:listitem="@layout/alimento_card_item"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/recycler_empty_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vendas"
-        android:textSize="24pt"
-        android:layout_centerInParent="true" />
-</RelativeLayout>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/no_food_post_with_filter"
+        android:visibility="gone"
+        />
+</LinearLayout>

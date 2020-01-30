@@ -7,23 +7,8 @@
     android:layout_margin="8dp"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/search_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/search_food_post_hint_text"
-        android:paddingLeft="8dp"
-        android:drawablePadding="4dp"
-        android:paddingRight="8dp"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:drawableStart="@drawable/ic_search_black_24dp"
-        android:drawableRight="@drawable/ic_mic_black_24dp"
-        android:drawableEnd="@drawable/ic_mic_black_24dp"
-        android:textSize="8pt"/>
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/food_posts_recycler_view"
+        android:id="@+id/messages_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="6"

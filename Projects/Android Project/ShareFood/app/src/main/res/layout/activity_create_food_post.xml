@@ -11,6 +11,8 @@
         android:id="@+id/add_food_post_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxWidth="256dp"
+        android:maxHeight="256dp"
         android:layout_marginLeft="8dp"
         android:src="@drawable/ic_add_a_photo"/>
     <TextView

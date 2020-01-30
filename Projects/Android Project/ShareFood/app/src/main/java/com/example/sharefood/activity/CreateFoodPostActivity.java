@@ -1,24 +1,30 @@
 package com.example.sharefood.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sharefood.R;
-import com.example.sharefood.SessionManager;
 import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.viewmodel.CreateFoodPostViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,12 +38,19 @@ import java.util.Locale;
 
 public class CreateFoodPostActivity extends AppCompatActivity {
 
+    private static final int PERMISSION_CODE = 1000;
+    private static final int IMAGE_CAPTURE_CODE = 1001;
+
     private EditText foodNameText;
     private EditText foodDescriptionText;
     private EditText foodDateText;
     private EditText foodHoraParaRetirarText;
     private ImageView foodLocalizationImage;
+    private TextView foodTakePictureText;
+    private ImageView foodPictureImage;
     private CreateFoodPostViewModel createFoodPostViewModel;
+
+    private Uri foodImageUri;
 
     private FusedLocationProviderClient client;
     private Boolean mLocationPermissionGranted = false;
@@ -56,6 +69,8 @@ public class CreateFoodPostActivity extends AppCompatActivity {
         foodDateText = findViewById(R.id.add_food_post_date_edit_text);
         foodHoraParaRetirarText = findViewById(R.id.app_food_post_hora_para_retirar);
         foodLocalizationImage = findViewById(R.id.add_food_post_localization_image);
+        foodTakePictureText = findViewById(R.id.add_food_post_image_text);
+        foodPictureImage = findViewById(R.id.add_food_post_image);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
         setTitle("Compartilhar Alimento");
@@ -65,6 +80,30 @@ public class CreateFoodPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveFoodPost();
+            }
+        });
+
+        foodTakePictureText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Se Android é >= M, pedir permissão
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(checkSelfPermission(Manifest.permission.CAMERA) ==
+                        PackageManager.PERMISSION_DENIED ||
+                        checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                        PackageManager.PERMISSION_DENIED){
+                        // Sem permissão -> PEDIR
+                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        // Mostra popup para pedir permissão
+                        requestPermissions(permission, PERMISSION_CODE);
+                    }else{
+                        // Já possui permissão
+                        openCamera();
+                    }
+                }else{
+                    // Android < M
+                    openCamera();
+                }
             }
         });
 
@@ -79,6 +118,33 @@ public class CreateFoodPostActivity extends AppCompatActivity {
         getLocationPermission();
     }
 
+    private void openCamera(){
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "Nova Foto");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "da câmera");
+        foodImageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+        // Câmera intent
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, foodImageUri);
+        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
+    }
+
+    // trata resultado da permissão
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case PERMISSION_CODE:{
+                if(grantResults.length > 0 && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED){
+                    openCamera();
+                }else{
+                    Toast.makeText(this, "Permissão para usar a Câmera negada.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
     private void getLocationPermission() {
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -88,6 +154,16 @@ public class CreateFoodPostActivity extends AppCompatActivity {
         }else{
             ActivityCompat.requestPermissions(this,
                     permissions, 1234);
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        // Chamada quando uma imagem for capturada
+        if(resultCode == RESULT_OK){
+            // Coloca a image na image view
+            foodPictureImage.setImageURI(foodImageUri);
         }
     }
 
