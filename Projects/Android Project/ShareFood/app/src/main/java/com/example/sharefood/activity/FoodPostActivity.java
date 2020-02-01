@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.sharefood.Constants;
@@ -23,10 +22,10 @@ public class FoodPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_post);
 
-        foodPostTitleText = findViewById(R.id.food_post_title);
+        foodPostTitleText = findViewById(R.id.food_store_title);
         foodPostTimeText = findViewById(R.id.food_post_time);
         foodPostDateText = findViewById(R.id.food_post_date);
-        foodPostDescriptionText = findViewById(R.id.food_post_description);
+        foodPostDescriptionText = findViewById(R.id.food_store_description);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){

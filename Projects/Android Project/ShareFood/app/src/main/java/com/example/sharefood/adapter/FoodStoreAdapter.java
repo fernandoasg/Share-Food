@@ -10,57 +10,57 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
-import com.example.sharefood.entity.FoodPost;
+import com.example.sharefood.entity.FoodStore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPostHolder> {
+public class FoodStoreAdapter extends RecyclerView.Adapter<FoodStoreAdapter.FoodStoreHolder> {
 
-    private List<FoodPost> foodPosts = new ArrayList<>();
+    private List<FoodStore> foodStores = new ArrayList<>();
     private OnItemClickListener listener;
 
     @NonNull
     @Override
-    public FoodPostHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FoodStoreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_item_food, parent, false);
+                .inflate(R.layout.card_item_store, parent, false);
 
-        return new FoodPostHolder(itemView);
+        return new FoodStoreHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FoodPostHolder holder, int position) {
-        FoodPost currentFoodPost = foodPosts.get(position);
-        holder.textViewTitle.setText(currentFoodPost.getTitulo());
-        holder.textViewDescription.setText(currentFoodPost.getDescricao());
+    public void onBindViewHolder(@NonNull FoodStoreHolder holder, int position) {
+        FoodStore currentFoodStore = foodStores.get(position);
+        holder.textViewTitle.setText(currentFoodStore.getTitulo());
+        holder.textViewDescription.setText(currentFoodStore.getDescricao());
         holder.textViewDistance.setText("100m");
-        holder.textViewDate.setText(currentFoodPost.getDataAberto());
+        holder.textViewRating.setText(currentFoodStore.getAvaliacao() + "");
     }
 
     @Override
     public int getItemCount() {
-        return foodPosts.size();
+        return foodStores.size();
     }
 
-    public void setFoodPosts(List<FoodPost> foodPosts){
-        this.foodPosts = foodPosts;
+    public void setFoodStores(List<FoodStore> foodStores){
+        this.foodStores = foodStores;
         notifyDataSetChanged();
     }
 
-    class FoodPostHolder extends RecyclerView.ViewHolder{
+    class FoodStoreHolder extends RecyclerView.ViewHolder{
         private TextView textViewTitle;
         private TextView textViewDescription;
         private TextView textViewDistance;
-        private TextView textViewDate;
+        private TextView textViewRating;
         private ImageView postImage;
 
-        public FoodPostHolder(@NonNull View view) {
+        public FoodStoreHolder(@NonNull View view) {
             super(view);
             textViewTitle = view.findViewById(R.id.food_store_title);
             textViewDescription = view.findViewById(R.id.food_store_description);
             textViewDistance = view.findViewById(R.id.food_store_rate);
-            textViewDate = view.findViewById(R.id.food_post_date);
+            textViewRating = view.findViewById(R.id.food_store_rate);
             postImage = view.findViewById(R.id.food_store_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     if(listener != null && position != RecyclerView.NO_POSITION){
-                        listener.onItemClick(foodPosts.get(position));
+                        listener.onItemClick(foodStores.get(position));
                     }
                 }
             });
@@ -76,11 +76,11 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
     }
 
     public interface OnItemClickListener{
-        void onItemClick(FoodPost foodPost);
+        void onItemClick(FoodStore foodStore);
     }
 
-    public void filterList(List<FoodPost> filterdFoodPosts) {
-        this.foodPosts = filterdFoodPosts;
+    public void filterList(List<FoodStore> filteredFoodStores) {
+        this.foodStores = filteredFoodStores;
         notifyDataSetChanged();
     }
 

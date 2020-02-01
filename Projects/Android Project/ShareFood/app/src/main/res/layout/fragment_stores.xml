@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/search_edit_text"
+        android:id="@+id/search_store_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -23,15 +23,16 @@
         android:textSize="8pt"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/messages_recycler_view"
+        android:id="@+id/store_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
         android:layout_weight="6"
-        tools:listitem="@layout/alimento_card_item"
+        tools:listitem="@layout/card_item_store"
         />
 
     <TextView
-        android:id="@+id/recycler_empty_text"
+        android:id="@+id/store_recycler_empty_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

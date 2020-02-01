@@ -8,7 +8,7 @@ public class Constants {
     public static final String USER_EMAIL = "UserEmail";
 
 
-    // Extras of Food Post
+    // Extras for Food Post
     public static final String EXTRA_FOOD_POST_ID = "FoodPostId";
     public static final String EXTRA_FOOD_POST_NAME = "FoodPostName";
     public static final String EXTRA_FOOD_POST_DESCRIPTION = "FoodPostDescription";
@@ -17,4 +17,7 @@ public class Constants {
     public static final String EXTRA_FOOD_POST_LAT = "FoodPostLat";
     public static final String EXTRA_FOOD_POST_LONG = "FoodPostLong";
 
+
+    // Extras for Food Store
+    public static final String EXTRA_FOOD_STORE_ID = "FoodStoreId";
 }

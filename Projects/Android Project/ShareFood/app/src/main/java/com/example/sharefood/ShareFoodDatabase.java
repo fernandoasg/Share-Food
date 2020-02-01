@@ -10,14 +10,17 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.sharefood.dao.FoodPostDao;
+import com.example.sharefood.dao.FoodStoreDao;
 import com.example.sharefood.entity.FoodPost;
+import com.example.sharefood.entity.FoodStore;
 
-@Database(entities = {FoodPost.class}, version = 2)
+@Database(entities = {FoodPost.class, FoodStore.class}, version = 3)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
 
     public abstract FoodPostDao foodPostDao();
+    public abstract FoodStoreDao foodStoreDao();
 
     public static synchronized ShareFoodDatabase getInstance(Context context){
         if(instance == null){
@@ -41,9 +44,11 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         private FoodPostDao foodPostDao;
+        private FoodStoreDao foodStoreDao;
 
         private PopulateDbAsyncTask(ShareFoodDatabase db){
             foodPostDao = db.foodPostDao();
+            foodStoreDao = db.foodStoreDao();
         }
 
         @Override
@@ -57,6 +62,9 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
                     null, "03/01/2020", "Entre as 11:00 e 13:00", 1, 2,  0, 0));
             foodPostDao.insert(new FoodPost("Titulo 4", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Deixarei na portaria do edíficio Armando Freire", 1, 2,  0, 0));
+
+            foodStoreDao.insert((new FoodStore("Nome da Loja", "Descrição da loja, descrição da loja, descrição da loja...",
+                    "01/02/2020", "A tarde e a noite", 1,2, 0, 0)));
 
             System.out.println("We're like young volcanoes");
             return null;

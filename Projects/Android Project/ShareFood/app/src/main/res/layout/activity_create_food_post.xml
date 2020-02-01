@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/green_button_style"
+        android:background="@drawable/button_green_style"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:text="@string/food_post_button"

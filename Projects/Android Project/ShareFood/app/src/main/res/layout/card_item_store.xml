@@ -18,48 +18,57 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/food_post_image"
+            android:id="@+id/food_store_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/ic_launcher_background"
             android:contentDescription="@string/food_post_image"/>
         <TextView
-            android:id="@+id/food_post_title"
+            android:id="@+id/food_store_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do Produto"
+            android:text="Nome da Loja"
             android:layout_marginLeft="8dp"
             android:textSize="8pt"
-            android:layout_toEndOf="@+id/food_post_image"
-            android:layout_toRightOf="@+id/food_post_image"/>
+            android:layout_toEndOf="@+id/food_store_image"
+            android:layout_toRightOf="@+id/food_store_image"/>
         <TextView
-            android:id="@+id/food_post_description"
+            android:id="@+id/food_store_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:autoSizeTextType="uniform"
             android:text="sdfsdf sdfsd fsdf sdf sdfos po ntos ponto spontospontos no final..."
-            android:layout_below="@+id/food_post_title"
-            android:layout_toEndOf="@+id/food_post_image"
-            android:layout_toRightOf="@+id/food_post_image"/>
+            android:layout_below="@+id/food_store_title"
+            android:layout_toEndOf="@+id/food_store_image"
+            android:layout_toRightOf="@+id/food_store_image"
+            android:layout_toLeftOf="@id/food_store_distance"
+            android:layout_toStartOf="@id/food_store_distance"/>
         <TextView
-            android:id="@+id/food_post_distance"
+            android:id="@+id/food_store_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100m"
-            android:layout_toEndOf="@+id/food_post_title"
-            android:layout_toRightOf="@+id/food_post_title"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_marginTop="2dp"
+            android:text="5"
+            android:layout_toLeftOf="@+id/food_store_star"
             android:gravity="end"/>
 
-        <TextView
-            android:id="@+id/food_post_date"
+        <ImageView
+            android:id="@+id/food_store_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="03/jan/20"
-            android:layout_below="@id/food_post_description"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_star_yellow_24dp"/>
+
+        <TextView
+            android:id="@+id/food_store_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="100m"
+            android:layout_below="@id/food_store_star"
             android:layout_alignParentRight="true"
             />
     </RelativeLayout>

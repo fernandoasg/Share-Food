@@ -26,7 +26,7 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
     @NonNull
     @Override
     public OptionHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.option_card_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_option, parent, false);
 
         return new OptionHolder(v);
     }
