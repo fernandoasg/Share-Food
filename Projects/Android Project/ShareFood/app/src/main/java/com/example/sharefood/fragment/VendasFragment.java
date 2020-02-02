@@ -61,6 +61,9 @@ public class VendasFragment extends Fragment {
             public void onItemClick(FoodStore foodStore) {
                 Intent intent = new Intent(getActivity(), FoodStoreActivity.class);
                 intent.putExtra(Constants.EXTRA_FOOD_STORE_ID, foodStore.getId());
+                intent.putExtra(Constants.EXTRA_FOOD_STORE_TITLE, foodStore.getTitulo());
+                intent.putExtra(Constants.EXTRA_FOOD_STORE_DESCRIPTION, foodStore.getDescricao());
+                intent.putExtra(Constants.EXTRA_FOOD_STORE_RATE, foodStore.getAvaliacao() + "");
                 startActivity(intent);
             }
         });

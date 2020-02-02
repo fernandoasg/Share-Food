@@ -41,6 +41,7 @@ public class FoodStore {
         this.latitude = latitude;
         this.usuarioDonoFk = usuarioDonoFk;
         this.midia = midia;
+        this.avaliacao = 0.0f;
     }
 
     public float getAvaliacao() {

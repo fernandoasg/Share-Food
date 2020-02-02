@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.FoodStoreActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/store_info_card"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:cardBackgroundColor="@color/colorFoodPost"
+        android:layout_marginTop="8dp"
+        app:strokeColor="@color/cardview_dark_background"
+        app:strokeWidth="0.5dp"
+        app:cardElevation="2dp"
+        android:elevation="1dp"
+        app:cardCornerRadius="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <ImageView
+                android:id="@+id/food_store_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/food_post_image"/>
+            <TextView
+                android:id="@+id/food_store_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome da Loja"
+                android:layout_marginLeft="8dp"
+                android:textSize="8pt"
+                android:layout_toEndOf="@+id/food_store_image"
+                android:layout_toRightOf="@+id/food_store_image"/>
+            <TextView
+                android:id="@+id/food_store_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:autoSizeTextType="uniform"
+                android:text="sdfsdf sdfsd fsdf sdf sdfos po ntos ponto spontospontos no final..."
+                android:layout_below="@+id/food_store_title"
+                android:layout_toEndOf="@+id/food_store_image"
+                android:layout_toRightOf="@+id/food_store_image" />
+            <TextView
+                android:id="@+id/food_store_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="5"
+                android:layout_toLeftOf="@+id/food_store_star"
+                android:gravity="end"/>
+
+            <ImageView
+                android:id="@+id/food_store_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_star_yellow_24dp"/>
+
+            <TextView
+                android:id="@+id/food_store_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/food_store_image"
+                android:layout_toRightOf="@id/food_store_image"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_below="@+id/food_store_description"
+                android:text="Dono: Nome da Pessoa"/>
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/products_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/store_info_card"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="PRODUTOS"
+        android:textSize="8pt"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/products_text"
+        android:layout_margin="8dp"
+        tools:listitem="@layout/card_item_food"
+        />
+</RelativeLayout>

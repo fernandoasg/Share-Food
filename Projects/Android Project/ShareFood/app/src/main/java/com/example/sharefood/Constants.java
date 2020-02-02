@@ -20,4 +20,11 @@ public class Constants {
 
     // Extras for Food Store
     public static final String EXTRA_FOOD_STORE_ID = "FoodStoreId";
+    public static final String EXTRA_FOOD_STORE_TITLE = "FoodStoreTitle";
+    public static final String EXTRA_FOOD_STORE_DESCRIPTION = "FoodStoreDescription";
+    public static final String EXTRA_FOOD_STORE_RATE = "FoodStoreRate";
+    public static final String EXTRA_FOOD_STORE_OWNER = "FoodStoreOwner";
+    public static final String EXTRA_FOOD_STORE_IMAGE = "FoodStoreImage";
+    public static final String EXTRA_FOOD_STORE_LAT = "FoodStoreLat";
+    public static final String EXTRA_FOOD_STORE_LONG = "FoodStoreLong";
 }
