@@ -19,7 +19,6 @@ import com.example.sharefood.SessionManager;
 import com.example.sharefood.fragment.HomeFragment;
 import com.example.sharefood.fragment.MessagesFragment;
 import com.example.sharefood.fragment.UserConfigFragment;
-import com.example.sharefood.fragment.VendasFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -149,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
                             break;
-                        case R.id.nav_store:
-                            selectedFragment = new VendasFragment();
-                            break;
+//                        case R.id.nav_store:
+//                            selectedFragment = new VendasFragment();
+//                            break;
                         case R.id.nav_messages:
                             selectedFragment = new MessagesFragment();
                             break;

@@ -27,4 +27,7 @@ public class Constants {
     public static final String EXTRA_FOOD_STORE_IMAGE = "FoodStoreImage";
     public static final String EXTRA_FOOD_STORE_LAT = "FoodStoreLat";
     public static final String EXTRA_FOOD_STORE_LONG = "FoodStoreLong";
+
+    // Extras for Message
+    public static final String EXTRA_MESSAGE_ID = "MessageId";
 }

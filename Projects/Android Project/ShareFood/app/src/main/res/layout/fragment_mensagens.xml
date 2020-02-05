@@ -16,13 +16,13 @@
         />
 
     <TextView
-        android:id="@+id/recycler_empty_text"
+        android:id="@+id/messages_recycler_empty_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:text="@string/no_food_post_with_filter"
+        android:text="@string/nao_possui_mensagem"
         android:visibility="gone"
         />
 </LinearLayout>

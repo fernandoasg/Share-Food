@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
         searchEditText = view.findViewById(R.id.search_edit_text);
-        noMatchFilterText = view.findViewById(R.id.recycler_empty_text);
+        noMatchFilterText = view.findViewById(R.id.messages_recycler_empty_text);
 
         recyclerView = view.findViewById(R.id.food_posts_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));

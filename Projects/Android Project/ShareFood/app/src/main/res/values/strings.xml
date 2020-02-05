@@ -20,4 +20,5 @@
     <string name="food_post_button">PUBLICAR</string>
     <string name="horario_para_retirar">Horário para retirar *</string>
     <string name="no_food_post_with_filter">Nenhum dado encontrado</string>
+    <string name="nao_possui_mensagem">Você não possui nenhuma mensagem</string>
 </resources>

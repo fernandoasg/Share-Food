@@ -22,10 +22,10 @@ public class FoodPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_post);
 
-        foodPostTitleText = findViewById(R.id.food_store_title);
+        foodPostTitleText = findViewById(R.id.food_store_product_title);
         foodPostTimeText = findViewById(R.id.food_post_time);
         foodPostDateText = findViewById(R.id.food_post_date);
-        foodPostDescriptionText = findViewById(R.id.food_store_description);
+        foodPostDescriptionText = findViewById(R.id.food_store_product_description);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){

@@ -10,17 +10,23 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.sharefood.dao.FoodPostDao;
+import com.example.sharefood.dao.FoodProductDao;
 import com.example.sharefood.dao.FoodStoreDao;
+import com.example.sharefood.dao.MessageDao;
 import com.example.sharefood.entity.FoodPost;
+import com.example.sharefood.entity.FoodProduct;
 import com.example.sharefood.entity.FoodStore;
+import com.example.sharefood.entity.Message;
 
-@Database(entities = {FoodPost.class, FoodStore.class}, version = 3)
+@Database(entities = {FoodPost.class, FoodStore.class, FoodProduct.class, Message.class}, version = 5)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
 
     public abstract FoodPostDao foodPostDao();
     public abstract FoodStoreDao foodStoreDao();
+    public abstract FoodProductDao foodProductDao();
+    public abstract MessageDao messageDao();
 
     public static synchronized ShareFoodDatabase getInstance(Context context){
         if(instance == null){
@@ -45,10 +51,14 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         private FoodPostDao foodPostDao;
         private FoodStoreDao foodStoreDao;
+        private FoodProductDao foodProductDao;
+        private MessageDao messageDao;
 
         private PopulateDbAsyncTask(ShareFoodDatabase db){
             foodPostDao = db.foodPostDao();
             foodStoreDao = db.foodStoreDao();
+            foodProductDao = db.foodProductDao();
+            messageDao = db.messageDao();
         }
 
         @Override
@@ -63,10 +73,8 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
             foodPostDao.insert(new FoodPost("Titulo 4", "Descrição descrição descrioção descrição descrição descrioção",
                     null, "03/01/2020", "Deixarei na portaria do edíficio Armando Freire", 1, 2,  0, 0));
 
-            foodStoreDao.insert((new FoodStore("Nome da Loja", "Descrição da loja, descrição da loja, descrição da loja...",
-                    "01/02/2020", "A tarde e a noite", 1,2, 0, 0)));
-
-            System.out.println("We're like young volcanoes");
+            messageDao.insert(new Message("Tudo bem?", "03/02/2020", 0, -1));
+            messageDao.insert(new Message("Bom dia", "02/02/2020", 1, -1));
             return null;
         }
     }

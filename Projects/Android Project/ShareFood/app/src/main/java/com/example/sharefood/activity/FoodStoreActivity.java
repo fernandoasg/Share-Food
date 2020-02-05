@@ -2,14 +2,26 @@ package com.example.sharefood.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.sharefood.Constants;
 import com.example.sharefood.R;
+import com.example.sharefood.adapter.FoodProductAdapter;
+import com.example.sharefood.entity.FoodProduct;
+import com.example.sharefood.viewmodel.FoodProductViewModel;
+import com.example.sharefood.viewmodel.FoodStoreViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class FoodStoreActivity extends AppCompatActivity {
 
@@ -20,16 +32,24 @@ public class FoodStoreActivity extends AppCompatActivity {
 
     ImageView foodStoreImage;
 
+    FoodProductViewModel foodProductViewModel;
+    RecyclerView productsRecyclerView;
+    List<FoodProduct> foodProductList;
+    FoodProductAdapter recyclerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_store);
 
-        foodStoreTitleText = findViewById(R.id.food_store_title);
-        foodStoreDescriptionText = findViewById(R.id.food_store_description);
-        foodStoreRatingText = findViewById(R.id.food_store_rate);
+        foodStoreTitleText = findViewById(R.id.food_store_product_title);
+        foodStoreDescriptionText = findViewById(R.id.food_store_product_description);
+        foodStoreRatingText = findViewById(R.id.food_store_product_price);
         foodStoreOwnerText = findViewById(R.id.food_store_owner);
-        foodStoreImage = findViewById(R.id.food_store_image);
+        foodStoreImage = findViewById(R.id.food_store_product_image);
+        productsRecyclerView = findViewById(R.id.store_products_recycler_view);
+        productsRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        productsRecyclerView.setHasFixedSize(true);
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
@@ -49,5 +69,23 @@ public class FoodStoreActivity extends AppCompatActivity {
             String foodStoreRate = intent.getStringExtra(Constants.EXTRA_FOOD_STORE_RATE);
             foodStoreRatingText.setText(foodStoreRate);
         }
+
+        foodProductViewModel = ViewModelProviders.of(this).get(FoodProductViewModel.class);
+        recyclerAdapter = new FoodProductAdapter();
+
+        foodProductList = new ArrayList<>();
+        foodProductList = foodProductViewModel.getAllFoodProducts();
+
+        recyclerAdapter.setFoodProducts(foodProductList);
+        recyclerAdapter.setOnItemClickListener(new FoodProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(FoodProduct foodProduct) {
+                Intent intent = new Intent(getApplicationContext(), FoodProductActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        productsRecyclerView.setAdapter(recyclerAdapter);
+
     }
 }

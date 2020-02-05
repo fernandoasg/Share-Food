@@ -40,16 +40,6 @@
             android:layout_below="@+id/user_profile_name"
             android:layout_toEndOf="@+id/user_profile_image"
             android:layout_toRightOf="@+id/user_profile_image"/>
-        <ImageButton
-            android:id="@+id/option_action_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_keyboard_arrow_right_black_48dp"
-            android:background="@color/colorTransparent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            />
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
