@@ -51,7 +51,7 @@ public class MessagesFragment extends Fragment {
         messageAdapter = new MessageAdapter();
 
         messageList = new ArrayList<>();
-        messageList = messageViewModel.getAllMessages();
+        messageList = messageViewModel.getAllLastMessages();
 
         if(messageList.size() > 0){
             messagesRecyclerView.setVisibility(View.VISIBLE);
@@ -62,6 +62,7 @@ public class MessagesFragment extends Fragment {
                 public void onItemClick(Message message) {
                     Intent intent = new Intent(getActivity(), MessageActivity.class);
                     intent.putExtra(Constants.EXTRA_MESSAGE_ID, message.getId());
+                    System.out.println(message.getMessageBody());
                     startActivity(intent);
                 }
             });
