@@ -1,5 +1,6 @@
 package com.example.sharefood.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
+import com.example.sharefood.activity.ConfigurationActivity;
+import com.example.sharefood.activity.ProfileActivity;
+import com.example.sharefood.activity.SharedFoodActivity;
 import com.example.sharefood.entity.Options;
 
 import java.util.ArrayList;
@@ -81,6 +85,21 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
                 @Override
                 public void onClick(View view) {
                    System.out.println("Devo abrir  "+ opcaoParaAbrir);
+                   switch (opcaoParaAbrir){
+                       case "Profile":
+                           Intent intent = new Intent(view.getContext(), ProfileActivity.class);
+                           view.getContext().startActivity(intent);
+                           break;
+                       case "SharedFood":
+                           Intent intent1 = new Intent(view.getContext(), SharedFoodActivity.class);
+                           view.getContext().startActivity(intent1);
+                           break;
+                       case "Configuration":
+                           Intent intent2 = new Intent(view.getContext(), ConfigurationActivity.class);
+                           view.getContext().startActivity(intent2);
+                           break;
+
+                   }
 
                 }
             });

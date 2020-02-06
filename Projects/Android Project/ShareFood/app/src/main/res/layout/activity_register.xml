@@ -27,92 +27,124 @@
         android:textSize="21pt"
         android:layout_below="@id/app_icon_image"/>
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_name_text"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-32dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radio_pirates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:checked="true"
+            android:textSize="9pt"
+            android:text="Pessoa física" />
+
+        <RadioButton
+            android:id="@+id/radio_ninjas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:textSize="9pt"
+            android:text="Pessoa Jurídica" />
+    </RadioGroup>
+
     <EditText
         android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/app_name_text"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="38dp"
         android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorWhite"
-        android:drawableLeft="@drawable/ic_name_edit_text"
         android:drawableStart="@drawable/ic_name_edit_text"
+        android:drawableLeft="@drawable/ic_name_edit_text"
         android:drawablePadding="10dp"
         android:hint="@string/name_text"
         android:inputType="textPersonName"
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
-        android:textSize="10pt"
-        android:layout_below="@id/app_name_text"/>
-
-    <EditText
-        android:id="@+id/email_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@color/colorWhite"
-        android:drawableLeft="@drawable/ic_email_edit_text"
-        android:drawableStart="@drawable/ic_email_edit_text"
-        android:drawablePadding="10dp"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorAlmostWhite"
-        android:textSize="10pt"
-        android:layout_below="@id/name_edit_text"/>
-
-    <EditText
-        android:id="@+id/phone_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@color/colorWhite"
-        android:drawableLeft="@drawable/ic_phone_edit_text"
-        android:drawableStart="@drawable/ic_phone_edit_text"
-        android:drawablePadding="10dp"
-        android:hint="@string/cellphone_hint_text"
-        android:inputType="textPhonetic"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorAlmostWhite"
-        android:textSize="10pt"
-        android:layout_below="@id/email_edit_text"/>
-
-
-    <EditText
-        android:id="@+id/password_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@color/colorWhite"
-        android:drawableLeft="@drawable/ic_password_edit_text"
-        android:drawableStart="@drawable/ic_password_edit_text"
-        android:drawablePadding="10dp"
-        android:hint="@string/password_hint"
-        android:theme="@android:style/Theme.Holo.Dialog"
-        android:inputType="textPassword"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorAlmostWhite"
-        android:textSize="10pt"
-        android:layout_below="@id/phone_edit_text"/>
+        android:textSize="10pt" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/password_edit_text"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:background="@color/colorWhite"
         android:paddingLeft="24dp"
         android:paddingTop="8dp"
         android:paddingRight="24dp"
-        android:layout_centerHorizontal="true"
         android:paddingBottom="8dp"
         android:text="@string/register_button_text"
         android:textColor="@color/colorRed"
-        android:textSize="14pt"
-        android:layout_below="@id/password_edit_text"/>
+        android:textSize="14pt" />
+
+    <EditText
+        android:id="@+id/password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone_edit_text"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/colorWhite"
+        android:drawableStart="@drawable/ic_password_edit_text"
+        android:drawableLeft="@drawable/ic_password_edit_text"
+        android:drawablePadding="10dp"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorAlmostWhite"
+        android:textSize="10pt"
+        android:theme="@android:style/Theme.Holo.Dialog" />
+
+    <EditText
+        android:id="@+id/phone_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_edit_text"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/colorWhite"
+        android:drawableStart="@drawable/ic_phone_edit_text"
+        android:drawableLeft="@drawable/ic_phone_edit_text"
+        android:drawablePadding="10dp"
+        android:hint="@string/cellphone_hint_text"
+        android:inputType="textPhonetic"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorAlmostWhite"
+        android:textSize="10pt" />
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_edit_text"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/colorWhite"
+        android:drawableStart="@drawable/ic_email_edit_text"
+        android:drawableLeft="@drawable/ic_email_edit_text"
+        android:drawablePadding="10dp"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorAlmostWhite"
+        android:textSize="10pt" />
+
+
 </RelativeLayout>

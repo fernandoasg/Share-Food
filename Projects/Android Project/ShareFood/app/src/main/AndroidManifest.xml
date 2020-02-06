@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MessageActivity"></activity>
+        <activity android:name=".activity.SharedFoodActivity"></activity>
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.ConfigurationActivity" />
+        <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.FoodProductActivity" />
         <activity android:name=".activity.FoodStoreActivity" />
         <activity android:name=".activity.FoodPostActivity" />

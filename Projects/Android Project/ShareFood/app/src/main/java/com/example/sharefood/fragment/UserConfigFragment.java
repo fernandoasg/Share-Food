@@ -49,10 +49,10 @@ public class UserConfigFragment extends Fragment {
         String userName = sharedPreferences.getString(Constants.USER_NAME, "Nome do Usuário");
         String userEmail = sharedPreferences.getString(Constants.USER_EMAIL, "email@gmail.com");
 
-        Options opcao0 = new Options(userName, userEmail, "perfil", "profile");
+        Options opcao0 = new Options(userName, userEmail, "perfil", "Profile");
         Options opcao1 =  new Options("Alimentos Compartilhados", null, "compartilhado", "SharedFood");
         //Options opcao2 = new Options("Alimentos Adquiridos", null, "recebido", "GotFood");
-        Options opcao3 = new Options("Configurações", null, "configuracao", "Config");
+        Options opcao3 = new Options("Configurações", null, "configuracao", "Configuration");
         opcoesDoUsario.add(opcao0);
         opcoesDoUsario.add(opcao1);
         //opcoesDoUsario.add(opcao2);
