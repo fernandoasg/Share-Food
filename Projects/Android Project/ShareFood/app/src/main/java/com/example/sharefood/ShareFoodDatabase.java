@@ -64,17 +64,17 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            foodPostDao.insert(new FoodPost("Titulo 1", "Descrição descrição descrioção descrição descrição descrioção",
-                    null, "03/01/2020", "Pode ser retirado a tarde", 1, 2, 0, 0));
-            foodPostDao.insert(new FoodPost("Titulo 2", "Descrição descrição descrioção descrição descrição descrioção",
-                    null, "03/01/2020", "Mande uma mensagem para marcarmos um horário", 1, 2,  0, 0));
-            foodPostDao.insert(new FoodPost("Titulo 3", "Descrição descrição descrioção descrição descrição descrioção",
-                    null, "03/01/2020", "Entre as 11:00 e 13:00", 1, 2,  0, 0));
-            foodPostDao.insert(new FoodPost("Titulo 4", "Descrição descrição descrioção descrição descrição descrioção",
-                    null, "03/01/2020", "Deixarei na portaria do edíficio Armando Freire", 1, 2,  0, 0));
+            foodPostDao.insert(new FoodPost("Instituição 1", "Descrição descrição descrioção descrição descrição descrição descrição",
+                    null, "03/01/2020", "Oferecemos almoços diariamente", 1, 2, 0, 0));
+            foodPostDao.insert(new FoodPost("Instituição 2", "Descrição descrição descrioção descrição descrição descrição descrição",
+                    null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, 0));
+            foodPostDao.insert(new FoodPost("Instituição 3", "Descrição descrição descrioção descrição descrição descrição descrição",
+                    null, "03/01/2020", "Oferecemos almoços diariamente", 1, 2,  0, 0));
+            foodPostDao.insert(new FoodPost("Instituição 4", "Descrição descrição descrioção descrição descrição descrição descrição",
+                    null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, 0));
 
             Message message1 = new Message("Bom dia", "02/02/2020", 0, -1);
-            long id = messageDao.insert(message1);
+            long id = 0;
             Message message2 = new Message("Boa noite", "03/02/2020", 0, -1);
             id = messageDao.insert(message2);
             message1 = new Message("Tudo bem?", "03/02/2020", 0, (int)id);

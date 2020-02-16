@@ -26,33 +26,33 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
             <ImageView
-                android:id="@+id/food_store_product_image"
+                android:id="@+id/food_institute_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:src="@drawable/ic_launcher_background"
                 android:contentDescription="@string/food_post_image"/>
             <TextView
-                android:id="@+id/food_store_product_title"
+                android:id="@+id/food_institute_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nome da Loja"
                 android:layout_marginLeft="8dp"
                 android:textSize="8pt"
-                android:layout_toEndOf="@+id/food_store_product_image"
-                android:layout_toRightOf="@+id/food_store_product_image"/>
+                android:layout_toEndOf="@+id/food_institute_image"
+                android:layout_toRightOf="@+id/food_institute_image"/>
             <TextView
-                android:id="@+id/food_store_product_description"
+                android:id="@+id/food_institute_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
                 android:autoSizeTextType="uniform"
                 android:text="sdfsdf sdfsd fsdf sdf sdfos po ntos ponto spontospontos no final..."
-                android:layout_below="@+id/food_store_product_title"
-                android:layout_toEndOf="@+id/food_store_product_image"
-                android:layout_toRightOf="@+id/food_store_product_image" />
+                android:layout_below="@+id/food_institute_title"
+                android:layout_toEndOf="@+id/food_institute_image"
+                android:layout_toRightOf="@+id/food_institute_image" />
             <TextView
-                android:id="@+id/food_store_product_price"
+                android:id="@+id/food_institute_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -72,11 +72,11 @@
                 android:id="@+id/food_store_owner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/food_store_product_image"
-                android:layout_toRightOf="@id/food_store_product_image"
+                android:layout_toEndOf="@+id/food_institute_image"
+                android:layout_toRightOf="@id/food_institute_image"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_below="@+id/food_store_product_description"
+                android:layout_below="@+id/food_institute_description"
                 android:text="Dono: Nome da Pessoa"/>
         </RelativeLayout>
 

@@ -19,15 +19,15 @@
         android:padding="8dp">
         <ImageView
             android:id="@+id/food_institute_image"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:src="@drawable/ic_launcher_background"
             android:contentDescription="@string/food_post_image"/>
         <TextView
             android:id="@+id/food_institute_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do Alimento"
+            android:text="Nome do Instituto"
             android:layout_marginLeft="8dp"
             android:textSize="8pt"
             android:layout_toEndOf="@+id/food_institute_image"
@@ -47,11 +47,21 @@
             android:id="@+id/food_institute_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="R$ 5,00"
+            android:text="100m"
+            android:layout_toEndOf="@+id/food_institute_title"
+            android:layout_toRightOf="@+id/food_institute_title"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:gravity="end"/>
+
+        <TextView
+            android:id="@+id/food_institute_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03/jan/20"
+            android:layout_below="@id/food_institute_description"
+            android:layout_alignParentRight="true"
+            />
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

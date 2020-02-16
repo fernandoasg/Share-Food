@@ -17,6 +17,7 @@
         android:paddingLeft="8dp"
         android:drawablePadding="4dp"
         android:paddingRight="8dp"
+        android:layout_marginBottom="8dp"
         android:drawableLeft="@drawable/ic_search_black_24dp"
         android:drawableStart="@drawable/ic_search_black_24dp"
         android:drawableRight="@drawable/ic_mic_black_24dp"
@@ -28,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="6"
-        tools:listitem="@layout/card_item_food"
+        tools:listitem="@layout/card_item_institute"
         />
 
     <TextView
@@ -46,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_red_style"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center"
         android:text="@string/open_create_food_post_text"

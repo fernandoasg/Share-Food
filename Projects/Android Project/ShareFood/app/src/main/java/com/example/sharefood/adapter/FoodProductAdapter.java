@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
-import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.entity.FoodProduct;
 
 import java.util.ArrayList;
@@ -56,10 +55,10 @@ public class FoodProductAdapter extends RecyclerView.Adapter<FoodProductAdapter.
 
         public FoodProductHolder(@NonNull View view) {
             super(view);
-            textViewTitle = view.findViewById(R.id.food_store_product_title);
-            textViewDescription = view.findViewById(R.id.food_store_product_description);
-            textViewPrice = view.findViewById(R.id.food_store_product_price);
-            productImage = view.findViewById(R.id.food_store_product_image);
+            textViewTitle = view.findViewById(R.id.food_institute_title);
+            textViewDescription = view.findViewById(R.id.food_institute_description);
+            textViewPrice = view.findViewById(R.id.food_institute_distance);
+            productImage = view.findViewById(R.id.food_institute_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

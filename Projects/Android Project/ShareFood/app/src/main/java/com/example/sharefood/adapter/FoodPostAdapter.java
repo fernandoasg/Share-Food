@@ -57,11 +57,11 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
 
         public FoodPostHolder(@NonNull View view) {
             super(view);
-            textViewTitle = view.findViewById(R.id.food_store_product_title);
-            textViewDescription = view.findViewById(R.id.food_store_product_description);
-            textViewDistance = view.findViewById(R.id.food_store_product_price);
-            textViewDate = view.findViewById(R.id.food_post_date);
-            postImage = view.findViewById(R.id.food_store_product_image);
+            textViewTitle = view.findViewById(R.id.food_institute_title);
+            textViewDescription = view.findViewById(R.id.food_institute_description);
+            textViewDistance = view.findViewById(R.id.food_institute_distance);
+            textViewDate = view.findViewById(R.id.food_institute_date);
+            postImage = view.findViewById(R.id.food_institute_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
