@@ -18,6 +18,8 @@ public class SessionManager {
     public static final String USER_LOGGED = "LoggedUser";
     public static final String USER_LATITUDE = "UserLatitude";
     public static final String USER_LONGITUDE = "UserLongitude";
+    public static final String USER_TYPE = "UserType";
+    public static final String USER_TYPE_INFO_SETTED = "UserTypeInfoSetted";
 
     public SessionManager(Context context){
         this.context = context;
@@ -25,12 +27,18 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String userId, String userEmail, String userName){
+    public void createSession(String userId, String userEmail, String userName, String userType){
         editor.putString(USER_ID, userId);
         editor.putString(USER_EMAIL, userEmail);
         editor.putString(USER_NAME, userName);
         editor.putBoolean(USER_LOGGED, true);
+        editor.putBoolean(USER_TYPE_INFO_SETTED, false);
+        editor.putString(USER_TYPE, userType);
         editor.apply();
+    }
+
+    public String getSavedString(String id){
+        return sharedPreferences.getString(id, null);
     }
 
     public void setUserLocation(double latitude, double longitude){
@@ -38,7 +46,22 @@ public class SessionManager {
         editor.putFloat(USER_LONGITUDE, (float)longitude);
     }
 
+    // TODO COLOCAR PARAMETROS NECESSÁRIOS
+    public void setDoadorInfo(){
+        editor.putBoolean(USER_TYPE_INFO_SETTED, true);
+    }
+
+
+    // TODO COLOCAR PARAMETROS NECESSÁRIOS
+    public void setInstituicaoInfo(){
+        editor.putBoolean(USER_TYPE_INFO_SETTED, true);
+    }
+
     public boolean isLogged(){
         return sharedPreferences.getBoolean(USER_LOGGED, false);
+    }
+
+    public boolean registerIsCompleted(){
+        return sharedPreferences.getBoolean(USER_TYPE_INFO_SETTED, false);
     }
 }

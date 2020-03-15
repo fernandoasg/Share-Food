@@ -13,9 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.example.sharefood.Constants;
 import com.example.sharefood.R;
+import com.example.sharefood.SessionManager;
 import com.example.sharefood.back4app.UserParse;
 import com.example.sharefood.entity.User;
 import com.example.sharefood.viewmodel.UserViewModel;
@@ -23,9 +26,9 @@ import com.example.sharefood.viewmodel.UserViewModel;
 public class RegisterActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
+    private RadioGroup typeRadioGroup;
     private EditText nomeEditText;
     private EditText emailEditText;
-    private EditText celularEditText;
     private EditText passwordEditText;
 
     @Override
@@ -43,9 +46,9 @@ public class RegisterActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        typeRadioGroup = findViewById(R.id.radio_group);
         nomeEditText = findViewById(R.id.name_edit_text);
         emailEditText = findViewById(R.id.email_edit_text);
-        celularEditText = findViewById(R.id.phone_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
 
         Button registerButton = findViewById(R.id.register_button);
@@ -61,8 +64,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void UserRegister(){
         String nome = nomeEditText.getText().toString();
         String email = emailEditText.getText().toString();
-        String phone = celularEditText.getText().toString();
         String password = passwordEditText.getText().toString();
+        String userType;
+        int selectedType = typeRadioGroup.getCheckedRadioButtonId();
+
+        RadioButton radioButton = findViewById(selectedType);
+        userType = radioButton.getText().toString();
 
         if(nome.trim().isEmpty()){
             nomeEditText.setError("Você precisa informar o seu nome");
@@ -74,33 +81,35 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if(phone.trim().isEmpty()){
-            celularEditText.setError("Você precisa informar o seu celular");
-            return;
-        }
-
         if(password.trim().isEmpty()){
             passwordEditText.setError("Você precisa informar uma senha");
             return ;
         }
 
-        User newUser = new User(nome, email, phone, password);
-        userViewModel.cadastraNovoUsuario(newUser);
+        User newUser = new User(nome, email, password, userType);
+        SessionManager sessionManager = new SessionManager(this);
+        sessionManager.createSession(String.valueOf(newUser.getId()), newUser.getNome(), newUser.getEmail(), newUser.getUserType());
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
-                String userId = sharedPreferences.getString(Constants.USER_ID, null);
-                System.out.println("id inserido =" + userId);
-                if(userId != null){
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finishAffinity();
-                }
-            }
-        }, 1000);
+        Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
+        startActivity(intent);
+        finishAffinity();
+
+//        userViewModel.cadastraNovoUsuario(newUser);
+//
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
+//                String userId = sharedPreferences.getString(Constants.USER_ID, null);
+//                System.out.println("id inserido =" + userId);
+//                if(userId != null){
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    startActivity(intent);
+//                    finishAffinity();
+//                }
+//            }
+//        }, 1000);
 
 
     }

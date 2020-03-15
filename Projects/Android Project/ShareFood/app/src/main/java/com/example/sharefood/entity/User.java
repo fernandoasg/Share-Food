@@ -5,15 +5,15 @@ public class User {
     private int id;
     private String nome;
     private String email;
-    private String celular;
     private String senha;
+    private String userType;
     private int midiaFk;
 
-    public User(String nome, String email, String celular, String senha) {
+    public User(String nome, String email, String senha, String userType) {
         this.nome = nome;
         this.email = email;
-        this.celular = celular;
         this.senha = senha;
+        this.userType = userType;
     }
 
     public void setId(int id) {
@@ -36,12 +36,12 @@ public class User {
         return email;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
     public String getSenha() {
         return senha;
+    }
+
+    public String getUserType() {
+        return userType;
     }
 
     public int getMidiaFk() {

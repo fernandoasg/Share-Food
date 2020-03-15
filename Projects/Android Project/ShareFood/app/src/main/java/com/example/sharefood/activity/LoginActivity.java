@@ -27,9 +27,13 @@ public class LoginActivity extends AppCompatActivity {
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         if(sessionManager.isLogged()){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finishAffinity();
+            if(sessionManager.registerIsCompleted()){
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
+                startActivity(intent);
+            }
         }
 
         loginButton = findViewById(R.id.login_button);

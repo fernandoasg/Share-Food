@@ -73,19 +73,6 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
             foodPostDao.insert(new FoodPost("Instituição 4", "Descrição descrição descrioção descrição descrição descrição descrição",
                     null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, 0));
 
-            Message message1 = new Message("Bom dia", "02/02/2020", 0, -1);
-            long id = 0;
-            Message message2 = new Message("Boa noite", "03/02/2020", 0, -1);
-            id = messageDao.insert(message2);
-            message1 = new Message("Tudo bem?", "03/02/2020", 0, (int)id);
-            messageDao.insert(message1);
-            message1 = new Message("Oi, eu gostaria de saber se os feijões estão fechados, por favor", "04/02/2020", 0, -1);
-            id = messageDao.insert(message1);
-            message2 = new Message("Olá. Estão sim!", "04/02/2020", 1, (int)id);
-            id = messageDao.insert(message2);
-            message1 = new Message("Certo! Muito obrigado!", "04/02/2020", 0, (int)id);
-            messageDao.insert(message1);
-
             return null;
         }
     }

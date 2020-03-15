@@ -8,6 +8,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="colorAlmostWhite">#CCC9C9C9</color>
+    <color name="colorMostAlmostWhite">#CCF4F4F4</color>
     <color name="colorGreen">#97D077</color>
 
     <color name="colorFoodPost">#F7E8E8</color>

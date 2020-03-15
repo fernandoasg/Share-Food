@@ -25,8 +25,8 @@ public class UserParse {
         final ParseObject entity = new ParseObject("Usuario");
         entity.put("nome", user.getNome());
         entity.put("email", user.getEmail());
-        entity.put("celular", user.getCelular());
         entity.put("senha", user.getSenha());
+        entity.put("tipo", user.getUserType());
         entity.put("midiaFk", "pensarnissodepois");
 
         try{
@@ -42,7 +42,7 @@ public class UserParse {
 
                         if(entityId != null) {
                             SessionManager sessionManager = new SessionManager(context);
-                            sessionManager.createSession(entityId, entity.get("email").toString(), entity.get("nome").toString());
+                            sessionManager.createSession(entityId, entity.get("email").toString(), entity.get("nome").toString(), entity.get("tipo").toString());
                         }
                     }else{
                         ParseUser.logOut();
