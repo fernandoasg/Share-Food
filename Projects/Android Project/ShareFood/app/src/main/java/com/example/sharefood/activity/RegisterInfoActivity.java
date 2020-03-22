@@ -1,5 +1,6 @@
 package com.example.sharefood.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,6 +21,11 @@ public class RegisterInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_info);
         setTitle("Informações Adicionais");
         getSupportActionBar().setElevation(0);
+
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         saveInfoButton = findViewById(R.id.save_info_button);
 
