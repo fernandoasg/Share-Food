@@ -2,7 +2,12 @@
 <resources>
     <color name="colorAccent">#D81B60</color>
     
-    
+    <color name="amareloPrincipal">#FFD829</color>
+    <color name="amareloSecundario">#F5BE1B</color>
+    <color name="amareloFraco">#FFFCED</color>
+    <color name="cinza">#4D4D4D</color>
+    <color name="cinzaClaro">#919191</color>
+
     <color name="colorRed">#FF3333</color>
     <color name="colorRedDark">#D42A2A</color>
     <color name="colorWhite">#ffffff</color>

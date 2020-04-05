@@ -4,35 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_red_gradient"
+    android:background="@drawable/background_login_register"
     tools:context=".activity.LoginActivity">
 
     <ImageView
-        android:id="@+id/app_icon_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/app_logo_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
         android:layout_marginTop="72dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginBottom="36dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_share_food_image"
+        android:src="@drawable/share_food_logo"
         android:contentDescription="@string/app_icon_description"/>
-
-    <TextView
-        android:id="@+id/app_name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/app_name"
-        android:textColor="@color/colorWhite"
-        android:textSize="21pt"
-        android:layout_below="@+id/app_icon_image" />
 
     <EditText
         android:id="@+id/email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:background="@drawable/edit_text_no_color"
         android:drawableLeft="@drawable/ic_email_edit_text"
         android:drawableStart="@drawable/ic_email_edit_text"
@@ -43,15 +35,15 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorAlmostWhite"
         android:textSize="10pt"
-        android:layout_below="@id/app_name_text"/>
+        android:layout_below="@id/app_logo_image"/>
 
     <EditText
         android:id="@+id/password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="24dp"
         android:background="@drawable/edit_text_no_color"
         android:drawableLeft="@drawable/ic_password_edit_text"
         android:drawableStart="@drawable/ic_password_edit_text"
@@ -69,14 +61,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_white_style"
-        android:paddingLeft="24dp"
+        android:paddingLeft="36dp"
         android:paddingTop="8dp"
-        android:paddingRight="24dp"
+        android:paddingRight="36dp"
         android:paddingBottom="8dp"
         android:layout_marginTop="32dp"
         android:layout_centerHorizontal="true"
         android:text="@string/login_button_text"
-        android:textColor="@color/colorRed"
+        android:textColor="@color/colorWhite"
         android:textSize="14pt"
         android:layout_below="@id/password_edit_text"/>
 
@@ -84,7 +76,7 @@
         android:id="@+id/forgot_password_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAlmostWhite"
+        android:textColor="@color/cinzaClaro"
         android:textSize="7pt"
         android:layout_centerHorizontal="true"
         android:text="@string/forgot_password_text"
@@ -103,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/account_question_text"
-            android:textColor="@color/colorAlmostWhite"
+            android:textColor="@color/cinzaClaro"
             android:textSize="7pt" />
 
         <TextView
@@ -113,7 +105,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:text="@string/open_register_text"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/cinza"
             android:textSize="7pt" />
     </LinearLayout>
 
