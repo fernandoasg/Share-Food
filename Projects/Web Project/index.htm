@@ -9,6 +9,9 @@
   <meta name="author" content="">
 
   <title>Share Food</title>
+  
+  <link runat="server" rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+                <link runat="server" rel="icon" href="favicon.ico" type="image/ico"/>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -58,9 +61,6 @@
       <div class="intro-text">
 	  <div class="intro-heading">Uma forma segura de compartilhar.</div>
         <div class="intro-lead-in">O Share Food tem um objetivo claro: ser uma ponte de conexão entre doadores e instituições filantrópicas e assim revolucionar a forma como a doação é feita no Brasil.</div>
-        <!--
-		<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
-		-->
       </div>
     </div>
   </header>
@@ -71,7 +71,7 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading">Por quê?</h2>
-          <h3 class="section-subheading">O Share Food surgiu como uma forma de suprir o processo burocrático e sem garantia de segurança quando uma doação desta natureza é proposta.</h3>
+          <h3 class="section-subheading">No Share Food desenvolvemos um modelo de doação que permite rastreabilidade de todas as doações dando segurança aos nossos parceiros ao mesmo tempo em que conectamos todas os atores interessados de uma maneira mais ágil e eficiente.</h3>
         </div>
       </div>
       <div class="row text-center">
@@ -80,15 +80,15 @@
           <p class="text-muted">FONTE: ONU News</p>
 		  <p class="text-muted"><a href="https://news.un.org/pt/story/2019/07/1680101">Saiba mais.</a></p>
         </div>
+		<div class="col-md-4">
+          <h4 class="service-heading">"30% de toda a comida produzida no mundo vai parar no lixo."</h4>
+          <p class="text-muted">FONTE: Nações Unidas Brasil</p>
+		  <p class="text-muted"><a href="https://nacoesunidas.org/fao-30-de-toda-a-comida-produzida-no-mundo-vai-parar-no-lixo/">Saiba mais.</a></p>
+        </div>
         <div class="col-md-4">
           <h4 class="service-heading">"Quase 14 mil entidades de assistência social privadas atuam no Brasil."</h4>
           <p class="text-muted">FONTE: Agência Brasil</p>
 		  <p class="text-muted"><a href="https://agenciabrasil.ebc.com.br/geral/noticia/2015-09/quase-14-mil-entidades-de-assistencia-social-sem-fins-lucrativos-atuam-no-pais">Saiba mais.</a></p>
-        </div>
-        <div class="col-md-4">
-          <h4 class="service-heading">"30% de toda a comida produzida no mundo vai parar no lixo."</h4>
-          <p class="text-muted">FONTE: Nações Unidas Brasil</p>
-		  <p class="text-muted"><a href="https://nacoesunidas.org/fao-30-de-toda-a-comida-produzida-no-mundo-vai-parar-no-lixo/">Saiba mais.</a></p>
         </div>
       </div>
     </div>
@@ -101,77 +101,154 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="section-heading">Como funciona?</h2>
-          <h3 class="section-subheading text-muted">Para que a doação ocorra, é essencial a participação de dois atores no processo: Doador e Entidade Filantrópica.</h3>
+          <h3 class="section-subheading text-muted">Para que a doação ocorra, é essencial a participação de dois atores no processo: doador e instituição filantrópica.</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
           <ul class="timeline">
-            <li>
+		    <li>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
+
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4 class="subheading">Texto.</h5>
+                  <h4 class="subheading">Ponto de partida</h5>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">Texto.</p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-inverted">
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4 class="subheading">Texto.</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">Texto.</p>
+                  <p class="text-muted">Antes de qualquer ação, é necessário que o possível usuário da plataforma faça o download do aplicativo para dispositivos móveis e faça o cadastro; é por lá que todo o processo da doação será feito. No momento do cadastro, é necessário especificar se o usuário é <b>doador</b> ou <b>recebedor</b>.</p>
                 </div>
               </div>
             </li>
             <li>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
+                <img class="rounded-circle img-fluid" src="" alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4 class="subheading">Texto.</h4>
+                  <h4 class="subheading">Cadastro</h5>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">Texto.</p>
+                  <p class="text-muted">Ao fazer o cadastro, é necessária a validação de registro de ambos (<b>Instituição Filantrópica</b> e <b>Doador</b>) para que a plataforma garanta um processo seguro para ambos os lados.<br>
+				  <br>
+				  Essa validação, a princípio, é feita manualmente; garantindo assim uma detalhada atenção nos atributos dos usuários.<br>
+				  <br>
+				  Por exemplo, no caso de entidades, tempo de funcionamento e registro CEBAS são importantes dados a serem checados. No caso dos doadores, se pessoa jurídica, o CNPJ é checado, se pessoa física, CPF e entre outras informações..</p>
                 </div>
               </div>
             </li>
-            <li class="timeline-inverted">
+            <li>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
+                <img class="rounded-circle img-fluid" src="" alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
-                  <h4 class="subheading">Texto.</h4>
+                  <h4 class="subheading">Doação encontrada</h4>
                 </div>
                 <div class="timeline-body">
-                  <p class="text-muted">Texto.</p>
+                  <p class="text-muted">Assim que ambos usuários estejam cadastrados na plataforma, o <b>doador</b> publica uma nova doação especificando os detalhes da mesma com possíveis imagens.<br>
+				  <br>
+				  Se for do interesse do <b>recebedor</b>, ele pode contatar o <b>doador</b> para manifestar o interesse. Esse contato é feito por troca de mensagens no aplicativo.</p>
                 </div>
               </div>
             </li>
-            <li class="timeline-inverted">
+            <li>
               <div class="timeline-image">
-                <h4>FIM
-                  <br>FIM
-                  <br>FIM</h4>
+                <img class="rounded-circle img-fluid" src="" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="subheading">Verificação da doação</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">Nesse momento, a interação entre <b>doador</b> e <b>recebedor</b> é feita externamente.<br>
+				  <br>
+				  Após terem se comunicado pela plataforma, ambos usuários se encontram para que o <b>recebedor</b> possa verificar se a doação está em boas condições e se ele vai recebê-la.</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-image">
+                <img class="rounded-circle img-fluid" src="" alt="">
+              </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="subheading">Relatório</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted">Após essa interação externa entre os usuários, o <b>recebedor</b> volta ao aplicativo para confirmar se recebeu a doação ou não.<br>
+				  <br>
+				  Essa confirmação é obrigatória. Enquanto o <b>recebedor</b> não a fizer, ele está impossibilitado de requerer outra doação.</p>
+                </div>
               </div>
             </li>
           </ul>
-        </div>
+		</div>
       </div>
+	  <div class="col-lg-12 text-center">
+	    <div class="precadastrodiv">
+		  <h5><p>Atualmente, o aplicativo ainda está em desenvolvimento.</p>
+		  <p>Gostaria de fazer o pré-cadastro?</p></h5>
+          <button id="fazerPreCadastro" class="btn btn-primary btn-xl text-uppercase" type="button" data-toggle="modal" data-target="#preCadastro">Pre-cadastrar</button>
+	    </div>
+	  </div>
     </div>
   </section>
   
+  <!-- MODAL -->
+	<div class="precadastro-modal modal fade" id="preCadastro" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+		    <h4 class="subheading">Como funciona?</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<p>A plataforma Share Food está, atualmente, em desenvolvimento. Gostaria que seu pré-cadastro seja guardado em nosso banco de dados?</p>
+			<p>Avisaremos por email assim que a plataforma estiver pronta!</p>
+		    <form id="preCadastroForm" action="preCadastra.php" method="post" name="preCadastra">
+			  <div class="form-group row">
+				<label for="nome" class="col-sm-2 col-form-label">Nome</label>
+				<div class="col-sm-10">
+				  <input type="text" class="form-control" name="nome" id="nome" required data-validation-required-message="Por favor insira seu nome." placeholder="Nome/Nome da Empresa *">
+				  <p class="help-block text-danger"></p>
+				</div>
+			  </div>
+			  <div class="form-group row">
+				<label for="email" class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-10">
+				  <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Por favor insira seu email." placeholder="E-mail *">
+				  <p class="help-block text-danger"></p>
+				</div>
+			  </div>
+			  <fieldset class="form-group">
+				<div class="row">
+				  <legend class="col-form-label col-sm-4 pt-0">Tipo do Usuário</legend>
+				  <div class="col-sm-8">
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="tipo" value="doador" required>
+					  <label class="form-check-label">Sou um doador</label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="tipo" value="recebedor" required>
+					  <label class="form-check-label">Sou um recebedor (instituição filantrópica)</label>
+					</div>
+				  </div>
+				</div>
+			  </fieldset>
+			  <div class="modal-footer">
+			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			    <div id="success"></div>
+			    <button type="submit" class="btn btn-primary" id="preCadastrarBotao">Pre-cadastrar</button>
+		      </div>
+			</form>
+		  </div>
+	    </div>
+	  </div> 
+	</div>
+	
   <!-- Vantagens -->
   <section class="page-section" id="vantagens">
     <div class="container">
@@ -188,7 +265,7 @@
             <i class="fas fa-users fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading">Sociedade</h4>
-          <p class="text-muted">Escrever vantagens</p>
+          <p class="text-muted">Ao conectar instituições filantrópicas com futuros doadores de maneira mais eficiente e segura fazemos com que mais alimentos estejam disponíveis a quem precisa.</p>
         </div>
         <div class="col-md-4">
 		  <span class="fa-stack fa-2x">
@@ -196,7 +273,7 @@
             <i class="fas fa-briefcase fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading">Empresas</h4>
-          <p class="text-muted">Escrever vantagens</p>
+          <p class="text-muted">Além de praticar a filantropia, ajudamos as empresas a cumprir seu fim social ao encontrar um destino para alimentos que possivelmente seriam desperdiçados ou que não teriam um destino adequado.</p>
         </div>
         <div class="col-md-4">
 		  <span class="fa-stack fa-2x">
@@ -204,7 +281,7 @@
             <i class="fas fa-globe-americas fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading">Meio ambiente</h4>
-          <p class="text-muted">Escrever vantagens</p>
+          <p class="text-muted">Ao efetivar doações, permitimos que alimentos não sejam desperdiçados auxiliando assim na diminuição de emissão de óxidos no meio ambiente.</p>
         </div>
       </div>
     </div>
@@ -221,15 +298,21 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <form id="contatoForm" name="sentMessage" novalidate="novalidate">
+          <form id="contatoForm" action="enviaMensagem.php" method="post" name="enviaMensagem">
             <div class="row">
-              <div class="col-lg-12 text-center">
+              <div class="col-lg-6 text-center">
                 <div class="form-group">
-                  <input class="form-control" name="nome" id="nome" type="text" placeholder="Nome *" required="required" data-validation-required-message="Por favor insira seu nome.">
+                  <input class="form-control" name="nome" id="nome" type="text" placeholder="Nome *" required data-validation-required-message="Por favor insira seu nome.">
                   <p class="help-block text-danger"></p>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="email" id="email" type="email" placeholder="Email *" required="required" data-validation-required-message="Por favor insira seu email.">
+                  <input class="form-control" name="email" id="email" type="email" placeholder="Email *" required data-validation-required-message="Por favor insira seu email.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+			  <div class="col-lg-6 text-center">
+                <div class="form-group">
+                  <textarea class="form-control" name="mensagem" id="mensagem" placeholder="Digite uma mensagem (Opcional)"=""></textarea>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -240,6 +323,9 @@
               </div>
             </div>
           </form>
+		  <h5>
+		  <br><br>Se preferir, envie um email para contato@isharefood.com.br!
+		  <br><br>Ou acesse nosso <a href="https://www.instagram.com/plataformasharefood/">Instagram</a>. =)</h5>
         </div>
       </div>
     </div>
@@ -271,9 +357,9 @@
         </div>
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
+            <img class="mx-auto rounded-circle" src="img/team/fernando.png" alt="">
             <h4>Fernando Gallardo</h4>
-            <p class="text-muted">Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. Texto do Fefe. </p>
+            <p class="text-muted">Acadêmico de Engenharia de Software da UFMS em Campo Grande/MS. Aprendizado é a melhor forma de lazer. Admirador de tecnologias.</p>
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
                 <a href="https://www.instagram.com/fernandogllrd/">
@@ -327,6 +413,38 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/agency.min.js"></script>
+  
+  <!-- Custom scripts for this template -->
+  <script src="js/real-time-database.js"></script>
+  
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+		apiKey: "AIzaSyDMhyF78gibhuId1xdK0cHYf5iSL9xRna8",
+		authDomain: "sharefood-d8ba5.firebaseapp.com",
+		databaseURL: "https://sharefood-d8ba5.firebaseio.com",
+		projectId: "sharefood-d8ba5",
+		storageBucket: "sharefood-d8ba5.appspot.com",
+		messagingSenderId: "600623371394",
+		appId: "1:600623371394:web:e9fccc0c69747f5070109b",
+		measurementId: "G-JFPWJPFK53"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  
+	  var db = firebase.firestore();
+	  
+	  firebase.analytics();
+	</script>
 
 </body>
 
