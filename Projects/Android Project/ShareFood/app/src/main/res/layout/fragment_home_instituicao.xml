@@ -25,11 +25,14 @@
         android:textSize="8pt"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/food_posts_recycler_view"
+        android:id="@+id/institutions_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="32dp"
         android:layout_weight="6"
-        tools:listitem="@layout/card_item_institute"
+        tools:listitem="@layout/card_item_food"
         />
 
     <TextView
@@ -42,15 +45,5 @@
         android:text="@string/no_food_post_with_filter"
         android:visibility="gone"
         />
-    <Button
-        android:id="@+id/create_food_post_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_red_style"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="center"
-        android:text="@string/open_create_food_post_text"
-        android:textColor="@color/colorWhite"
-        android:textSize="8pt"/>
+
 </LinearLayout>

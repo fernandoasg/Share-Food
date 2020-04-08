@@ -30,4 +30,8 @@ public class Constants {
 
     // Extras for Message
     public static final String EXTRA_MESSAGE_ID = "MessageId";
+
+    // Extras for Institution
+    public static final String EXTRA_INSTITUTION_ID = "InstitutionId";
+    public static final String EXTRA_INSTITUTION_USER = "InstitutionUser";
 }

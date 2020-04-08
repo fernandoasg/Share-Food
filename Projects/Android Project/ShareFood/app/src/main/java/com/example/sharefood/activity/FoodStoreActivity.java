@@ -40,11 +40,11 @@ public class FoodStoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_store);
 
-        foodStoreTitleText = findViewById(R.id.food_institute_title);
-        foodStoreDescriptionText = findViewById(R.id.food_institute_description);
-        foodStoreRatingText = findViewById(R.id.food_institute_distance);
+        foodStoreTitleText = findViewById(R.id.institute_title);
+        foodStoreDescriptionText = findViewById(R.id.institute_description);
+        foodStoreRatingText = findViewById(R.id.institute_distance);
         foodStoreOwnerText = findViewById(R.id.food_store_owner);
-        foodStoreImage = findViewById(R.id.food_institute_image);
+        foodStoreImage = findViewById(R.id.institute_image);
         productsRecyclerView = findViewById(R.id.store_products_recycler_view);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         productsRecyclerView.setHasFixedSize(true);

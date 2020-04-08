@@ -5,9 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    app:cardBackgroundColor="@color/colorFoodPost"
+    app:cardBackgroundColor="@color/cinzaClaro2"
     android:layout_marginTop="8dp"
-    app:strokeColor="@color/cardview_dark_background"
+    android:layout_marginBottom="8dp"
     app:strokeWidth="0.5dp"
     app:cardElevation="2dp"
     android:elevation="1dp"
@@ -18,38 +18,38 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/food_institute_image"
+            android:id="@+id/institute_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/ic_launcher_background"
             android:contentDescription="@string/food_post_image"/>
         <TextView
-            android:id="@+id/food_institute_title"
+            android:id="@+id/institute_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome do Produto"
             android:layout_marginLeft="8dp"
             android:textSize="8pt"
-            android:layout_toEndOf="@+id/food_institute_image"
-            android:layout_toRightOf="@+id/food_institute_image"/>
+            android:layout_toEndOf="@+id/institute_image"
+            android:layout_toRightOf="@+id/institute_image"/>
         <TextView
-            android:id="@+id/food_institute_description"
+            android:id="@+id/institute_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:autoSizeTextType="uniform"
             android:text="sdfsdf sdfsd fsdf sdf sdfos po ntos ponto spontospontos no final..."
-            android:layout_below="@+id/food_institute_title"
-            android:layout_toEndOf="@+id/food_institute_image"
-            android:layout_toRightOf="@+id/food_institute_image"/>
+            android:layout_below="@+id/institute_title"
+            android:layout_toEndOf="@+id/institute_image"
+            android:layout_toRightOf="@+id/institute_image"/>
         <TextView
-            android:id="@+id/food_institute_distance"
+            android:id="@+id/institute_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="100m"
-            android:layout_toEndOf="@+id/food_institute_title"
-            android:layout_toRightOf="@+id/food_institute_title"
+            android:layout_toEndOf="@+id/institute_title"
+            android:layout_toRightOf="@+id/institute_title"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:gravity="end"/>
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="03/jan/20"
-            android:layout_below="@id/food_institute_description"
+            android:layout_below="@id/institute_description"
             android:layout_alignParentRight="true"
             />
     </RelativeLayout>

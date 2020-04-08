@@ -16,7 +16,7 @@ import android.view.MenuItem;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
-import com.example.sharefood.fragment.HomeFragment;
+import com.example.sharefood.fragment.HomeDoadorFragment;
 import com.example.sharefood.fragment.MessagesFragment;
 import com.example.sharefood.fragment.UserConfigFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
-                new HomeFragment()).commit();
+                new HomeDoadorFragment()).commit();
 
         getLocationPermission();
         getDeviceLocation();
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (menuItem.getItemId()){
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                            selectedFragment = new HomeDoadorFragment();
                             break;
 //                        case R.id.nav_store:
 //                            selectedFragment = new VendasFragment();

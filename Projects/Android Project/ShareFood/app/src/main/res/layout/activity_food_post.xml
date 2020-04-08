@@ -24,20 +24,20 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
             <ImageView
-                android:id="@+id/food_institute_image"
+                android:id="@+id/institute_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 android:src="@drawable/ic_launcher_background"
                 android:contentDescription="@string/food_post_image"/>
             <TextView
-                android:id="@+id/food_institute_title"
+                android:id="@+id/institute_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nome do Produto"
                 android:layout_marginLeft="8dp"
                 android:textSize="8pt"
-                android:layout_toEndOf="@+id/food_institute_image"
-                android:layout_toRightOf="@+id/food_institute_image"/>
+                android:layout_toEndOf="@+id/institute_image"
+                android:layout_toRightOf="@+id/institute_image"/>
             <TextView
                 android:id="@+id/food_post_from"
                 android:layout_width="wrap_content"
@@ -46,9 +46,9 @@
                 android:layout_marginLeft="8dp"
                 android:autoSizeTextType="uniform"
                 android:text="Dono(a): Nome da Pessoa"
-                android:layout_below="@+id/food_institute_title"
-                android:layout_toEndOf="@+id/food_institute_image"
-                android:layout_toRightOf="@+id/food_institute_image"/>
+                android:layout_below="@+id/institute_title"
+                android:layout_toEndOf="@+id/institute_image"
+                android:layout_toRightOf="@+id/institute_image"/>
             <TextView
                 android:id="@+id/food_post_time"
                 android:layout_width="wrap_content"
@@ -58,14 +58,14 @@
                 android:autoSizeTextType="uniform"
                 android:text="Horário para retirar: à tarde"
                 android:layout_below="@+id/food_post_from"
-                android:layout_toEndOf="@+id/food_institute_image"
-                android:layout_toRightOf="@+id/food_institute_image"/>
+                android:layout_toEndOf="@+id/institute_image"
+                android:layout_toRightOf="@+id/institute_image"/>
             <TextView
-                android:id="@+id/food_institute_distance"
+                android:id="@+id/institute_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/food_institute_title"
-                android:layout_toRightOf="@+id/food_institute_title"
+                android:layout_toEndOf="@+id/institute_title"
+                android:layout_toRightOf="@+id/institute_title"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:gravity="end"/>
@@ -83,7 +83,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/food_institute_description"
+        android:id="@+id/institute_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -99,7 +99,7 @@
         android:layout_marginTop="8dp"
         android:text="Localização aproximada"
         android:textSize="9pt"
-        android:layout_below="@id/food_institute_description"/>
+        android:layout_below="@id/institute_description"/>
 
     <TextView
         android:layout_width="match_parent"

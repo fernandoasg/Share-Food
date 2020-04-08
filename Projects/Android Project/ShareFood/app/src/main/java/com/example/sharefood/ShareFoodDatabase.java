@@ -12,13 +12,15 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.sharefood.dao.FoodPostDao;
 import com.example.sharefood.dao.FoodProductDao;
 import com.example.sharefood.dao.FoodStoreDao;
+import com.example.sharefood.dao.InstitutionDao;
 import com.example.sharefood.dao.MessageDao;
 import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.entity.FoodProduct;
 import com.example.sharefood.entity.FoodStore;
+import com.example.sharefood.entity.Institution;
 import com.example.sharefood.entity.Message;
 
-@Database(entities = {FoodPost.class, FoodStore.class, FoodProduct.class, Message.class}, version = 5)
+@Database(entities = {FoodPost.class, FoodStore.class, FoodProduct.class, Message.class, Institution.class}, version = 6)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
@@ -27,6 +29,7 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
     public abstract FoodStoreDao foodStoreDao();
     public abstract FoodProductDao foodProductDao();
     public abstract MessageDao messageDao();
+    public abstract InstitutionDao institutionDao();
 
     public static synchronized ShareFoodDatabase getInstance(Context context){
         if(instance == null){
@@ -53,12 +56,14 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
         private FoodStoreDao foodStoreDao;
         private FoodProductDao foodProductDao;
         private MessageDao messageDao;
+        private InstitutionDao institutionDao;
 
         private PopulateDbAsyncTask(ShareFoodDatabase db){
             foodPostDao = db.foodPostDao();
             foodStoreDao = db.foodStoreDao();
             foodProductDao = db.foodProductDao();
             messageDao = db.messageDao();
+            institutionDao = db.institutionDao();
         }
 
         @Override

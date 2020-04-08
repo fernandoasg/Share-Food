@@ -1,16 +1,16 @@
 package com.example.sharefood.activity;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 
-public class FoodPostActivity extends AppCompatActivity {
+public class InstitutionActivity extends AppCompatActivity {
 
     TextView foodPostTitleText;
     TextView foodPostTimeText;

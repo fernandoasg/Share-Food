@@ -55,10 +55,10 @@ public class FoodProductAdapter extends RecyclerView.Adapter<FoodProductAdapter.
 
         public FoodProductHolder(@NonNull View view) {
             super(view);
-            textViewTitle = view.findViewById(R.id.food_institute_title);
-            textViewDescription = view.findViewById(R.id.food_institute_description);
-            textViewPrice = view.findViewById(R.id.food_institute_distance);
-            productImage = view.findViewById(R.id.food_institute_image);
+            textViewTitle = view.findViewById(R.id.institute_title);
+            textViewDescription = view.findViewById(R.id.institute_description);
+            textViewPrice = view.findViewById(R.id.institute_distance);
+            productImage = view.findViewById(R.id.institute_image);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

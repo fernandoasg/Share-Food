@@ -23,51 +23,52 @@ import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 import com.example.sharefood.activity.CreateFoodPostActivity;
 import com.example.sharefood.activity.FoodPostActivity;
+import com.example.sharefood.activity.InstitutionActivity;
 import com.example.sharefood.adapter.FoodPostAdapter;
+import com.example.sharefood.adapter.InstitutionAdapter;
 import com.example.sharefood.entity.FoodPost;
+import com.example.sharefood.entity.Institution;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
+import com.example.sharefood.viewmodel.InstitutionViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeInstituicaoFragment extends Fragment {
 
     EditText searchEditText;
     TextView noMatchFilterText;
-    FoodPostViewModel foodPostViewModel;
+    InstitutionViewModel institutionViewModel;
     RecyclerView recyclerView;
-    List<FoodPost> foodPostsList;
-    FoodPostAdapter recyclerAdapter;
+    List<Institution> institutionList;
+    InstitutionAdapter recyclerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        View view =  inflater.inflate(R.layout.fragment_home_instituicao, container, false);
 
         searchEditText = view.findViewById(R.id.search_edit_text);
         noMatchFilterText = view.findViewById(R.id.messages_recycler_empty_text);
 
-        recyclerView = view.findViewById(R.id.food_posts_recycler_view);
+        recyclerView = view.findViewById(R.id.institutions_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
+        institutionViewModel = ViewModelProviders.of(getActivity()).get(InstitutionViewModel.class);
 
-        recyclerAdapter = new FoodPostAdapter();
+        recyclerAdapter = new InstitutionAdapter();
 
-        foodPostsList = new ArrayList<>();
-        foodPostsList = foodPostViewModel.getAllFoodPosts();
+        institutionList = new ArrayList<>();
+        institutionList = institutionViewModel.getAllInstitutions();
 
-        recyclerAdapter.setFoodPosts(foodPostsList);
-        recyclerAdapter.setOnItemClickListener(new FoodPostAdapter.OnItemClickListener() {
+        recyclerAdapter.setInstitutionList(institutionList);
+        recyclerAdapter.setOnItemClickListener(new InstitutionAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(FoodPost foodPost) {
-                Intent intent = new Intent(getActivity(), FoodPostActivity.class);
-                intent.putExtra(Constants.EXTRA_FOOD_POST_ID, foodPost.getId());
-                intent.putExtra(Constants.EXTRA_FOOD_POST_NAME, foodPost.getTitulo());
-                intent.putExtra(Constants.EXTRA_FOOD_POST_DESCRIPTION, foodPost.getDescricao());
-                intent.putExtra(Constants.EXTRA_FOOD_POST_TIME, foodPost.getHorarioParaRetirar());
-                intent.putExtra(Constants.EXTRA_FOOD_POST_DATE, foodPost.getDataAberto());
+            public void onItemClick(Institution institution) {
+                Intent intent = new Intent(getActivity(), InstitutionActivity.class);
+                intent.putExtra(Constants.EXTRA_INSTITUTION_ID, institution.getId());
+                intent.putExtra(Constants.EXTRA_INSTITUTION_USER, institution.getUsuarioFk());
                 startActivity(intent);
             }
         });
@@ -113,33 +114,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button createFoodPostButton = view.findViewById(R.id.create_food_post_button);
-        createFoodPostButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CreateFoodPostActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        getActivity().setTitle("Compartilhe!");
+        getActivity().setTitle("Doações");
 
         return view;
     }
 
     private void filter(String text) {
-        List<FoodPost> filteredFoodPosts = new ArrayList<>();
+        List<Institution> filteredInstitutions = new ArrayList<>();
 
         //looping through existing elements
-        for (FoodPost foodPost : foodPostsList) {
+        for (Institution institution : institutionList) {
             //if the existing elements contains the search input
-            if (foodPost.getTitulo().toLowerCase().contains(text.toLowerCase())) {
+            if (institution.getMensagemInicial().toLowerCase().contains(text.toLowerCase())) {
                 //adding the element to filtered list
-                filteredFoodPosts.add(foodPost);
+                filteredInstitutions.add(institution);
             }
         }
 
-        if(filteredFoodPosts.size() == 0){
+        if(filteredInstitutions.size() == 0){
             noMatchFilterText.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
         }else{
@@ -148,6 +140,6 @@ public class HomeFragment extends Fragment {
         }
 
         //calling a method of the adapter class and passing the filtered list
-        recyclerAdapter.filterList(filteredFoodPosts);
+        recyclerAdapter.filterList(filteredInstitutions);
     }
 }
