@@ -208,18 +208,18 @@
 		  <div class="modal-body">
 			<p>A plataforma Share Food está, atualmente, em desenvolvimento. Gostaria que seu pré-cadastro seja guardado em nosso banco de dados?</p>
 			<p>Avisaremos por email assim que a plataforma estiver pronta!</p>
-		    <form id="preCadastroForm" action="preCadastra.php" method="post" name="preCadastra">
+        <form id="preCadastroForm" name="preCadastra" action="#" novalidate>
 			  <div class="form-group row">
-				<label for="nome" class="col-sm-2 col-form-label">Nome</label>
+				<label for="nomePre" class="col-sm-2 col-form-label">Nome</label>
 				<div class="col-sm-10">
-				  <input type="text" class="form-control" name="nome" id="nome" required data-validation-required-message="Por favor insira seu nome." placeholder="Nome/Nome da Empresa *">
+				  <input type="text" class="form-control" name="nomePre" id="nomePre" required data-validation-required-message="Por favor insira seu nome." placeholder="Nome/Nome da Empresa *">
 				  <p class="help-block text-danger"></p>
 				</div>
 			  </div>
 			  <div class="form-group row">
-				<label for="email" class="col-sm-2 col-form-label">Email</label>
+				<label for="emailPre" class="col-sm-2 col-form-label">Email</label>
 				<div class="col-sm-10">
-				  <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Por favor insira seu email." placeholder="E-mail *">
+				  <input type="email" class="form-control" name="emailPre" id="emailPre" required data-validation-required-message="Por favor insira seu email." placeholder="E-mail *">
 				  <p class="help-block text-danger"></p>
 				</div>
 			  </div>
@@ -228,11 +228,11 @@
 				  <legend class="col-form-label col-sm-4 pt-0">Tipo do Usuário</legend>
 				  <div class="col-sm-8">
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="tipo" value="doador" required>
+					  <input class="form-check-input" type="radio" name="tipo" value="doador" id="radioDoador" checked>
 					  <label class="form-check-label">Sou um doador</label>
 					</div>
 					<div class="form-check">
-					  <input class="form-check-input" type="radio" name="tipo" value="recebedor" required>
+					  <input class="form-check-input" type="radio" name="tipo" value="recebedor" id="radioInstituicao">
 					  <label class="form-check-label">Sou um recebedor (instituição filantrópica)</label>
 					</div>
 				  </div>
@@ -241,7 +241,8 @@
 			  <div class="modal-footer">
 			    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 			    <div id="success"></div>
-			    <button type="submit" class="btn btn-primary" id="preCadastrarBotao">Pre-cadastrar</button>
+          <input  type="button" class="btn btn-primary"
+          onclick="salvarPreCadastro();" value="Pre-cadastrar" id="preCadastrarBotao">
 		      </div>
 			</form>
 		  </div>
@@ -409,20 +410,17 @@
 
   <!-- contato form JavaScript -->
   <script src="js/jqBootstrapValidation.js"></script>
-  <script src="js/contato_me.js"></script>
+  <script src="js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
   <script src="js/agency.min.js"></script>
   
-  <!-- Custom scripts for this template -->
-  <script src="js/real-time-database.js"></script>
-  
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use
 		 https://firebase.google.com/docs/web/setup#available-libraries -->
-	<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
 	
 	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
 
@@ -444,7 +442,10 @@
 	  var db = firebase.firestore();
 	  
 	  firebase.analytics();
-	</script>
+  </script>
+  
+  <!-- Custom scripts for this template -->
+  <script src="js/real-time-database.js"></script>
 
 </body>
 
