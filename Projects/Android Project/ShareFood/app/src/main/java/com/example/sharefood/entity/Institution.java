@@ -26,6 +26,10 @@ public class Institution {
     @ColumnInfo(name = "usuario_fk")
     private int usuarioFk;
 
+    public Institution(){
+
+    }
+
     public Institution(String _nome, String _representante, String _cnpj, boolean _podeBuscar, String _mensagemInicial, int _usuarioFk){
         nome = _nome;
         representante = _representante;
@@ -45,6 +49,30 @@ public class Institution {
 
     public void setItensAceitar(String itensAceitar) {
         this.itensAceitar = itensAceitar;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setRepresentante(String representante) {
+        this.representante = representante;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public void setPodeBuscar(boolean podeBuscar) {
+        this.podeBuscar = podeBuscar;
+    }
+
+    public void setMensagemInicial(String mensagemInicial) {
+        this.mensagemInicial = mensagemInicial;
+    }
+
+    public void setUsuarioFk(int usuarioFk) {
+        this.usuarioFk = usuarioFk;
     }
 
     public int getId(){

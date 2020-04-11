@@ -1,10 +1,12 @@
 package com.example.sharefood.fragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.Constants;
 import com.example.sharefood.R;
+import com.example.sharefood.activity.LoginActivity;
 import com.example.sharefood.adapter.OptionsAdapter;
 import com.example.sharefood.entity.Options;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -24,12 +28,24 @@ import static android.content.Context.MODE_PRIVATE;
 public class UserConfigFragment extends Fragment {
 
     private ArrayList<Options> opcoesDoUsario;
+    TextView exitTextButton;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_user_config, container, false);
         getActivity().setTitle("Configurações");
+
+        exitTextButton = view.findViewById(R.id.exit_text_button);
+        exitTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                getActivity().finish();
+            }
+        });
 
         opcoesDoUsario = new ArrayList<>();
         RecyclerView userOptionsRecyclerView = view.findViewById(R.id.user_options_recycler_view);
@@ -51,11 +67,10 @@ public class UserConfigFragment extends Fragment {
 
         Options opcao0 = new Options(userName, userEmail, "perfil", "Profile");
         Options opcao1 =  new Options("Alimentos Compartilhados", null, "compartilhado", "SharedFood");
-        //Options opcao2 = new Options("Alimentos Adquiridos", null, "recebido", "GotFood");
-        Options opcao3 = new Options("Configurações", null, "configuracao", "Configuration");
+        //Options opcao3 = new Options("Configurações", null, "configuracao", "Configuration");
+
         opcoesDoUsario.add(opcao0);
         opcoesDoUsario.add(opcao1);
-        //opcoesDoUsario.add(opcao2);
-        opcoesDoUsario.add(opcao3);
+        //opcoesDoUsario.add(opcao3);
     }
 }

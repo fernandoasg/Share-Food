@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "600623371394",
+    "firebase_url": "https://sharefood-d8ba5.firebaseio.com",
+    "project_id": "sharefood-d8ba5",
+    "storage_bucket": "sharefood-d8ba5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600623371394:android:efff3dc961f82ae270109b",
+        "android_client_info": {
+          "package_name": "com.isharefood.sharefood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600623371394-kv6mj2gc5m55dbhmg8pjmhstaa9tr4ms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.isharefood.sharefood",
+            "certificate_hash": "1fca7d66d2b2771c2fa5d5071b29f78048724299"
+          }
+        },
+        {
+          "client_id": "600623371394-lc2g4pd2s67ia4p8e20lf3433m70bs04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqeZ5BgEGI39oTvhXUaceOvtkr5Y9D5N8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600623371394-lc2g4pd2s67ia4p8e20lf3433m70bs04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

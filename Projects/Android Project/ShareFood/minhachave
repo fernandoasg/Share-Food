@@ -1,0 +1,223 @@
+<template id = "analiseItem">
+    <div>
+        <div class="titulo">
+          <h2>Análise {{id}}</h2>
+        </div>
+          <div class="container mb-3">
+            <div class="sessao1 columns col-gapless">
+              <div class=" infoGeral column col-12 col-ms-auto">
+                <h3>Informações Gerais</h3>
+              </div>
+                <div class="titulo-form column col-12 ">
+                  <span class="label">Título</span>
+                  <p>{{analise.nomeFormulario}}</p>
+                </div>
+                <div class="column col-2 col-mr-auto">
+                  <span class="label">Data de criação:</span>
+                  <input id="criadoEm"  class="form-control" type="text" v-bind:value="analise.criadoEm">
+                </div>
+                 <div class="column col-2 col-mr-auto">
+                  <span class="label">Horário de chegada:</span>
+                  <input id="horarioChegada"  class="form-control" type="text" v-bind:value="analise.horarioChegada">
+                </div>
+                  <div class="column col-2 col-mr-auto">
+                  <span class="label">Horário de saída:</span>
+                  <input id="horarioSaida"  class="form-control" type="text" v-bind:value="analise.horarioSaida">
+                </div>
+                 <div class="column col-2 col-mr-auto">
+                  <span class="label">Status:</span>
+                  <input id="status"  class="form-control" type="text" v-bind:value="analise.status">
+                </div>
+                <div class="column col-3 col-mr-auto">
+                  <span class="label ">Tipo:</span>
+                  <input id="tipoFormulario"  class="form-control" type="text" v-bind:value="analise.tipoFormulario">
+                </div>
+                <div class="column col-5 col-mr-auto">
+                  <span class="label">Perito:</span>
+                  <input id="perito" class="form-control" type="text" value="João Gomes Valadares">
+                </div>
+                <div class="column col-5 col-mr-auto">
+                  <span class="label">Perito auxiliar:</span>
+                  <input id="peritoAuxiliar"  class="form-control" type="text" v-bind:value="analise.infoGeral.peritoAuxiliar">
+                </div>
+                <div class="column col-11 col-mr-auto">
+                  <span class="label">Unidade Requisitante:</span>
+                  <input id="unidadeRequisitante"  class="form-control" type="text" v-bind:value="analise.infoGeral.unidadeRequisitante">
+                </div>
+            </div>
+          <div class="sessao2 columns col-gapless">
+            <div class="local column col-12 col-ms-auto">
+              <h2>Local</h2>
+              </div>
+                <div class="column col-5 col-mr-auto">
+                  <span class="label">Rua:</span>
+                  <input id="rua"  class="form-control" type="text" value="Gurimarques">
+                </div>
+                <div class="column col-5 col-mr-auto">
+                  <span class="label">Bairro:</span>
+                  <input id="bairro"  class="form-control" type="text" value="Tijuca">
+                </div>
+                <div class="column col-5 col-mr-auto">
+                  <span class="label">Cidade:</span>
+                  <input id="cidade"  class="form-control" type="text" value="Campo Grande">
+                </div>
+                <div class="column col-5 col-mr-auto">
+                  <span class="label">Estado:</span>
+                  <input id="estado"  class="form-control" type="text" value="Mato Grosso do Sul">
+                </div>
+                <div class="column col-3 col-mr-auto">
+                  <span class="label">Tipo de preservação:</span>
+                  <input id="tipoPreservacao"  class="form-control" type="text" v-bind:value="analise.local.tipoPreservacao">
+                </div>
+                <div class="column col-2 col-mr-auto">
+                  <span class="label">Natureza do local:</span>
+                  <input id="tipoLocal"  class="form-control" type="text" v-bind:value="analise.local.tipoLocal">
+                </div>
+                <div class="column col-2 col-mr-auto">
+                  <span class="label">Edificação:</span>
+                  <input id="edificacao"  class="form-control" type="text" v-bind:value="analise.local.edificacao">
+                </div>
+                <div class="column col-3 col-mr-auto">
+                  <span class="label">Número do pavimento:</span>
+                  <input id="numeroPavimento"  class="form-control" type="text" v-bind:value="analise.local.numeroPavimento">
+                </div>
+                <div class="column col-3 col-mr-auto">
+                  <span class="label">Iluminação:</span>
+                  <input id="iluminacao"  class="form-control" type="text" v-bind:value="analise.local.iluminacao">
+                </div>
+                <div class="column col-2 col-mr-auto">
+                  <span class="label">Vizinhos:</span>
+                  <input id="vizinhos"  class="form-control" type="text" v-bind:value="analise.local.vizinhos">
+                </div>
+                <div class="column col-2 col-mr-auto">
+                  <span class="label">Recuo frontal:</span>
+                  <input id="recuoFrontal"  class="form-control" type="text" v-bind:value="analise.local.recuoFrontal">
+                </div>
+                <div class="column col-3 col-mr-auto">
+                  <span class="label">Altura do muro:</span>
+                  <input id="alturaMuro"  class="form-control" type="text" v-bind:value="analise.local.alturaMuro">
+                </div>
+                <div class="column col-3 col-mr-auto">
+                  <span class="label">Tipo Circulação:</span>
+                  <input id="tipoCirculacao"  class="form-control" type="text" v-bind:value="analise.local.tipoCirculacao">
+                </div>
+            </div>
+          <div class="sessao3 columns col-gapless">
+            <div class="presentesLocal column col-12 col-ms-auto">
+             <h2>Presentes no Local</h2>
+             </div>
+                 <div class="column col-3 col-mr-auto">
+                  <span class="label">Bombeiro:</span>
+                  <input id="bombeiro"  class="form-control" type="text" value="Jairzinho">
+                </div>
+                 <div class="column col-4 col-mr-auto">
+                  <span class="label">Policial:</span>
+                  <input id="policial"  class="form-control" type="text" value="Clodomiro">
+                </div>
+                 <div class="column col-4 col-mr-auto">
+                  <span class="label">Funerária:</span>
+                  <input id="fineraria"  class="form-control" type="text" value="Não tem">
+                </div>
+                 <div class="column col-6 col-mr-auto">
+                  <span class="label">Outros:</span>
+                  <input id="outros"  class="form-control" type="text" value="Ciclanildo">
+                </div>
+        </div>
+    
+      </div>
+      <div class="text-center mb-4">
+        <button type="button" class="btn btn-secondary mr-3">
+          <router-link to="/listaAnalises">Voltar</router-link>
+        </button>
+        <button v-on:click="saveChanges" type="button" class="btn btn-primary">
+          Salvar Mudanças
+        </button>
+      </div>
+    </div>
+    
+</template>
+
+
+<script>
+  import axios from 'axios';
+  export default {
+      data(){
+      return { analise: null, id: 0}
+    },
+    created() {
+              this.id = this.$route.params.id;
+    /* props: {
+        analise: {type: Object, required: true}
+    } */
+    },
+    mounted(){
+      this.getPost();
+    },
+      methods: {
+      saveChanges(){
+        alert("asdijasidjasidj");
+        var criadoEm = document.getElementById('criadoEm').value
+        var horarioChegada = document.getElementById('horarioChegada').value
+        console.log(criadoEm + "  " + horarioChegada)
+
+      },
+      getPost() {
+        axios.get(`http://192.168.15.10:84/api/Formulario/`+this.id)
+        .then(response => {
+          // JSON responses are automatically parsed.
+          this.analise = response.data
+        })
+        .catch(e => 
+          console.log(e)
+        )
+      },
+  }
+}
+
+</script>
+
+<style scoped>
+
+.container{
+  border-style: groove;
+}
+
+.titulo{
+text-align: center;
+}
+
+.titulo-form{
+text-align: center;
+}
+
+.infoGeral{
+ text-align: center;
+}
+
+.sessao1{
+  border-style: outset;
+}
+
+.sessao2{
+  border-style: outset;
+}
+
+.local{
+ text-align: center;
+}
+
+.presentesLocal{
+ text-align: center;
+}
+
+.item{
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.label{
+  border-radius: 7px 7px 0px 0px;
+}
+
+
+</style>

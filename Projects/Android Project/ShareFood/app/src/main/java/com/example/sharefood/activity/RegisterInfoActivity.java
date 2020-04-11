@@ -29,6 +29,10 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
         saveInfoButton = findViewById(R.id.save_info_button);
 
+        // TODO Criar fragmento para os tipos de usuários
+        // TODO Colocar o container para o fragmento no activity_register_info
+        // TODO Pegar o tipo e mostrar o fragmento certo
+
         saveInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
