@@ -3,6 +3,8 @@ package com.example.sharefood;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.MissingFormatArgumentException;
 
 public class SessionManager {
@@ -94,6 +96,8 @@ public class SessionManager {
     }
 
     public void logout(){
+        FirebaseAuth.getInstance().signOut();
+
         editor.clear();
         editor.commit();
     }

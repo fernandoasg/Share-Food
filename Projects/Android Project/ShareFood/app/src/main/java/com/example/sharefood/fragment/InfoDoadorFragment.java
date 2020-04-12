@@ -9,31 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
 import com.example.sharefood.activity.MainActivity;
-import com.example.sharefood.activity.MessageActivity;
-import com.example.sharefood.adapter.MessageAdapter;
-import com.example.sharefood.entity.Message;
-import com.example.sharefood.viewmodel.MessageViewModel;
+import com.example.sharefood.util.MaskEditUtil;
+import com.example.sharefood.util.ValidateUtil;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -42,7 +33,8 @@ public class InfoDoadorFragment extends Fragment {
     private RadioGroup typeRadioGroup;
     private RadioButton fisicaRadioButton;
     private RadioButton juridicaRadioButton;
-    private EditText cpfOrCnpjEditText;
+    private EditText cpfEditText;
+    private EditText cnpjEditText;
     private EditText phoneEditText;
 
     private View view;
@@ -57,16 +49,21 @@ public class InfoDoadorFragment extends Fragment {
         typeRadioGroup = view.findViewById(R.id.doador_type_radio_group);
         fisicaRadioButton = view.findViewById(R.id.fisica_radio_button);
         juridicaRadioButton = view.findViewById(R.id.juridica_radio_button);
-        cpfOrCnpjEditText = view.findViewById(R.id.cpf_cnpj_edit_text);
+        cpfEditText = view.findViewById(R.id.cpf_edit_text);
+        cpfEditText.addTextChangedListener(MaskEditUtil.mask(cpfEditText, MaskEditUtil.FORMAT_CPF));
+        cnpjEditText = view.findViewById(R.id.cnpj2_edit_text);
+        cnpjEditText.addTextChangedListener(MaskEditUtil.mask(cnpjEditText, MaskEditUtil.FORMAT_CNPJ));
         phoneEditText = view.findViewById(R.id.phone_edit_text);
+        phoneEditText.addTextChangedListener(MaskEditUtil.mask(phoneEditText, MaskEditUtil.FORMAT_FONE));
 
         // Quando clica no radio button de pessoa física
         fisicaRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cpfOrCnpjEditText.setText("");
-                cpfOrCnpjEditText.setHint("CPF");
-                cpfOrCnpjEditText.requestFocus();
+                cnpjEditText.setVisibility(View.GONE);
+                cpfEditText.setVisibility(View.VISIBLE);
+                cpfEditText.setText("");
+                cpfEditText.requestFocus();
             }
         });
 
@@ -74,9 +71,10 @@ public class InfoDoadorFragment extends Fragment {
         juridicaRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cpfOrCnpjEditText.setText("");
-                cpfOrCnpjEditText.setHint("CNPJ");
-                cpfOrCnpjEditText.requestFocus();
+                cpfEditText.setVisibility(View.GONE);
+                cnpjEditText.setVisibility(View.VISIBLE);
+                cnpjEditText.setText("");
+                cnpjEditText.requestFocus();
             }
         });
 
@@ -97,27 +95,52 @@ public class InfoDoadorFragment extends Fragment {
         System.out.println(selectedType);
         RadioButton radioButton = view.findViewById(selectedType);
         String doadorType = radioButton.getText().toString();
+        final boolean ehFisica = doadorType.equals("Física");
 
-        final String document = cpfOrCnpjEditText.getText().toString().trim();
+        String doc = "";
+        if(ehFisica)
+            doc = cpfEditText.getText().toString().trim();
+        else
+            doc = cnpjEditText.getText().toString().trim();
+
+        doc = MaskEditUtil.unmask(doc);
+        final String document = doc;
+
         if(document.isEmpty()){
-            cpfOrCnpjEditText.setError("Você precisa informar o seu documento");
-            cpfOrCnpjEditText.requestFocus();
+            if(ehFisica){
+                cpfEditText.setError("Você precisa informar o seu CPF");
+                cpfEditText.requestFocus();
+            }else{
+                cnpjEditText.setError("Você precisa informar o seu CNPJ");
+                cnpjEditText.requestFocus();
+            }
+
             return;
         }
 
-        final String phone = phoneEditText.getText().toString().trim();
+        final String phone = MaskEditUtil.unmask(phoneEditText.getText().toString().trim());
         if(phone.isEmpty()){
             phoneEditText.setError("Você precisa informar o seu telefone");
             phoneEditText.requestFocus();
             return;
         }
 
-        final boolean ehFisica = doadorType.equals("Física");
-        if(!isValidDocument(ehFisica, document)){
-            cpfOrCnpjEditText.setError("Você precisa informar um documento válido");
-            cpfOrCnpjEditText.requestFocus();
-            return;
+        if(ehFisica){
+            if(!ValidateUtil.isCpf(document)){
+                cpfEditText.setError("Você precisa informar um CPF válido");
+                cpfEditText.requestFocus();
+
+                return;
+            }
+        }else{
+            if(!ValidateUtil.isCnpj(document)){
+                cnpjEditText.setError("Você precisa informar um CNPJ válido");
+                cnpjEditText.requestFocus();
+
+                return;
+            }
         }
+
 
         Map<String, Object> info = new HashMap<>();
         info.put("physical", ehFisica);
@@ -149,9 +172,5 @@ public class InfoDoadorFragment extends Fragment {
                 System.out.println("Erro ao salvar");
             }
         });
-    }
-
-    private boolean isValidDocument(boolean ehFisica, String document){
-        return true;
     }
 }

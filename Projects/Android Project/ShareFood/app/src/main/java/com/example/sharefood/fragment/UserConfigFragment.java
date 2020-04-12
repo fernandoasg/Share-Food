@@ -42,9 +42,8 @@ public class UserConfigFragment extends Fragment {
         exitTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getContext(), LoginActivity.class));
-                getActivity().finish();
+                getActivity().finishAffinity();
                 SessionManager sessionManager = new SessionManager(getContext());
                 sessionManager.logout();
             }

@@ -60,17 +60,13 @@ public class LoginActivity extends AppCompatActivity {
 
         // Getting current instance of the database
         firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser() != null){
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         if(sessionManager.isLogged()){
             if(sessionManager.registerIsCompleted()){
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finishAffinity();
             }else{
                 Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
                 startActivity(intent);
@@ -136,7 +132,6 @@ public class LoginActivity extends AppCompatActivity {
                                     sessionManager.createLoginSession(userId, nome, email, type, info);
 
                                     if(info){
-                                        // TODO Pegar informações, pois já tenho
                                         if(sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador")){
                                             boolean ehFisica = documentSnapshot.getBoolean("physical");
                                             String document = "";

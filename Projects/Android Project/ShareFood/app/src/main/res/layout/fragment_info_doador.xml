@@ -48,7 +48,7 @@
 
 
     <EditText
-        android:id="@+id/cpf_cnpj_edit_text"
+        android:id="@+id/cpf_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -58,6 +58,23 @@
         android:background="@drawable/edit_text_no_color"
         android:drawablePadding="10dp"
         android:hint="CPF"
+        android:inputType="numberDecimal"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorAlmostWhite"
+        android:textSize="10pt" />
+
+    <EditText
+        android:id="@+id/cnpj2_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/edit_text_no_color"
+        android:drawablePadding="10dp"
+        android:hint="CNPJ"
+        android:visibility="gone"
         android:inputType="numberDecimal"
         android:textColor="@color/colorBlack"
         android:textColorHint="@color/colorAlmostWhite"

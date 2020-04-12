@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
 import com.example.sharefood.activity.MainActivity;
+import com.example.sharefood.util.MaskEditUtil;
+import com.example.sharefood.util.ValidateUtil;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,6 +44,8 @@ public class InfoInstituicaoFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_info_instituicao, container, false);
 
         cnpjEditText = view.findViewById(R.id.cnpj_edit_text);
+        cnpjEditText.addTextChangedListener(MaskEditUtil.mask(cnpjEditText, MaskEditUtil.FORMAT_CNPJ));
+
         responsibleNameEditText = view.findViewById(R.id.name_responsible_edit_text);
         phoneEditText = view.findViewById(R.id.phone_edit_text);
         birthDateEditText = view.findViewById(R.id.birth_date_edit_text);
@@ -60,7 +64,7 @@ public class InfoInstituicaoFragment extends Fragment {
 
     private void SaveInfo(){
 
-        final String cnpj = cnpjEditText.getText().toString().trim();
+        final String cnpj = MaskEditUtil.unmask(cnpjEditText.getText().toString().trim());
         if(cnpj.isEmpty()){
             cnpjEditText.setError("Você precisa informar o seu CNPJ");
             cnpjEditText.requestFocus();
@@ -95,7 +99,7 @@ public class InfoInstituicaoFragment extends Fragment {
             return;
         }
 
-        if(!ehCnpj(cnpj)){
+        if(!ValidateUtil.isCnpj(cnpj)){
             cnpjEditText.setError("Você precisa informar um CNPJ válido");
             cnpjEditText.requestFocus();
             return;
@@ -129,9 +133,5 @@ public class InfoInstituicaoFragment extends Fragment {
                 System.out.println("Erro ao salvar");
             }
         });
-    }
-
-    private boolean ehCnpj(String cnpj){
-        return true;
     }
 }

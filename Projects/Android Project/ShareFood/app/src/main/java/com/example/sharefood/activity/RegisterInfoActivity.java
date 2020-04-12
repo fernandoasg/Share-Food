@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
@@ -16,6 +18,8 @@ import com.example.sharefood.fragment.InfoInstituicaoFragment;
 public class RegisterInfoActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
+    private boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,19 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        sessionManager.logout();
+        if(doubleBackToExitPressedOnce){
+            super.onBackPressed();
+            sessionManager.logout();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Por favor, clique novamente para voltar", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 }
