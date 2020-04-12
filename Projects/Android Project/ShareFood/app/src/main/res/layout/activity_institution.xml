@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".activity.InstitutionActivity">
+
+    <RelativeLayout
+        android:id="@+id/top_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/institute_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="@string/food_post_image"/>
+        <TextView
+            android:id="@+id/institution_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome da Instituição"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:textSize="8pt"
+            android:layout_toEndOf="@+id/institute_image"
+            android:layout_toRightOf="@+id/institute_image"/>
+        <TextView
+            android:id="@+id/institution_responsible_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:autoSizeTextType="uniform"
+            android:text="Responsável: Nome da Pessoa"
+            android:layout_below="@+id/institution_name_text"
+            android:layout_toEndOf="@+id/institute_image"
+            android:layout_toRightOf="@+id/institute_image"/>
+        <TextView
+            android:id="@+id/institution_birth_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:autoSizeTextType="uniform"
+            android:text="Fundada em: 20/10/2002"
+            android:layout_below="@+id/institution_responsible_name_text"
+            android:layout_toEndOf="@+id/institute_image"
+            android:layout_toRightOf="@+id/institute_image"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/institution_mission_label_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nossa Missão"
+        android:textStyle="bold"
+        android:textSize="8pt"
+        android:layout_below="@+id/top_relative_layout"/>
+
+    <TextView
+        android:id="@+id/institution_mission_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Descrição completa Descrição completa Do completa Descrição completa Descrição completa Descrição completa"
+        android:textSize="8pt"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        android:layout_below="@+id/institution_mission_label_text"/>
+
+    <TextView
+        android:id="@+id/text_localization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Localização aproximada"
+        android:textStyle="bold"
+        android:textSize="8pt"
+        android:layout_below="@id/institution_mission_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="9pt"
+        android:text="Essa instituição ainda não publicou sua localização"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/text_localization"
+        />
+</RelativeLayout>

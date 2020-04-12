@@ -33,5 +33,9 @@ public class Constants {
 
     // Extras for Institution
     public static final String EXTRA_INSTITUTION_ID = "InstitutionId";
+    public static final String EXTRA_INSTITUTION_NAME = "InstitutioName";
+    public static final String EXTRA_INSTITUTION_RESPONSIBLE = "InstitutionResponsible";
+    public static final String EXTRA_INSTITUTION_BIRTHDAY = "InstitutionBirthday";
+    public static final String EXTRA_INSTITUTION_MISSION = "InstitutionMission";
     public static final String EXTRA_INSTITUTION_USER = "InstitutionUser";
 }

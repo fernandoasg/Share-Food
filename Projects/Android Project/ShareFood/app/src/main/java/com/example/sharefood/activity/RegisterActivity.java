@@ -128,17 +128,17 @@ public class RegisterActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     final String userId = firebaseAuth.getCurrentUser().getUid();
 
-                    User newUser = new User(userId, nome, email, userType);
+                    boolean giver = userType.equals("Doador");
                     SessionManager sessionManager = new SessionManager(RegisterActivity.this);
-                    sessionManager.createRegisterSession(newUser.getuId(), newUser.getNome(), newUser.getEmail(), newUser.getUserType());
+                    sessionManager.createRegisterSession(userId, nome, email, giver);
 
                     firestore = FirebaseFirestore.getInstance();
                     // Cria um documento com o UserId e pega a referência para aquele documento
                     DocumentReference documentReference = firestore.collection("users").document(userId);
                     Map<String, Object> user = new HashMap<>();
-                    user.put("name", newUser.getNome());
-                    user.put("email", newUser.getEmail());
-                    user.put("type", newUser.getUserType());
+                    user.put("name", nome);
+                    user.put("email", email);
+                    user.put("giver", giver);
                     user.put("info", false);
 
                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {

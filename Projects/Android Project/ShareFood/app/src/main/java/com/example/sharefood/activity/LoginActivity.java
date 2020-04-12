@@ -14,11 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
-import com.example.sharefood.entity.User;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,8 +24,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -125,14 +121,14 @@ public class LoginActivity extends AppCompatActivity {
                                     String nome = documentSnapshot.getString("name");
                                     System.out.println(nome);
                                     String email = documentSnapshot.getString("email");
-                                    String type = documentSnapshot.getString("type");
+                                    boolean giver = documentSnapshot.getBoolean("giver");
                                     boolean info = documentSnapshot.getBoolean("info");
 
                                     SessionManager sessionManager = new SessionManager(LoginActivity.this);
-                                    sessionManager.createLoginSession(userId, nome, email, type, info);
+                                    sessionManager.createLoginSession(userId, nome, email, giver, info);
 
                                     if(info){
-                                        if(sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador")){
+                                        if(sessionManager.isGiver()){
                                             boolean ehFisica = documentSnapshot.getBoolean("physical");
                                             String document = "";
                                             if(ehFisica)

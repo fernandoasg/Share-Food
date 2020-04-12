@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.MissingFormatArgumentException;
-
 public class SessionManager {
 
     private SharedPreferences sharedPreferences;
@@ -28,7 +26,7 @@ public class SessionManager {
     public static final String USER_LOGGED = "LoggedUser";
     public static final String USER_LATITUDE = "UserLatitude";
     public static final String USER_LONGITUDE = "UserLongitude";
-    public static final String USER_TYPE = "UserType";
+    public static final String USER_GIVER = "UserGiver";
     public static final String USER_TYPE_INFO_SETTED = "UserTypeInfoSetted";
 
     public SessionManager(Context context){
@@ -37,21 +35,21 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createRegisterSession(String userId, String userEmail, String userName, String userType){
+    public void createRegisterSession(String userId, String userEmail, String userName, boolean userGiver){
         editor.putString(USER_ID, userId);
         editor.putString(USER_EMAIL, userEmail);
         editor.putString(USER_NAME, userName);
         editor.putBoolean(USER_LOGGED, true);
         editor.putBoolean(USER_TYPE_INFO_SETTED, false);
-        editor.putString(USER_TYPE, userType);
+        editor.putBoolean(USER_GIVER, userGiver);
         editor.commit();
     }
 
-    public void createLoginSession(String userId, String userEmail, String userName, String userType, boolean info){
+    public void createLoginSession(String userId, String userEmail, String userName, boolean userGiver, boolean info){
         editor.putString(USER_ID, userId);
         editor.putString(USER_EMAIL, userEmail);
         editor.putString(USER_NAME, userName);
-        editor.putString(USER_TYPE, userType);
+        editor.putBoolean(USER_GIVER, userGiver);
         editor.putBoolean(USER_TYPE_INFO_SETTED, info);
         editor.putBoolean(USER_LOGGED, true);
         editor.commit();
@@ -59,6 +57,10 @@ public class SessionManager {
 
     public String getUserId(){
         return sharedPreferences.getString(USER_ID, null);
+    }
+
+    public boolean isGiver(){
+        return sharedPreferences.getBoolean(USER_GIVER, false);
     }
 
     public String getSavedString(String id){

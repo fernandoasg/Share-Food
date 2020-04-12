@@ -12,20 +12,20 @@ import com.example.sharefood.R;
 
 public class InstitutionActivity extends AppCompatActivity {
 
-    TextView foodPostTitleText;
-    TextView foodPostTimeText;
-    TextView foodPostDateText;
-    TextView foodPostDescriptionText;
+    TextView institutionNameText;
+    TextView institutionResponsibleNameText;
+    TextView institutionBirthDateText;
+    TextView institutionMissionText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_post);
+        setContentView(R.layout.activity_institution);
 
-        foodPostTitleText = findViewById(R.id.institute_title);
-        foodPostTimeText = findViewById(R.id.food_post_time);
-        foodPostDateText = findViewById(R.id.food_institute_date);
-        foodPostDescriptionText = findViewById(R.id.institute_description);
+        institutionNameText = findViewById(R.id.institution_name_text);
+        institutionResponsibleNameText = findViewById(R.id.institution_responsible_name_text);
+        institutionBirthDateText = findViewById(R.id.institution_birth_date_text);
+        institutionMissionText = findViewById(R.id.institution_mission_text);
         getSupportActionBar().setElevation(0);
 
         ActionBar actionBar = getSupportActionBar();
@@ -35,19 +35,19 @@ public class InstitutionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if(intent.hasExtra(Constants.EXTRA_FOOD_POST_NAME)){
-            String foodPostTitle = intent.getStringExtra(Constants.EXTRA_FOOD_POST_NAME);
-            foodPostTitleText.setText(foodPostTitle);
-            setTitle(foodPostTitle);
+        if(intent.hasExtra(Constants.EXTRA_INSTITUTION_ID)){
+            String institutionName = intent.getStringExtra(Constants.EXTRA_INSTITUTION_NAME);
+            institutionNameText.setText(institutionName);
+            setTitle(institutionName);
 
-            String foodPostTime = intent.getStringExtra(Constants.EXTRA_FOOD_POST_TIME);
-            foodPostTimeText.setText(foodPostTime);
+            String institutionResponsibleName = intent.getStringExtra(Constants.EXTRA_INSTITUTION_RESPONSIBLE);
+            institutionResponsibleNameText.setText("Responsável: " + institutionResponsibleName);
 
-            String foodPostDate = intent.getStringExtra(Constants.EXTRA_FOOD_POST_DATE);
-            foodPostDateText.setText(foodPostDate);
+            String institutionBirthDate = intent.getStringExtra(Constants.EXTRA_INSTITUTION_BIRTHDAY);
+            institutionBirthDateText.setText("Fundada em: " + institutionBirthDate);
 
-            String foodPostDescription = intent.getStringExtra(Constants.EXTRA_FOOD_POST_DESCRIPTION);
-            foodPostDescriptionText.setText(foodPostDescription);
+            String institutionMission = intent.getStringExtra(Constants.EXTRA_INSTITUTION_MISSION);
+            institutionMissionText.setText(institutionMission);
         }
     }
 }

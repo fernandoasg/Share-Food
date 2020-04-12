@@ -20,7 +20,7 @@ import com.example.sharefood.entity.FoodStore;
 import com.example.sharefood.entity.Institution;
 import com.example.sharefood.entity.Message;
 
-@Database(entities = {FoodPost.class, FoodProduct.class, Message.class, Institution.class}, version = 7)
+@Database(entities = {FoodPost.class, FoodProduct.class, Message.class, Institution.class}, version = 8)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
@@ -75,10 +75,10 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
             foodPostDao.insert(new FoodPost("Instituição 4", "Descrição descrição descrioção descrição descrição descrição descrição",
                     null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, 0));
 
-            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
-            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
-            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
-            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", "10/12/2001", "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", "3/07/2010", "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", "5/01/2011", "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", "9/10/2005", "Ajudar o universo é a nossa missão", 0));
 
             return null;
         }

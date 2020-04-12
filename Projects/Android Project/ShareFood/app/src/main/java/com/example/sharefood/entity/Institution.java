@@ -19,6 +19,8 @@ public class Institution {
     @ColumnInfo(name = "mensagem_inicial")
     private String mensagemInicial;
     private String missao;
+    @ColumnInfo(name = "data_criacao")
+    private String dataCriacao;
 
     @ColumnInfo(name = "itens_aceitar")
     private String itensAceitar;
@@ -30,12 +32,12 @@ public class Institution {
 
     }
 
-    public Institution(String _nome, String _representante, String _cnpj, boolean _podeBuscar, String _mensagemInicial, int _usuarioFk){
+    public Institution(String _nome, String _representante, String _cnpj, String _nascimento, String _missao, int _usuarioFk){
         nome = _nome;
         representante = _representante;
         cnpj = _cnpj;
-        podeBuscar = _podeBuscar;
-        mensagemInicial = _mensagemInicial;
+        dataCriacao = _nascimento;
+        missao = _missao;
         usuarioFk = _usuarioFk;
     }
 
@@ -69,6 +71,14 @@ public class Institution {
 
     public void setMensagemInicial(String mensagemInicial) {
         this.mensagemInicial = mensagemInicial;
+    }
+
+    public String getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(String dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
     public void setUsuarioFk(int usuarioFk) {

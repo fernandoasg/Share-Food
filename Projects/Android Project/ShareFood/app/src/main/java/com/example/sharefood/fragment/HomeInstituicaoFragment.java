@@ -38,37 +38,40 @@ public class HomeInstituicaoFragment extends Fragment {
 
     EditText searchEditText;
     TextView noMatchFilterText;
-    InstitutionViewModel institutionViewModel;
+    FoodPostViewModel foodPostViewModel;
     RecyclerView recyclerView;
-    List<Institution> institutionList;
-    InstitutionAdapter recyclerAdapter;
+    List<FoodPost> foodPostsList;
+    FoodPostAdapter recyclerAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home_instituicao, container, false);
 
-        searchEditText = view.findViewById(R.id.search_edit_text);
-        noMatchFilterText = view.findViewById(R.id.messages_recycler_empty_text);
+        searchEditText = view.findViewById(R.id.search_food_edit_text);
+        noMatchFilterText = view.findViewById(R.id.message_food_recycler_empty_text);
 
-        recyclerView = view.findViewById(R.id.institutions_recycler_view);
+        recyclerView = view.findViewById(R.id.foods_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        institutionViewModel = ViewModelProviders.of(getActivity()).get(InstitutionViewModel.class);
+        foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
 
-        recyclerAdapter = new InstitutionAdapter();
+        recyclerAdapter = new FoodPostAdapter();
 
-        institutionList = new ArrayList<>();
-        institutionList = institutionViewModel.getAllInstitutions();
+        foodPostsList = new ArrayList<>();
+        foodPostsList = foodPostViewModel.getAllFoodPosts();
 
-        recyclerAdapter.setInstitutionList(institutionList);
-        recyclerAdapter.setOnItemClickListener(new InstitutionAdapter.OnItemClickListener() {
+        recyclerAdapter.setFoodPosts(foodPostsList);
+        recyclerAdapter.setOnItemClickListener(new FoodPostAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Institution institution) {
-                Intent intent = new Intent(getActivity(), InstitutionActivity.class);
-                intent.putExtra(Constants.EXTRA_INSTITUTION_ID, institution.getId());
-                intent.putExtra(Constants.EXTRA_INSTITUTION_USER, institution.getUsuarioFk());
+            public void onItemClick(FoodPost foodPost) {
+                Intent intent = new Intent(getActivity(), FoodPostActivity.class);
+                intent.putExtra(Constants.EXTRA_FOOD_POST_ID, foodPost.getId());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_NAME, foodPost.getTitulo());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_DESCRIPTION, foodPost.getDescricao());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_TIME, foodPost.getHorarioParaRetirar());
+                intent.putExtra(Constants.EXTRA_FOOD_POST_DATE, foodPost.getDataAberto());
                 startActivity(intent);
             }
         });
@@ -120,18 +123,18 @@ public class HomeInstituicaoFragment extends Fragment {
     }
 
     private void filter(String text) {
-        List<Institution> filteredInstitutions = new ArrayList<>();
+        List<FoodPost> filteredFoodPosts = new ArrayList<>();
 
         //looping through existing elements
-        for (Institution institution : institutionList) {
+        for (FoodPost foodPost : foodPostsList) {
             //if the existing elements contains the search input
-            if (institution.getMensagemInicial().toLowerCase().contains(text.toLowerCase())) {
+            if (foodPost.getTitulo().toLowerCase().contains(text.toLowerCase())) {
                 //adding the element to filtered list
-                filteredInstitutions.add(institution);
+                filteredFoodPosts.add(foodPost);
             }
         }
 
-        if(filteredInstitutions.size() == 0){
+        if(filteredFoodPosts.size() == 0){
             noMatchFilterText.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
         }else{
@@ -140,6 +143,6 @@ public class HomeInstituicaoFragment extends Fragment {
         }
 
         //calling a method of the adapter class and passing the filtered list
-        recyclerAdapter.filterList(filteredInstitutions);
+        recyclerAdapter.filterList(filteredFoodPosts);
     }
 }

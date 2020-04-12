@@ -24,6 +24,7 @@
         <activity android:name=".activity.FoodProductActivity" />
         <activity android:name=".activity.FoodStoreActivity" />
         <activity android:name=".activity.FoodPostActivity" />
+        <activity android:name=".activity.InstitutionActivity" />
         <activity
             android:name=".activity.CreateFoodPostActivity"
             android:parentActivityName=".activity.MainActivity"

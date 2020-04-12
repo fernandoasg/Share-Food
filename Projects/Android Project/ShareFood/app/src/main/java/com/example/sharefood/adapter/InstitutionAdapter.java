@@ -34,7 +34,7 @@ public class InstitutionAdapter extends RecyclerView.Adapter<InstitutionAdapter.
     public void onBindViewHolder(@NonNull InstitutionHolder holder, int position) {
         Institution institution = institutionList.get(position);
         holder.textViewTitle.setText(institution.getNome());
-        holder.textViewDescription.setText(institution.getMensagemInicial());
+        holder.textViewDescription.setText(institution.getMissao());
         holder.textViewDistance.setText("100m");
     }
 

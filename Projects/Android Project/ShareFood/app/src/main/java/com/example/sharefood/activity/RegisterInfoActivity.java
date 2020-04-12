@@ -3,11 +3,8 @@ package com.example.sharefood.activity;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.sharefood.R;
@@ -33,7 +30,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
         }
 
         sessionManager = new SessionManager(this);
-        if(sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador")){
+        if(sessionManager.isGiver()){
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
                     new InfoDoadorFragment()).commit();
         }else{
