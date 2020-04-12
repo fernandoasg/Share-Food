@@ -8,7 +8,7 @@
     tools:context=".activity.RegisterActivity">
 
     <TextView
-        android:id="@+id/app_name_text"
+        android:id="@+id/description_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -17,117 +17,9 @@
         android:textColor="@color/colorWhite"
         android:textSize="10pt"/>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <FrameLayout
+        android:id="@+id/main_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_name_text"
-        android:orientation="vertical"
-        android:background="@drawable/general_box">
-        <TextView
-            android:id="@+id/radio_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/app_name_text"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="Você é uma pessoa:"
-            android:textColor="@color/cinza"
-            android:textSize="9pt"/>
-
-        <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/radio_title_text"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="16dp"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/doador_radio_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/cinza"
-                android:textColor="@color/cinza"
-                android:checked="true"
-                android:textSize="9pt"
-                android:text="Física" />
-
-            <RadioButton
-                android:id="@+id/instituicao_radio_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:buttonTint="@color/cinza"
-                android:textColor="@color/cinza"
-                android:textSize="9pt"
-                android:text="Jurídica" />
-        </RadioGroup>
-
-
-        <EditText
-            android:id="@+id/cpf_cnpj_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="24dp"
-            android:background="@drawable/edit_text_no_color"
-            android:drawablePadding="10dp"
-            android:hint="CPF"
-            android:inputType="numberDecimal"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorAlmostWhite"
-            android:textSize="10pt" />
-
-        <EditText
-            android:id="@+id/phone_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="24dp"
-            android:background="@drawable/edit_text_no_color"
-            android:drawablePadding="10dp"
-            android:hint="Telefone"
-            android:inputType="numberDecimal"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorAlmostWhite"
-            android:textSize="10pt" />
-
-        <EditText
-            android:id="@+id/password_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/edit_text_no_color"
-            android:drawablePadding="10dp"
-            android:hint="Data de Fundação"
-            android:inputType="date"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorAlmostWhite"
-            android:textSize="10pt" />
-
-        <Button
-            android:id="@+id/save_info_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/password_edit_text"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/button_green_style"
-            android:layout_gravity="center"
-            android:paddingLeft="36dp"
-            android:paddingTop="8dp"
-            android:paddingRight="36dp"
-            android:paddingBottom="8dp"
-            android:text="SALVAR"
-            android:textColor="@color/colorWhite"
-            android:textSize="14pt" />
-    </LinearLayout>
+        android:layout_below="@+id/description_text"/>
 </RelativeLayout>

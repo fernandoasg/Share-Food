@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
@@ -19,21 +17,24 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.sharefood.Constants;
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
-import com.example.sharefood.back4app.UserParse;
 import com.example.sharefood.entity.User;
 import com.example.sharefood.viewmodel.UserViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -45,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView responseText;
 
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         final String nome = nomeEditText.getText().toString().trim();
         final String email = emailEditText.getText().toString().trim();
-        final String password = passwordEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
         final String userType;
         int selectedType = typeRadioGroup.getCheckedRadioButtonId();
 
@@ -124,13 +126,30 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    User newUser = new User(nome, email, password, userType);
-                    SessionManager sessionManager = new SessionManager(RegisterActivity.this);
-                    sessionManager.createSession(String.valueOf(newUser.getId()), newUser.getNome(), newUser.getEmail(), newUser.getUserType());
+                    final String userId = firebaseAuth.getCurrentUser().getUid();
 
-                    Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
-                    startActivity(intent);
-                    finishAffinity();
+                    User newUser = new User(userId, nome, email, userType);
+                    SessionManager sessionManager = new SessionManager(RegisterActivity.this);
+                    sessionManager.createRegisterSession(newUser.getuId(), newUser.getNome(), newUser.getEmail(), newUser.getUserType());
+
+                    firestore = FirebaseFirestore.getInstance();
+                    // Cria um documento com o UserId e pega a referência para aquele documento
+                    DocumentReference documentReference = firestore.collection("users").document(userId);
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("name", newUser.getNome());
+                    user.put("email", newUser.getEmail());
+                    user.put("type", newUser.getUserType());
+                    user.put("info", false);
+
+                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("TAG", "onSuccess: user profile is created for" + userId);
+                            Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }else{
                     System.out.println("Erro: " + task.getException());
                     try{

@@ -20,13 +20,12 @@ import com.example.sharefood.entity.FoodStore;
 import com.example.sharefood.entity.Institution;
 import com.example.sharefood.entity.Message;
 
-@Database(entities = {FoodPost.class, FoodStore.class, FoodProduct.class, Message.class, Institution.class}, version = 6)
+@Database(entities = {FoodPost.class, FoodProduct.class, Message.class, Institution.class}, version = 7)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
 
     public abstract FoodPostDao foodPostDao();
-    public abstract FoodStoreDao foodStoreDao();
     public abstract FoodProductDao foodProductDao();
     public abstract MessageDao messageDao();
     public abstract InstitutionDao institutionDao();
@@ -53,14 +52,12 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
         private FoodPostDao foodPostDao;
-        private FoodStoreDao foodStoreDao;
         private FoodProductDao foodProductDao;
         private MessageDao messageDao;
         private InstitutionDao institutionDao;
 
         private PopulateDbAsyncTask(ShareFoodDatabase db){
             foodPostDao = db.foodPostDao();
-            foodStoreDao = db.foodStoreDao();
             foodProductDao = db.foodProductDao();
             messageDao = db.messageDao();
             institutionDao = db.institutionDao();
@@ -77,6 +74,11 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
                     null, "03/01/2020", "Oferecemos almoços diariamente", 1, 2,  0, 0));
             foodPostDao.insert(new FoodPost("Instituição 4", "Descrição descrição descrioção descrição descrição descrição descrição",
                     null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, 0));
+
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
+            institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", false, "Ajudar o universo é a nossa missão", 0));
 
             return null;
         }

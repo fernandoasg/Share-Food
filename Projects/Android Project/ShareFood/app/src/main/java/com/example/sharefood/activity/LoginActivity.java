@@ -1,6 +1,7 @@
 package com.example.sharefood.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
+import com.example.sharefood.entity.User;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +28,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar loadingProgressBar;
 
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +118,54 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "Logado!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finishAffinity();
+                            firestore = FirebaseFirestore.getInstance();
+
+                            final String userId = firebaseAuth.getCurrentUser().getUid();
+
+                            final DocumentReference documentReference = firestore.collection("users").document(userId);
+                            documentReference.addSnapshotListener(LoginActivity.this, new EventListener<DocumentSnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                    String nome = documentSnapshot.getString("name");
+                                    System.out.println(nome);
+                                    String email = documentSnapshot.getString("email");
+                                    String type = documentSnapshot.getString("type");
+                                    boolean info = documentSnapshot.getBoolean("info");
+
+                                    SessionManager sessionManager = new SessionManager(LoginActivity.this);
+                                    sessionManager.createLoginSession(userId, nome, email, type, info);
+
+                                    if(info){
+                                        // TODO Pegar informações, pois já tenho
+                                        if(sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador")){
+                                            boolean ehFisica = documentSnapshot.getBoolean("physical");
+                                            String document = "";
+                                            if(ehFisica)
+                                                document = documentSnapshot.getString("cpf");
+                                            else
+                                                document = documentSnapshot.getString("cnpj");
+                                            String phone = documentSnapshot.getString("phone");
+
+                                            sessionManager.setDoadorInfo(ehFisica, document, phone);
+                                        }else{
+                                            String cnpj = documentSnapshot.getString("cnpj");
+                                            String responsible = documentSnapshot.getString("responsible");
+                                            String phone = documentSnapshot.getString("phone");
+                                            String birthday = documentSnapshot.getString("birthday");
+                                            String mission = documentSnapshot.getString("mission");
+
+                                            sessionManager.setInstituicaoInfo(cnpj, phone, responsible, birthday, mission);
+                                        }
+
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                        finishAffinity();
+                                    }else{
+                                        Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
                         }else{
                             System.out.println("Erro: " + task.getException());
                             try{

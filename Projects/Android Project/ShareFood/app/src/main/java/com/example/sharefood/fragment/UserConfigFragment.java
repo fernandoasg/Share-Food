@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.Constants;
 import com.example.sharefood.R;
+import com.example.sharefood.SessionManager;
 import com.example.sharefood.activity.LoginActivity;
 import com.example.sharefood.adapter.OptionsAdapter;
 import com.example.sharefood.entity.Options;
@@ -44,6 +45,8 @@ public class UserConfigFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getContext(), LoginActivity.class));
                 getActivity().finish();
+                SessionManager sessionManager = new SessionManager(getContext());
+                sessionManager.logout();
             }
         });
 

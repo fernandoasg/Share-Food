@@ -10,11 +10,12 @@ import android.widget.Button;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
+import com.example.sharefood.fragment.InfoDoadorFragment;
+import com.example.sharefood.fragment.InfoInstituicaoFragment;
 
 public class RegisterInfoActivity extends AppCompatActivity {
 
-    Button saveInfoButton;
-
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,26 +28,19 @@ public class RegisterInfoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        saveInfoButton = findViewById(R.id.save_info_button);
+        sessionManager = new SessionManager(this);
+        if(sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador")){
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
+                    new InfoDoadorFragment()).commit();
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
+                    new InfoInstituicaoFragment()).commit();
+        }
+    }
 
-        // TODO Criar fragmento para os tipos de usuários
-        // TODO Colocar o container para o fragmento no activity_register_info
-        // TODO Pegar o tipo e mostrar o fragmento certo
-
-        saveInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SessionManager sessionManager = new SessionManager(getApplicationContext());
-                if(sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador")){
-                    sessionManager.setDoadorInfo();
-                }else{
-                    sessionManager.setInstituicaoInfo();
-                }
-
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finishAffinity();
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        sessionManager.logout();
     }
 }

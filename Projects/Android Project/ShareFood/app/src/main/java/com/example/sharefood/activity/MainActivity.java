@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
 import com.example.sharefood.fragment.HomeDoadorFragment;
+import com.example.sharefood.fragment.HomeInstituicaoFragment;
+import com.example.sharefood.fragment.InfoDoadorFragment;
 import com.example.sharefood.fragment.MessagesFragment;
 import com.example.sharefood.fragment.UserConfigFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -44,8 +47,12 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
-                new HomeDoadorFragment()).commit();
+        SessionManager sessionManager = new SessionManager(this);
+
+        if (sessionManager.getSavedString(sessionManager.USER_TYPE).equals("Doador"))
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeDoadorFragment()).commit();
+        else
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeInstituicaoFragment()).commit();
 
         getLocationPermission();
         getDeviceLocation();

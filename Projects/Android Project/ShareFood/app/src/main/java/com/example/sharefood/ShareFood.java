@@ -1,6 +1,6 @@
 package com.example.sharefood;
 
-import com.parse.Parse;
+//import com.parse.Parse;
 import android.app.Application;
 
 public class ShareFood extends Application {
@@ -10,10 +10,10 @@ public class ShareFood extends Application {
     public void onCreate(){
         super.onCreate();
 
-        Parse.initialize(new Parse.Configuration.Builder(this)
+        /*Parse.initialize(new Parse.Configuration.Builder(this)
             .applicationId("zHDQHmaFTZv1kyAN0NuwRVikQP4rzE198yn6rntz")
             .clientKey("SAyvMub3LA2uq2gD9qjyRKllIJ6WenIqtEywVyHT")
             .server("https://parseapi.back4app.com")
-            .build());
+            .build());*/
     }
 }

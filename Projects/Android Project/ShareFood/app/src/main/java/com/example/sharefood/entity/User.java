@@ -3,17 +3,25 @@ package com.example.sharefood.entity;
 public class User {
 
     private int id;
+    public String uId;
     private String nome;
     private String email;
-    private String senha;
     private String userType;
     private int midiaFk;
 
-    public User(String nome, String email, String senha, String userType) {
+    public User(String uId, String nome, String email, String userType) {
+        this.uId = uId;
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
         this.userType = userType;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
     public void setId(int id) {
@@ -34,10 +42,6 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getSenha() {
-        return senha;
     }
 
     public String getUserType() {
