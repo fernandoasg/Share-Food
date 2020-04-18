@@ -20,23 +20,7 @@ public class FoodPostViewModel extends AndroidViewModel {
         super(application);
         repository = new FoodPostRepository(application);
         allFoodPosts = repository.getAllFoodPosts();
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
-        System.out.println(allFoodPosts.size());
+        allFoodPosts = repository.getAllFoodPosts();
     }
 
     public void insert(FoodPost foodPost){

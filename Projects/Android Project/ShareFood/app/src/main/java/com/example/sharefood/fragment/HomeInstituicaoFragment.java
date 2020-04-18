@@ -38,8 +38,9 @@ public class HomeInstituicaoFragment extends Fragment {
 
     EditText searchEditText;
     TextView noMatchFilterText;
-    FoodPostViewModel foodPostViewModel;
     RecyclerView recyclerView;
+
+    FoodPostViewModel foodPostViewModel;
     List<FoodPost> foodPostsList;
     FoodPostAdapter recyclerAdapter;
 

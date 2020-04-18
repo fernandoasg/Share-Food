@@ -6,7 +6,7 @@ public class Constants {
     public static final String USER_ID = "UserId";
     public static final String USER_NAME = "UserName";
     public static final String USER_EMAIL = "UserEmail";
-
+    public static final String USER_PROFILE_PHOTO_PATH = "UserProfilePhotoPath";
 
     // Extras for Food Post
     public static final String EXTRA_FOOD_POST_ID = "FoodPostId";

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
+import com.example.sharefood.viewmodel.InstitutionViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -51,8 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password_edit_text);
         responseText = findViewById(R.id.response_text);
         loadingProgressBar = findViewById(R.id.loading_progress_bar);
-
-        FoodPostViewModel foodPostViewModel = ViewModelProviders.of(this).get(FoodPostViewModel.class);
 
         // Getting current instance of the database
         firebaseAuth = FirebaseAuth.getInstance();
@@ -125,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                                     boolean info = documentSnapshot.getBoolean("info");
 
                                     SessionManager sessionManager = new SessionManager(LoginActivity.this);
-                                    sessionManager.createLoginSession(userId, nome, email, giver, info);
+                                    sessionManager.createLoginSession(userId, email, nome, giver, info);
 
                                     if(info){
                                         if(sessionManager.isGiver()){

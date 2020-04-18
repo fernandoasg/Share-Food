@@ -23,6 +23,9 @@ public interface InstitutionDao {
     @Delete
     void delete(Institution institution);
 
+    @Query("DELETE FROM institution_table WHERE cnpj = :cnpj")
+    void deleteWithCnpj(String cnpj);
+
     @Query("SELECT * FROM institution_table ORDER BY id DESC")
     List<Institution> getAllInstitutions();
 }

@@ -5,8 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
+import androidx.navigation.NavInflater;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -16,7 +23,7 @@ import android.view.MenuItem;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
-import com.example.sharefood.fragment.HomeDoadorFragment;
+import com.example.sharefood.fragment.HomeFragment;
 import com.example.sharefood.fragment.HomeInstituicaoFragment;
 import com.example.sharefood.fragment.MessagesFragment;
 import com.example.sharefood.fragment.UserConfigFragment;
@@ -29,12 +36,17 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private FusedLocationProviderClient client;
     private Boolean mLocationPermissionGranted = false;
 
+    NavHostFragment navHostFragment;
+    NavInflater inflater;
+    NavGraph navGraph;
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +56,19 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
 
         SessionManager sessionManager = new SessionManager(this);
 
-        if (sessionManager.isGiver())
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeDoadorFragment()).commit();
+        //Navigation.findNavController(navHostFragment.getView()).navigate(R.id.homeDoadorFragment);
+        NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.getNavController());
+       // navController.naviga(R.id.homeDoadorFragment);
+        /*if (sessionManager.isGiver())
+            NavHostFragment.findNavController(Fragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeFragment()).commit();
         else
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeInstituicaoFragment()).commit();
-
+*/
         getLocationPermission();
         getDeviceLocation();
     }
@@ -150,22 +167,19 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
 
                     switch (menuItem.getItemId()){
-                        case R.id.nav_home:
-                            selectedFragment = new HomeDoadorFragment();
+                        case R.id.homeDoadorFragment:
+                            selectedFragment = new HomeFragment();
                             break;
-//                        case R.id.nav_store:
-//                            selectedFragment = new VendasFragment();
-//                            break;
-                        case R.id.nav_messages:
+                        case R.id.messagesFragment:
                             selectedFragment = new MessagesFragment();
                             break;
-                        case R.id.nav_user_options:
+                        case R.id.userConfigFragment:
                             selectedFragment = new UserConfigFragment();
                             break;
                     }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
-                            selectedFragment).commit();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,selectedFragment).commit();
+                    //Navigation.findNavController(navHostFragment.getView()).navigate(selectedFragment.getId();
 
                     return true;
                 }

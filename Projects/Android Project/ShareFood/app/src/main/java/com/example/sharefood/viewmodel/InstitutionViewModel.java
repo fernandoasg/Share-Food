@@ -6,9 +6,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.sharefood.entity.FoodProduct;
 import com.example.sharefood.entity.Institution;
-import com.example.sharefood.repository.FoodProductRepository;
 import com.example.sharefood.repository.InstitutionRepository;
 
 import java.util.List;
@@ -25,7 +23,9 @@ public class InstitutionViewModel extends AndroidViewModel {
     }
 
     public void insert(Institution institution){
+        System.out.println("OLHA EU AAQUI NA InstitutionViewModel");
         repository.insert(institution);
+        allInstitutions = repository.getAllInstitutions();
     }
 
     public void update(Institution institution){
@@ -36,7 +36,20 @@ public class InstitutionViewModel extends AndroidViewModel {
         repository.delete(institution);
     }
 
+    public void deleteAll(){
+        for(Institution i : allInstitutions)
+            delete(i);
+    }
+
+    public void deleteWithCnpj(String cnpj){
+        repository.deleteWithCnpj(cnpj);
+    }
+
     public List<Institution> getAllInstitutions(){
         return allInstitutions;
+    }
+
+    public int getAllInstitutionsAmount(){
+        return allInstitutions.size();
     }
 }

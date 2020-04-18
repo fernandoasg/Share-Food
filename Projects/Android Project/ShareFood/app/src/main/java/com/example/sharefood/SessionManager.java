@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import static com.example.sharefood.Constants.USER_PROFILE_PHOTO_PATH;
+
 public class SessionManager {
 
     private SharedPreferences sharedPreferences;
@@ -28,6 +30,7 @@ public class SessionManager {
     public static final String USER_LONGITUDE = "UserLongitude";
     public static final String USER_GIVER = "UserGiver";
     public static final String USER_TYPE_INFO_SETTED = "UserTypeInfoSetted";
+    public static final String USER_LOCAL_IMAGE = "UserLocalImage";
 
     public SessionManager(Context context){
         this.context = context;
@@ -70,6 +73,7 @@ public class SessionManager {
     public void setUserLocation(double latitude, double longitude){
         editor.putFloat(USER_LATITUDE, (float)latitude);
         editor.putFloat(USER_LONGITUDE, (float)longitude);
+        editor.commit();
     }
 
     public void setDoadorInfo(boolean fisica, String document, String phone){
@@ -77,8 +81,8 @@ public class SessionManager {
         editor.putString(USER_DOCUMENT, document);
         editor.putString(USER_PHONE, phone);
         editor.putBoolean(USER_TYPE_INFO_SETTED, true);
+        editor.commit();
     }
-
 
     public void setInstituicaoInfo(String cnpj, String phone, String responsible, String date, String mission){
         editor.putString(USER_DOCUMENT, cnpj);
@@ -87,6 +91,7 @@ public class SessionManager {
         editor.putString(INSTITUTE_DATE, date);
         editor.putString(INSTITUTE_MISSION, mission);
         editor.putBoolean(USER_TYPE_INFO_SETTED, true);
+        editor.commit();
     }
 
     public boolean isLogged(){
@@ -95,6 +100,12 @@ public class SessionManager {
 
     public boolean registerIsCompleted(){
         return sharedPreferences.getBoolean(USER_TYPE_INFO_SETTED, false);
+    }
+
+    public void setProfileImagePath(String path){
+        editor.putString(USER_PROFILE_PHOTO_PATH, path);
+        editor.commit();
+        System.out.println("Setei  " + path);
     }
 
     public void logout(){

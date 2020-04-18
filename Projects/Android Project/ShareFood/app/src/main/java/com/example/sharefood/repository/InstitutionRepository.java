@@ -4,9 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import com.example.sharefood.ShareFoodDatabase;
-import com.example.sharefood.dao.FoodProductDao;
 import com.example.sharefood.dao.InstitutionDao;
-import com.example.sharefood.entity.FoodProduct;
 import com.example.sharefood.entity.Institution;
 
 import java.util.List;
@@ -23,6 +21,7 @@ public class InstitutionRepository {
     }
 
     public void insert(Institution institution){
+
         new InsertInstitutionAsyncTask(institutionDao).execute(institution);
     }
 
@@ -32,6 +31,10 @@ public class InstitutionRepository {
 
     public void delete(Institution institution){
         new DeleteInstitutionAsyncTask(institutionDao).execute(institution);
+    }
+
+    public void deleteWithCnpj(String cnpj){
+        new DeleteInstitutionWithCnpjAsyncTask(institutionDao).execute(cnpj);
     }
 
     public List<Institution> getAllInstitutions(){
@@ -81,6 +84,20 @@ public class InstitutionRepository {
         @Override
         protected Void doInBackground(Institution... institutions) {
             institutionDao.delete(institutions[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteInstitutionWithCnpjAsyncTask extends AsyncTask<String, Void, Void>{
+
+        private InstitutionDao institutionDao;
+        private DeleteInstitutionWithCnpjAsyncTask(InstitutionDao institutionDao){
+            this.institutionDao = institutionDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            institutionDao.deleteWithCnpj(strings[0]);
             return null;
         }
     }

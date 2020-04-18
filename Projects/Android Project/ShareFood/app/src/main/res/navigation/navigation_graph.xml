@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeDoadorFragment">
+
+    <fragment
+        android:id="@+id/homeDoadorFragment"
+        android:name="com.example.sharefood.fragment.HomeFragment"
+        android:label="HomeDoadorFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeDoadorFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_homeDoadorFragment_to_userConfigFragment2"
+            app:destination="@id/userConfigFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.example.sharefood.fragment.MessagesFragment"
+        android:label="MessagesFragment"
+        tools:layout="@layout/fragment_mensagens">
+        <action
+            android:id="@+id/action_messagesFragment_to_userConfigFragment"
+            app:destination="@id/userConfigFragment" />
+        <action
+            android:id="@+id/action_messagesFragment_to_homeDoadorFragment"
+            app:destination="@id/homeDoadorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userConfigFragment"
+        android:name="com.example.sharefood.fragment.UserConfigFragment"
+        android:label="UserConfigFragment"
+        tools:layout="@layout/fragment_user_config">
+        <action
+            android:id="@+id/action_userConfigFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_userConfigFragment_to_homeDoadorFragment"
+            app:destination="@id/homeDoadorFragment" />
+    </fragment>
+</navigation>
