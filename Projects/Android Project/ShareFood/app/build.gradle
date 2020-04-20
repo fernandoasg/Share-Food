@@ -6,6 +6,11 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.isharefood.sharefood"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
         minSdkVersion 16
         multiDexEnabled true
         targetSdkVersion 29

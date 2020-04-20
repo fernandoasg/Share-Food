@@ -39,7 +39,9 @@ public class FoodPost {
 
     private int midia;
 
-    public FoodPost(String titulo, String descricao, String dataVencimento, String dataAberto, String horarioParaRetirar, double longitude, double latitude, int usuarioOrigemFk, int midia) {
+    private String imageUrl;
+
+    public FoodPost(String titulo, String descricao, String dataVencimento, String dataAberto, String horarioParaRetirar, double longitude, double latitude, int usuarioOrigemFk, String url) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataVencimento = dataVencimento;
@@ -48,7 +50,11 @@ public class FoodPost {
         this.longitude = longitude;
         this.latitude = latitude;
         this.usuarioOrigemFk = usuarioOrigemFk;
-        this.midia = midia;
+        this.imageUrl = url;
+    }
+
+    public FoodPost(){
+
     }
 
     public void setId(int id) {
@@ -117,5 +123,49 @@ public class FoodPost {
 
     public void setUsuarioDestinoFk(int usuarioDestinoFk) {
         this.usuarioDestinoFk = usuarioDestinoFk;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setHorarioParaRetirar(String horarioParaRetirar) {
+        this.horarioParaRetirar = horarioParaRetirar;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setDataVencimento(String dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public void setDataAberto(String dataAberto) {
+        this.dataAberto = dataAberto;
+    }
+
+    public void setUsuarioOrigemFk(int usuarioOrigemFk) {
+        this.usuarioOrigemFk = usuarioOrigemFk;
+    }
+
+    public void setMidia(int midia) {
+        this.midia = midia;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -130,59 +130,64 @@ public class LoginActivity extends AppCompatActivity {
                             documentReference.addSnapshotListener(LoginActivity.this, new EventListener<DocumentSnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                    String nome = documentSnapshot.getString("name");
-                                    System.out.println(documentSnapshot.getData());
-                                    final String email = documentSnapshot.getString("email");
-                                    boolean giver = documentSnapshot.getBoolean("giver");
-                                    boolean info = documentSnapshot.getBoolean("info");
+                                    System.out.println("documentSnapshot: " + documentSnapshot.getData());
+                                    if(documentSnapshot.getData() != null){
+                                        String nome = documentSnapshot.getString("name");
+                                        final String email = documentSnapshot.getString("email");
+                                        boolean giver = documentSnapshot.getBoolean("giver");
+                                        boolean info = documentSnapshot.getBoolean("info");
 
-                                    final SessionManager sessionManager = new SessionManager(LoginActivity.this);
-                                    sessionManager.createLoginSession(userId, email, nome, giver, info);
+                                        final SessionManager sessionManager = new SessionManager(LoginActivity.this);
+                                        sessionManager.createLoginSession(userId, email, nome, giver, info);
 
-                                    if(info){
-                                        if(documentSnapshot.getData().containsKey("imageUrl")){
-                                            String imageUrl = documentSnapshot.getString("imageUrl");
-                                            sessionManager.setImageUrl(imageUrl);
+                                        if(info){
+                                            if(documentSnapshot.getData().containsKey("imageUrl")){
+                                                String imageUrl = documentSnapshot.getString("imageUrl");
+                                                sessionManager.setImageUrl(imageUrl);
 
-                                            Bitmap bitmap = null;
-                                            try {
-                                                bitmap = new DownloadImage().execute(imageUrl).get();
-                                                String url = ImageUtil.saveToInternalStorage(LoginActivity.this, bitmap, email);
-                                                sessionManager.setProfileImagePath(url);
-                                            } catch (ExecutionException ex) {
-                                                ex.printStackTrace();
-                                            } catch (InterruptedException ex) {
-                                                ex.printStackTrace();
+                                                Bitmap bitmap = null;
+                                                try {
+                                                    bitmap = new DownloadImage().execute(imageUrl).get();
+                                                    String url = ImageUtil.saveToInternalStorage(LoginActivity.this, bitmap, email);
+                                                    sessionManager.setProfileImagePath(url);
+                                                } catch (ExecutionException ex) {
+                                                    ex.printStackTrace();
+                                                } catch (InterruptedException ex) {
+                                                    ex.printStackTrace();
+                                                }
                                             }
-                                        }
 
-                                        if(sessionManager.isGiver()){
-                                            boolean ehFisica = documentSnapshot.getBoolean("physical");
-                                            String document = "";
-                                            if(ehFisica)
-                                                document = documentSnapshot.getString("cpf");
-                                            else
-                                                document = documentSnapshot.getString("cnpj");
-                                            String phone = documentSnapshot.getString("phone");
+                                            if(sessionManager.isGiver()){
+                                                boolean ehFisica = documentSnapshot.getBoolean("physical");
+                                                String document = "";
+                                                if(ehFisica)
+                                                    document = documentSnapshot.getString("cpf");
+                                                else
+                                                    document = documentSnapshot.getString("cnpj");
+                                                String phone = documentSnapshot.getString("phone");
 
-                                            sessionManager.setDoadorInfo(ehFisica, document, phone);
+                                                sessionManager.setDoadorInfo(ehFisica, document, phone);
+                                            }else{
+                                                String cnpj = documentSnapshot.getString("cnpj");
+                                                String responsible = documentSnapshot.getString("responsible");
+                                                String phone = documentSnapshot.getString("phone");
+                                                String birthday = documentSnapshot.getString("birthday");
+                                                String mission = documentSnapshot.getString("mission");
+
+                                                sessionManager.setInstituicaoInfo(cnpj, phone, responsible, birthday, mission);
+                                            }
+
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                            finishAffinity();
                                         }else{
-                                            String cnpj = documentSnapshot.getString("cnpj");
-                                            String responsible = documentSnapshot.getString("responsible");
-                                            String phone = documentSnapshot.getString("phone");
-                                            String birthday = documentSnapshot.getString("birthday");
-                                            String mission = documentSnapshot.getString("mission");
-
-                                            sessionManager.setInstituicaoInfo(cnpj, phone, responsible, birthday, mission);
+                                            Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
+                                            startActivity(intent);
                                         }
-
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
-                                        finishAffinity();
                                     }else{
-                                        Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
-                                        startActivity(intent);
+                                        //responseText.setText("Erro interno. Tente novamente");
                                     }
+
                                 }
                             });
                         }else{

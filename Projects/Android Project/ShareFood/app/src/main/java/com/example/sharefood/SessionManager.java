@@ -81,6 +81,14 @@ public class SessionManager {
         editor.commit();
     }
 
+    public double getLatitude(){
+        return sharedPreferences.getFloat(USER_LATITUDE, 0);
+    }
+
+    public double getLongitude(){
+        return sharedPreferences.getFloat(USER_LONGITUDE, 0);
+    }
+
     public void setDoadorInfo(boolean fisica, String document, String phone){
         editor.putBoolean(USER_FISICA, fisica);
         editor.putString(USER_DOCUMENT, document);

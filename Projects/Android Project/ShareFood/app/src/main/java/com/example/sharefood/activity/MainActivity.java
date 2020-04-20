@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
                             Location currentLocation = (Location) task.getResult();
                             double latitude = currentLocation.getLatitude();
                             double longitude = currentLocation.getLongitude();
-                            System.out.println("Latitude:"+Double.toString(latitude));
-                            System.out.println("Longitude:"+Double.toString(longitude));
+                            System.out.println("Latitude: " + latitude);
+                            System.out.println("Longitude: " + longitude);
                             SessionManager sessionManager = new SessionManager(getApplicationContext());
                             sessionManager.setUserLocation(latitude, longitude);
                         }else{

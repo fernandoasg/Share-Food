@@ -2,6 +2,7 @@ package com.example.sharefood.adapter;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import com.example.sharefood.activity.SharedFoodActivity;
 import com.example.sharefood.entity.Options;
 import com.example.sharefood.util.ImageUtil;
 
+import java.io.File;
+import java.net.URI;
 import java.util.ArrayList;
 
 public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHolder> {
@@ -80,7 +83,6 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
             if(whereToOpen.equals("Profile")){
                 if(imagePath != null){
                     Bitmap profileBitmap = ImageUtil.loadImageFromStorage(imagePath, email);
-                    System.out.println("Meu deus setou aqui olha só");
                     image.setImageBitmap(profileBitmap);
                 }else
                     image.setImageResource(R.drawable.ic_person_black_24dp);
