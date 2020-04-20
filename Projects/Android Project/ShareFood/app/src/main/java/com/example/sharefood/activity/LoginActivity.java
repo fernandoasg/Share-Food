@@ -221,7 +221,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     
-    private static class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+    public static class DownloadImage extends AsyncTask<String, Void, Bitmap> {
 
         @Override
         protected Bitmap doInBackground(String... strings) {

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 10,
-    "identityHash": "c8c545cc8627617c9f4af470b5112b1c",
+    "identityHash": "87e0104e10c5828f49fc13e1e224c6da",
     "entities": [
       {
         "tableName": "food_post_table",
@@ -210,7 +210,7 @@
       },
       {
         "tableName": "institution_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `representante` TEXT, `cnpj` TEXT, `pode_buscar` INTEGER NOT NULL, `mensagem_inicial` TEXT, `missao` TEXT, `data_criacao` TEXT, `itens_aceitar` TEXT, `usuario_fk` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `representante` TEXT, `cnpj` TEXT, `pode_buscar` INTEGER NOT NULL, `mensagem_inicial` TEXT, `missao` TEXT, `data_criacao` TEXT, `itens_aceitar` TEXT, `usuario_fk` INTEGER NOT NULL, `imageUrl` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -271,6 +271,12 @@
             "columnName": "usuario_fk",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "imageUrl",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -285,7 +291,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c8c545cc8627617c9f4af470b5112b1c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"87e0104e10c5828f49fc13e1e224c6da\")"
     ]
   }
 }

@@ -5,6 +5,7 @@ import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.widget.ImageView;
 
 import com.example.sharefood.R;
@@ -14,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ImageUtil {
 
@@ -76,6 +78,22 @@ public class ImageUtil {
         {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            InputStream inputStream = null;
+            Bitmap bitmap = null;
+            try {
+                inputStream = new java.net.URL(strings[0]).openStream();
+                bitmap = BitmapFactory.decodeStream(inputStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bitmap;
         }
     }
 }

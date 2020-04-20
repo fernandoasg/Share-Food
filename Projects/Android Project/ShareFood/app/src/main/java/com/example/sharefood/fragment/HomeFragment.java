@@ -1,6 +1,7 @@
 package com.example.sharefood.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,6 +30,7 @@ import com.example.sharefood.adapter.FoodPostAdapter;
 import com.example.sharefood.adapter.InstitutionAdapter;
 import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.entity.Institution;
+import com.example.sharefood.util.ImageUtil;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 import com.example.sharefood.viewmodel.InstitutionViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +41,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class HomeFragment extends Fragment {
 
@@ -195,7 +198,22 @@ public class HomeFragment extends Fragment {
                                 String cnpj = document.getString("cnpj");
                                 String birthday = document.getString("birthday");
                                 String mission = document.getString("mission");
-                                institutionViewModel.insert(new Institution(name, responsible, cnpj, birthday, mission, 0));
+
+                                String url = null;
+                                if(document.getData().containsKey("imageUrl")){
+                                    String imageUrl = document.getString("imageUrl");
+
+                                    Bitmap bitmap = null;
+                                    try {
+                                        bitmap = new ImageUtil.DownloadImage().execute(imageUrl).get();
+                                        url = ImageUtil.saveToInternalStorage(getContext(), bitmap, name);
+                                    } catch (ExecutionException ex) {
+                                        ex.printStackTrace();
+                                    } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
+                                institutionViewModel.insert(new Institution(name, responsible, cnpj, birthday, mission, 0, url));
                             }
                             showInstitutions();
                         }else{
@@ -222,6 +240,7 @@ public class HomeFragment extends Fragment {
                 intent.putExtra(Constants.EXTRA_INSTITUTION_BIRTHDAY, institution.getDataCriacao());
                 intent.putExtra(Constants.EXTRA_INSTITUTION_MISSION, institution.getMissao());
                 intent.putExtra(Constants.EXTRA_INSTITUTION_USER, institution.getUsuarioFk());
+                intent.putExtra(Constants.EXTRA_INSTITUTION_PHOTO_PATH, institution.getImageUrl());
                 startActivity(intent);
             }
         });

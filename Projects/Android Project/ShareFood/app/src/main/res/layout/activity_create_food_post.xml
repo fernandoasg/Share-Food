@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_no_color"
             android:layout_marginTop="16dp"
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
             android:hint="@string/food_post_description_hint"
             android:paddingLeft="8dp"/>
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_no_color"
             android:layout_marginTop="16dp"
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
             android:hint="@string/horario_para_retirar"
             android:paddingLeft="8dp"/>
 

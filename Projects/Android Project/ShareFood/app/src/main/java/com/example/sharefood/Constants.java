@@ -38,4 +38,5 @@ public class Constants {
     public static final String EXTRA_INSTITUTION_BIRTHDAY = "InstitutionBirthday";
     public static final String EXTRA_INSTITUTION_MISSION = "InstitutionMission";
     public static final String EXTRA_INSTITUTION_USER = "InstitutionUser";
+    public static final String EXTRA_INSTITUTION_PHOTO_PATH = "InstitutionPhotoPath";
 }

@@ -1,5 +1,6 @@
 package com.example.sharefood.adapter;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sharefood.R;
 import com.example.sharefood.entity.FoodPost;
 import com.example.sharefood.entity.Institution;
+import com.example.sharefood.util.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class InstitutionAdapter extends RecyclerView.Adapter<InstitutionAdapter.
         holder.textViewTitle.setText(institution.getNome());
         holder.textViewDescription.setText(institution.getMissao());
         holder.textViewDistance.setText("100m");
+        holder.setImage(institution.getImageUrl(), institution.getNome());
     }
 
     @Override
@@ -70,6 +73,14 @@ public class InstitutionAdapter extends RecyclerView.Adapter<InstitutionAdapter.
                     }
                 }
             });
+        }
+
+        void setImage(String imagePath, String name){
+            if(imagePath != null){
+                Bitmap profileBitmap = ImageUtil.loadImageFromStorage(imagePath, name);
+                instituteImage.setImageBitmap(profileBitmap);
+            }else
+                instituteImage.setImageResource(R.drawable.ic_inst_black_24dp);
         }
     }
 

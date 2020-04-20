@@ -28,17 +28,20 @@ public class Institution {
     @ColumnInfo(name = "usuario_fk")
     private int usuarioFk;
 
+    private String imageUrl;
+
     public Institution(){
 
     }
 
-    public Institution(String _nome, String _representante, String _cnpj, String _nascimento, String _missao, int _usuarioFk){
+    public Institution(String _nome, String _representante, String _cnpj, String _nascimento, String _missao, int _usuarioFk, String _imageUrl){
         nome = _nome;
         representante = _representante;
         cnpj = _cnpj;
         dataCriacao = _nascimento;
         missao = _missao;
         usuarioFk = _usuarioFk;
+        imageUrl = _imageUrl;
     }
 
     public void setId(int id) {
@@ -119,6 +122,14 @@ public class Institution {
 
     public int getUsuarioFk() {
         return usuarioFk;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
 
