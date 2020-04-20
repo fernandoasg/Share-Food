@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -17,9 +21,11 @@ import android.widget.TextView;
 
 import com.example.sharefood.R;
 import com.example.sharefood.SessionManager;
+import com.example.sharefood.util.ImageUtil;
 import com.example.sharefood.viewmodel.FoodPostViewModel;
 import com.example.sharefood.viewmodel.InstitutionViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +36,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -118,15 +131,31 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                                     String nome = documentSnapshot.getString("name");
-                                    System.out.println(nome);
-                                    String email = documentSnapshot.getString("email");
+                                    System.out.println(documentSnapshot.getData());
+                                    final String email = documentSnapshot.getString("email");
                                     boolean giver = documentSnapshot.getBoolean("giver");
                                     boolean info = documentSnapshot.getBoolean("info");
 
-                                    SessionManager sessionManager = new SessionManager(LoginActivity.this);
+                                    final SessionManager sessionManager = new SessionManager(LoginActivity.this);
                                     sessionManager.createLoginSession(userId, email, nome, giver, info);
 
                                     if(info){
+                                        if(documentSnapshot.getData().containsKey("imageUrl")){
+                                            String imageUrl = documentSnapshot.getString("imageUrl");
+                                            sessionManager.setImageUrl(imageUrl);
+
+                                            Bitmap bitmap = null;
+                                            try {
+                                                bitmap = new DownloadImage().execute(imageUrl).get();
+                                                String url = ImageUtil.saveToInternalStorage(LoginActivity.this, bitmap, email);
+                                                sessionManager.setProfileImagePath(url);
+                                            } catch (ExecutionException ex) {
+                                                ex.printStackTrace();
+                                            } catch (InterruptedException ex) {
+                                                ex.printStackTrace();
+                                            }
+                                        }
+
                                         if(sessionManager.isGiver()){
                                             boolean ehFisica = documentSnapshot.getBoolean("physical");
                                             String document = "";
@@ -185,5 +214,21 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    
+    private static class DownloadImage extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            InputStream inputStream = null;
+            Bitmap bitmap = null;
+            try {
+                inputStream = new java.net.URL(strings[0]).openStream();
+                bitmap = BitmapFactory.decodeStream(inputStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
     }
 }

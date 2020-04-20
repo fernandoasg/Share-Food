@@ -63,11 +63,12 @@ public class UserConfigFragment extends Fragment {
     }
 
     private void GenerateOptions(){
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences(Constants.SHARED_PREFS, MODE_PRIVATE);
-        String userName = sharedPreferences.getString(Constants.USER_NAME, "Nome do Usuário");
-        String userEmail = sharedPreferences.getString(Constants.USER_EMAIL, "email@gmail.com");
+        SessionManager sessionManager = new SessionManager(getContext());
+        String profileLocalPath = sessionManager.getSavedString(Constants.USER_PROFILE_PHOTO_PATH);
+        String userName = sessionManager.getSavedString(Constants.USER_NAME);
+        String userEmail = sessionManager.getSavedString(Constants.USER_EMAIL);
 
-        Options opcao0 = new Options(userName, userEmail, "perfil", "Profile");
+        Options opcao0 = new Options(userName, userEmail, profileLocalPath, "Profile");
         Options opcao1 =  new Options("Alimentos Compartilhados", null, "compartilhado", "SharedFood");
         //Options opcao3 = new Options("Configurações", null, "configuracao", "Configuration");
 

@@ -26,20 +26,33 @@ import com.example.sharefood.util.ImageUtil;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.net.Uri.*;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    // User info fields
     private ImageView userProfileChangeImage;
     private TextView userProfileName;
     private TextView userEmailText;
+
+    // User Address fields
+    private EditText cepEditText;
+    private EditText logradouroEditText;
+    private EditText numeroEditText;
+    private EditText estadoEditText;
+    private EditText cidadeEditText;
+    private EditText complementoEditText;
 
     StorageReference storageReference;
     private Uri igmUri;
@@ -110,7 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            userProfileChangeImage.setImageBitmap(bitmap);
+            //userProfileChangeImage.setImageBitmap(bitmap);
             userProfileChangeImage.setImageURI(igmUri);
             UploadImage();
         }
@@ -127,7 +140,24 @@ public class ProfileActivity extends AppCompatActivity {
                         Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                         while (!urlTask.isSuccessful());
 
-                        Uri downloadUrl = urlTask.getResult();
+                        final Uri downloadUrl = urlTask.getResult();
+
+                        // Map para salvar o url
+                        Map<String, Object> info = new HashMap<>();
+                        info.put("imageUrl", downloadUrl.toString());
+
+                        // Salva o url no documento do usuário atual
+                        FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
+                        String userId = sessionManager.getUserId();
+                        fireStore.collection("users").document(userId)
+                        .set(info, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                sessionManager.setImageUrl(downloadUrl.toString());
+                                System.out.println("salvou");
+                            }
+                        });
+
                         System.out.println(downloadUrl);
                         Toast.makeText(ProfileActivity.this, "A imagem foi salva com sucesso.", Toast.LENGTH_SHORT).show();
                     }

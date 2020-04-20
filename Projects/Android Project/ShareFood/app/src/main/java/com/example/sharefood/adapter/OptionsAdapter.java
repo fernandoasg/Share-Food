@@ -1,6 +1,7 @@
 package com.example.sharefood.adapter;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sharefood.Constants;
 import com.example.sharefood.R;
+import com.example.sharefood.SessionManager;
 import com.example.sharefood.activity.ConfigurationActivity;
 import com.example.sharefood.activity.ProfileActivity;
 import com.example.sharefood.activity.SharedFoodActivity;
 import com.example.sharefood.entity.Options;
+import com.example.sharefood.util.ImageUtil;
 
 import java.util.ArrayList;
 
@@ -41,7 +45,7 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
         holder.mainText.setText(option.getMainText());
         if(option.getSecondaryText() != null)
             holder.secondaryText.setText(option.getSecondaryText());
-        holder.setImage(option.getImage());
+        holder.setImage(option.getImage(), option.getWhereToOpen(), option.getSecondaryText());
         holder.setImageButton(option.getWhereToOpen());
     }
 
@@ -72,10 +76,16 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionHo
             imageButton = view.findViewById(R.id.option_action_button);
         }
 
-        void setImage(String nome){
-            if(nome.equals("perfil"))
-                image.setImageResource(R.drawable.ic_person_black_24dp);
-            else if(nome.equals("configuracao"))
+        void setImage(String imagePath, String whereToOpen, String email){
+            if(whereToOpen.equals("Profile")){
+                if(imagePath != null){
+                    Bitmap profileBitmap = ImageUtil.loadImageFromStorage(imagePath, email);
+                    System.out.println("Meu deus setou aqui olha só");
+                    image.setImageBitmap(profileBitmap);
+                }else
+                    image.setImageResource(R.drawable.ic_person_black_24dp);
+            }
+            else if(whereToOpen.equals("SharedFood"))
                 image.setImageResource(R.drawable.ic_config_64dp);
         }
 

@@ -30,7 +30,7 @@ public class SessionManager {
     public static final String USER_LONGITUDE = "UserLongitude";
     public static final String USER_GIVER = "UserGiver";
     public static final String USER_TYPE_INFO_SETTED = "UserTypeInfoSetted";
-    public static final String USER_LOCAL_IMAGE = "UserLocalImage";
+    public static final String USER_IMAGE_URL = "UserLocalImage";
 
     public SessionManager(Context context){
         this.context = context;
@@ -55,6 +55,11 @@ public class SessionManager {
         editor.putBoolean(USER_GIVER, userGiver);
         editor.putBoolean(USER_TYPE_INFO_SETTED, info);
         editor.putBoolean(USER_LOGGED, true);
+        editor.commit();
+    }
+
+    public void setImageUrl(String imageUrl){
+        editor.putString(USER_IMAGE_URL, imageUrl);
         editor.commit();
     }
 
