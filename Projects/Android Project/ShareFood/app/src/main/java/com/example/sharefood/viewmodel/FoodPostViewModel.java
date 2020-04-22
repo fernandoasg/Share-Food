@@ -20,11 +20,11 @@ public class FoodPostViewModel extends AndroidViewModel {
         super(application);
         repository = new FoodPostRepository(application);
         allFoodPosts = repository.getAllFoodPosts();
-        allFoodPosts = repository.getAllFoodPosts();
     }
 
     public void insert(FoodPost foodPost){
         repository.insert(foodPost);
+        allFoodPosts = repository.getAllFoodPosts();
     }
 
     public void update(FoodPost foodPost){
@@ -37,5 +37,9 @@ public class FoodPostViewModel extends AndroidViewModel {
 
     public List<FoodPost> getAllFoodPosts(){
         return allFoodPosts;
+    }
+
+    public int getAllFoodPostsAmount(){
+        return allFoodPosts.size();
     }
 }

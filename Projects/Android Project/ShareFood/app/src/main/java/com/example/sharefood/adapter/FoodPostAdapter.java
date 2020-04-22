@@ -1,5 +1,6 @@
 package com.example.sharefood.adapter;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sharefood.R;
 import com.example.sharefood.entity.FoodPost;
+import com.example.sharefood.util.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,7 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
         holder.textViewDescription.setText(currentFoodPost.getDescricao());
         holder.textViewDistance.setText("100m");
         holder.textViewDate.setText(currentFoodPost.getDataAberto());
+        holder.setImage(currentFoodPost.getImageUrl(), currentFoodPost.getDonator() + currentFoodPost.getDataAberto().replace('/',' ').replaceAll("\\s+",""));
     }
 
     @Override
@@ -72,6 +75,14 @@ public class FoodPostAdapter extends RecyclerView.Adapter<FoodPostAdapter.FoodPo
                     }
                 }
             });
+        }
+
+        void setImage(String imagePath, String name){
+            if(imagePath != null){
+                Bitmap profileBitmap = ImageUtil.loadImageFromStorage(imagePath, name);
+                postImage.setImageBitmap(profileBitmap);
+            }else
+                postImage.setImageResource(R.drawable.ic_attach_money_black_24dp);
         }
     }
 

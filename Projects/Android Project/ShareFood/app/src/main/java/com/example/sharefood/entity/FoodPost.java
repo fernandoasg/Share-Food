@@ -39,9 +39,11 @@ public class FoodPost {
 
     private int midia;
 
+    private String donator;
+
     private String imageUrl;
 
-    public FoodPost(String titulo, String descricao, String dataVencimento, String dataAberto, String horarioParaRetirar, double longitude, double latitude, int usuarioOrigemFk, String url) {
+    public FoodPost(String titulo, String descricao, String dataVencimento, String dataAberto, String horarioParaRetirar, double longitude, double latitude, int usuarioOrigemFk, String _donator, String url) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataVencimento = dataVencimento;
@@ -50,6 +52,7 @@ public class FoodPost {
         this.longitude = longitude;
         this.latitude = latitude;
         this.usuarioOrigemFk = usuarioOrigemFk;
+        this.donator = _donator;
         this.imageUrl = url;
     }
 
@@ -167,5 +170,13 @@ public class FoodPost {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDonator() {
+        return donator;
+    }
+
+    public void setDonator(String donator) {
+        this.donator = donator;
     }
 }

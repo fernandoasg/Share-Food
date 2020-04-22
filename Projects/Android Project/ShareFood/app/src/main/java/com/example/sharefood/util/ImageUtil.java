@@ -70,7 +70,7 @@ public class ImageUtil {
     {
         try {
             File f = new File(path, imgName);
-            System.out.println(path + ""+imgName);
+            System.out.println(f.getAbsolutePath());
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             return b;
         }

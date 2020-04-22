@@ -20,7 +20,7 @@ import com.example.sharefood.entity.FoodStore;
 import com.example.sharefood.entity.Institution;
 import com.example.sharefood.entity.Message;
 
-@Database(entities = {FoodPost.class, FoodProduct.class, Message.class, Institution.class}, version = 10)
+@Database(entities = {FoodPost.class, FoodProduct.class, Message.class, Institution.class}, version = 11)
 public abstract class ShareFoodDatabase extends RoomDatabase {
 
     private static ShareFoodDatabase instance;
@@ -66,14 +66,14 @@ public abstract class ShareFoodDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            foodPostDao.insert(new FoodPost("Instituição 1", "Descrição descrição descrioção descrição descrição descrição descrição",
+            /*foodPostDao.insert(new FoodPost("Instituição 1", "Descrição descrição descrioção descrição descrição descrição descrição",
                     null, "03/01/2020", "Oferecemos almoços diariamente", 1, 2, 0, null));
             foodPostDao.insert(new FoodPost("Instituição 2", "Descrição descrição descrioção descrição descrição descrição descrição",
                     null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, null));
             foodPostDao.insert(new FoodPost("Instituição 3", "Descrição descrição descrioção descrição descrição descrição descrição",
                     null, "03/01/2020", "Oferecemos almoços diariamente", 1, 2,  0, null));
             foodPostDao.insert(new FoodPost("Instituição 4", "Descrição descrição descrioção descrição descrição descrição descrição",
-                    null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, null));
+                    null, "03/01/2020", "Ajudamos animais de estimação", 1, 2,  0, null));*/
 
             /*institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", "10/12/2001", "Ajudar o universo é a nossa missão", 0));
             institutionDao.insert(new Institution("Lar do Amor", "Dona Amora", "12312312323", "3/07/2010", "Ajudar o universo é a nossa missão", 0));

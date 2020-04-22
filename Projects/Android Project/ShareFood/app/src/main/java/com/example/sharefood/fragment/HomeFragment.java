@@ -2,6 +2,7 @@ package com.example.sharefood.fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,8 +37,10 @@ import com.example.sharefood.viewmodel.InstitutionViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +64,7 @@ public class HomeFragment extends Fragment {
 
     FirebaseFirestore firestore;
     private int institutionsSize = 0;
+    private int foodPostsSize = 0;
     private boolean alreadyListed = false;
     private boolean isGiver = false;
 
@@ -207,6 +211,7 @@ public class HomeFragment extends Fragment {
                                     try {
                                         bitmap = new ImageUtil.DownloadImage().execute(imageUrl).get();
                                         url = ImageUtil.saveToInternalStorage(getContext(), bitmap, name);
+                                        System.out.println("url = " + url);
                                     } catch (ExecutionException ex) {
                                         ex.printStackTrace();
                                     } catch (InterruptedException ex) {
@@ -248,17 +253,67 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadFoodPostList(View view) {
+
+        // TODO PEGAR DOAÇÕES ATIVAS DO FIREBASE, IGUAL ESTOU PEGANDO INSTITUIÇÕES
         foodPostViewModel = ViewModelProviders.of(getActivity()).get(FoodPostViewModel.class);
 
         foodPostAdapter = new FoodPostAdapter();
 
-        foodPostsList = new ArrayList<>();
-        foodPostsList = foodPostViewModel.getAllFoodPosts();
+        // Pegar isntância do Firestore
+        firestore = FirebaseFirestore.getInstance();
 
-        showFoodPosts();
+        if(foodPostViewModel.getAllFoodPostsAmount() > 0){
+            showFoodPosts();
+        }else{
+            firestore.collection("donations")
+                .whereEqualTo("active", true)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            foodPostsSize = task.getResult().size();
+                            for(QueryDocumentSnapshot document : task.getResult()){
+                                String title = document.getString("title");
+                                String description = document.getString("description");
+                                String timeToTake = document.getString("timeToTake");
+                                String dueDate = document.getString("dueDate");
+                                String donator = document.getString("donator");
+                                double latitude = document.getDouble("latitude");
+                                double longitude = document.getDouble("longitude");
+                                String publicationDate = document.getString("publicationDate");
+
+                                String url = null;
+                                if(document.getData().containsKey("imageUrl")){
+                                    String imageUrl = document.getString("imageUrl");
+                                    Bitmap bitmap = null;
+                                    try{
+                                        bitmap = new ImageUtil.DownloadImage().execute(imageUrl).get();
+                                        String imageName = donator + publicationDate.replace('/',' ').replaceAll("\\s+","");
+                                        url = ImageUtil.saveToInternalStorage(getContext(), bitmap, imageName);
+                                    }catch (ExecutionException ex){
+                                        ex.printStackTrace();
+                                    }catch (InterruptedException ex){
+                                        ex.printStackTrace();
+                                    }
+                                }
+                                foodPostViewModel.insert(new FoodPost(title, description, dueDate, publicationDate, timeToTake, longitude, latitude, 0, donator, url));
+                            }
+                            showFoodPosts();
+                        }else{
+                            System.out.println("Error getting documents: "+ task.getException());
+                        }
+                    }
+                });
+        }
     }
 
     private void showFoodPosts(){
+        foodPostsList = new ArrayList<>();
+        foodPostsList = foodPostViewModel.getAllFoodPosts();
+
+        System.out.println(foodPostsList.size());
+
         foodPostAdapter.setFoodPosts(foodPostsList);
         foodPostAdapter.setOnItemClickListener(new FoodPostAdapter.OnItemClickListener() {
             @Override

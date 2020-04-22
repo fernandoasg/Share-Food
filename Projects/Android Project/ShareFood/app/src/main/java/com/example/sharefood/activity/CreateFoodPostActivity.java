@@ -189,15 +189,15 @@ public class CreateFoodPostActivity extends AppCompatActivity {
         }
 
         // Salva a imagem localmente
-        String imageName = userEmail + Calendar.getInstance().getTime().toString();
+        String imageName = userEmail + Calendar.getInstance().getTime().toString().replaceAll("\\s+","");
         imageUrl = ImageUtil.saveToInternalStorage(this, imgBitmap, imageName);
         imgUri = Uri.fromFile(new File(imageUrl + "/" + imageName));
 
         // Pega a data atual
-        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+        final String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
         // Salva o FoodPost localmente
-        FoodPost foodPost = new FoodPost(foodName, foodDescription, foodDate, currentDate, foodHoraParaRetirar, longitude, latitude, 0, imageUrl);
+        FoodPost foodPost = new FoodPost(foodName, foodDescription, foodDate, currentDate, foodHoraParaRetirar, longitude, latitude, 0, "me", imageUrl);
         createFoodPostViewModel.insert(foodPost);
 
         // Salva imagem no Storage
@@ -225,6 +225,7 @@ public class CreateFoodPostActivity extends AppCompatActivity {
                     data.put("longitude", longitude);
                     data.put("latitude", latitude);
                     data.put("dueDate", foodDate);
+                    data.put("publicationDate", currentDate);
                     data.put("active", true);
                     data.put("donator", userId);
                     data.put("imageUrl", downloadUrl.toString());
